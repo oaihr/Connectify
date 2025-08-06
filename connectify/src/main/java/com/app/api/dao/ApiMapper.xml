@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.app.api.dao.ApiDAO">
+	
+		
+    <insert id="mergeLdongCodes" parameterType="java.util.List">
+        MERGE INTO TOUR_AREA_CODE target
+        USING (
+            <foreach collection="list" item="item" separator=" UNION ALL ">
+                SELECT
+                	#{item.rnum} AS RNUM,
+                    #{item.ldongRegnCd} AS LDONG_REGN_CD,
+                    #{item.ldongRegnNm} AS LDONG_REGN_NM,
+                    #{item.ldongSignguCd} AS LDONG_SIGNGU_CD,
+                    #{item.ldongSignguNm} AS LDONG_SIGNGU_NM                    
+                FROM DUAL
+            </foreach>
+        ) source
+        ON (target.LDONG_REGN_CD = source.LDONG_REGN_CD AND target.LDONG_SIGNGU_CD = source.LDONG_SIGNGU_CD)
+        WHEN MATCHED THEN
+            UPDATE SET
+                target.LDONG_REGN_NM = source.LDONG_REGN_NM,
+                target.LDONG_SIGNGU_NM = source.LDONG_SIGNGU_NM,
+                target.RNUM = source.RNUM,
+                target.LAST_UPDATED_DATE = SYSTIMESTAMP
+        WHEN NOT MATCHED THEN
+            INSERT (LDONG_REGN_CD, LDONG_REGN_NM, LDONG_SIGNGU_CD, LDONG_SIGNGU_NM, RNUM, CREATED_DATE, LAST_UPDATED_DATE)
+            VALUES (source.LDONG_REGN_CD, source.LDONG_REGN_NM, source.LDONG_SIGNGU_CD, source.LDONG_SIGNGU_NM, source.RNUM, SYSTIMESTAMP, SYSTIMESTAMP)
+    </insert>
+    
+    <insert id="mergeLclsSystmCodes" parameterType="java.util.List">
+    	MERGE INTO TOUR_CLASSIFICATION_SYSTEM_CODE target
+        USING (
+            <foreach collection="list" item="item" separator=" UNION ALL ">
+                SELECT
+                	#{item.rnum} AS RNUM,
+                    #{item.lclsSystm1Cd} AS LCLS_SYSTM1_CD,
+                    #{item.lclsSystm1Nm} AS LCLS_SYSTM1_NM,
+                    #{item.lclsSystm2Cd} AS LCLS_SYSTM2_CD,
+                    #{item.lclsSystm2Nm} AS LCLS_SYSTM2_NM,
+                    #{item.lclsSystm3Cd} AS LCLS_SYSTM3_CD,
+                    #{item.lclsSystm3Nm} AS LCLS_SYSTM3_NM                    
+                FROM DUAL
+            </foreach>
+        ) source
+        ON (target.RNUM = source.RNUM)
+        WHEN MATCHED THEN
+            UPDATE SET
+                target.LCLS_SYSTM1_CD = source.LCLS_SYSTM1_CD,
+                target.LCLS_SYSTM1_NM = source.LCLS_SYSTM1_NM,
+                target.LCLS_SYSTM2_CD = source.LCLS_SYSTM2_CD,
+                target.LCLS_SYSTM2_NM = source.LCLS_SYSTM2_NM,
+                target.LCLS_SYSTM3_CD = source.LCLS_SYSTM3_CD,
+                target.LCLS_SYSTM3_NM = source.LCLS_SYSTM3_NM,
+                target.MODIFIED_TIME = SYSTIMESTAMP
+        WHEN NOT MATCHED THEN
+            INSERT (RNUM, LCLS_SYSTM1_CD, LCLS_SYSTM1_NM, LCLS_SYSTM2_CD, LCLS_SYSTM2_NM, LCLS_SYSTM3_CD, LCLS_SYSTM3_NM, CREATED_TIME, MODIFIED_TIME)
+            VALUES (source.RNUM, source.LCLS_SYSTM1_CD, source.LCLS_SYSTM1_NM, source.LCLS_SYSTM2_CD, source.LCLS_SYSTM2_NM,source.LCLS_SYSTM3_CD, source.LCLS_SYSTM3_NM, SYSTIMESTAMP, SYSTIMESTAMP)
+    </insert>
+    
+    
+    <update id="mergeAreaBasedList" parameterType="AreaBasedListItem">
+    	
+	        MERGE INTO TOUR_DESTINATION target
+	        USING DUAL
+	        ON (target.CONTENT_ID = #{contentid})
+	        WHEN MATCHED THEN
+	            UPDATE SET
+	                target.TITLE = #{title},
+	                target.ADDR1 = #{addr1},
+	                target.ADDR2 = #{addr2},
+	                target.ZIPCODE = #{zipcode},
+	                target.AREA_CODE = #{areacode},
+	                target.SIGUNGU_CODE = #{sigungucode},
+	                target.CAT1 = #{cat1},
+	                target.CAT2 = #{cat2},
+	                target.CAT3 = #{cat3},
+	                target.MAPX = #{mapx},
+	                target.MAPY = #{mapy},
+	                target.MLEVEL = #{mlevel},
+	                target.TEL = #{tel},
+	                target.FIRST_IMAGE = #{firstimage},
+	                target.FIRST_IMAGE2 = #{firstimage2},
+	                target.CPYRHT_DIV_CD = #{cpyrhtDivCd},
+	                target.LDONG_REGN_CD = #{lDongRegnCd},
+	                target.LDONG_SIGNGU_CD = #{lDongSignguCd},
+	                target.LCLS_SYSTM1 = #{lclsSystm1},
+	                target.LCLS_SYSTM2 = #{lclsSystm2},
+	                target.LCLS_SYSTM3 = #{lclsSystm3},
+	                target.MODIFIED_TIME = #{modifiedtime}
+	        WHEN NOT MATCHED THEN
+	            INSERT(
+	                CONTENT_ID, CONTENT_TYPE_ID, TITLE, ADDR1, ADDR2, ZIPCODE, AREA_CODE, SIGUNGU_CODE,
+	                CAT1, CAT2, CAT3, MAPX, MAPY, MLEVEL, TEL, FIRST_IMAGE, FIRST_IMAGE2, CPYRHT_DIV_CD,
+	                LDONG_REGN_CD, LDONG_SIGNGU_CD, LCLS_SYSTM1, LCLS_SYSTM2, LCLS_SYSTM3, CREATED_TIME, MODIFIED_TIME
+	            )
+	            VALUES(
+	                #{contentid}, #{contenttypeid}, #{title}, #{addr1}, #{addr2},
+	                #{zipcode}, #{areacode}, #{sigungucode}, #{cat1}, #{cat2},
+	                #{cat3}, #{mapx}, #{mapy}, #{mlevel}, #{tel}, #{firstimage},
+	                #{firstimage2}, #{cpyrhtDivCd}, #{lDongRegnCd}, #{lDongSignguCd},
+	                #{lclsSystm1}, #{lclsSystm2}, #{lclsSystm3}, SYSTIMESTAMP, SYSTIMESTAMP
+	            )
+	   
+	</update>
+
+</mapper>

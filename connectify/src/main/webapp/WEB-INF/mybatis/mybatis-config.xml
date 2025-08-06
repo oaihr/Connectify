@@ -7,8 +7,12 @@
 	<settings>	
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 		<setting name="jdbcTypeForNull" value="NULL" />
+		<setting name="defaultExecutorType" value="BATCH" />
 	</settings>	
 		
+	<typeAliases>
+		<typeAlias type="com.app.api.dto.AreaBasedListItem"  alias="AreaBasedListItem"/>
+	</typeAliases>	
 		
 <!-- 	<typeAliases>	 -->
 <!-- 		<typeAlias type="com.app.dto.room.Room" alias="Room"/> -->
