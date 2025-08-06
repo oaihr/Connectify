@@ -20,4 +20,27 @@
 		WHERE id = #{id} AND pw = #{pw}
 	</select>
 	
+	
+	<!-- User -->
+	
+	<select id="findAdminUserList" resultType="AdminUser">
+		SELECT * FROM CON_T_USER
+		ORDER BY id
+	</select>
+	
+	<select id="findAdminUserListBySearch" resultType="AdminUser" parameterType="AdminUserSearch">
+		SELECT * 
+		FROM CON_T_USER
+		<where>
+			<if test=" name != null and name != '' ">
+				name LIKE '%' || #{name} || '%'
+			</if>
+		</where>
+		ORDER BY id
+	</select>
+	
+	
+	
+	
+	
 </mapper>
