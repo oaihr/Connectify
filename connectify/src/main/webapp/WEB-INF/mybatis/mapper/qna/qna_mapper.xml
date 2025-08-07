@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="qnaMapper">
+
+	<!-- 공개 QnA -->
+	<!-- <select id="getPublicQna" resultType="com.app.dto.qna.Qna"> SELECT 
+		USERID, ADMINID, ASKTIME, TITLE, QUESTION, ANSWER, STATUS FROM CON_T_INQUIRE 
+		ORDER BY ASKTIME DESC </select> 개인 QnA <select id="getPrivateQnaForUser" 
+		resultType="com.app.dto.qna.Qna"> SELECT * FROM CON_T_INQUIRE WHERE USERID 
+		= #{userId} AND STATUS = '비공개' ORDER BY ASKTIME DESC </select> <insert id="insertQna" 
+		parameterType="com.app.dto.qna.Qna"> INSERT INTO CON_T_INQUIRE ( ADMINID, 
+		USERID, ASKTIME, TITLE, QUESTION, ANSWER, STATUS ) VALUES ( #{adminId}, #{userId}, 
+		SYSDATE, #{title}, #{question}, #{answer}, #{status} ) </insert> -->
+
+	<!-- 공개질문 -->
+	<select id="getPublicQna" resultType="com.app.dto.qna.Qna">
+		SELECT *
+		FROM CON_T_INQUIRE
+		WHERE IS_PUBLIC = 1
+		ORDER BY ASKTIME DESC
+	</select>
+
+	<!-- 1:1문의 -->
+	<select id="getPrivateQnaForUser" parameterType="String" resultType="com.app.dto.qna.Qna">
+		SELECT *
+		FROM CON_T_INQUIRE
+		WHERE USERID = #{userId} AND IS_PUBLIC = 0
+		ORDER BY ASKTIME DESC
+	</select>
+
+	<!-- 입력한 데이터 DB에 삽입 -->
+	<insert id="insertQna" parameterType="com.app.dto.qna.Qna">
+		INSERT INTO CON_T_INQUIRE (
+		USERID, TITLE, QUESTION, STATUS, IS_PUBLIC, ASKTIME
+		) VALUES (
+		#{userId},
+		#{title},
+		#{question},
+		#{status},
+		#{isPublic},
+		SYSDATE )
+	</insert>
+	
+	<delete id="deleteQna" parameterType="int">
+        DELETE FROM CON_T_INQUIRE WHERE ID = #{id}
+    </delete>
+
+</mapper>
