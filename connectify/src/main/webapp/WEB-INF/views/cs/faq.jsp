@@ -6,16 +6,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고객센터</title>
+<title>자주 묻는 질문</title>
 <style>
 body {
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
 	font-family: Arial, sans-serif;
-	display: flex;
 }
 
+.container {
+	display: flex;
+}
 .sidebar {
 	width: 200px;
 	background-color: #f8f9fa;
@@ -24,6 +26,7 @@ body {
 
 .h1 {
 	text-align: center;
+	margin: 20px;
 }
 
 .sidebar-menu {
@@ -52,32 +55,32 @@ body {
 	height: 60px; /* 높이를 60픽셀로 설정 */
 }
 
-.h1 {
-	margin: 20px;
-}
+
 </style>
 
 </head>
 
 <body>
+
+	<div class="container">
 	
-	<div class="sidebar">
-		<ul class="sidebar-menu">
-			<h1 class="h1">고객센터</h1>
-			<li><a href="qna">문의하기</a></li>
-			<li><a href="faq" class="menu-btn" data-target="faqSection">자주
-					묻는 질문</a></li>
-		</ul>
-	</div>
+		<div class="sidebar">
+			<ul class="sidebar-menu">
+				<h1 class="h1">고객센터</h1>
+				<li><a href="qna">문의하기</a></li>
+				<li><a href="faq" class="menu-btn" data-target="faqSection">자주 묻는 질문</a></li>
+			</ul>
+		</div>
 	
-	<div class="mainboard" id="faqSection">
-		<h2>자주 묻는 질문</h2>
-		<c:forEach var="faq" items="${faqList}">
-			<div class="faq_item">
-				<h4>${faq.question}</h4>
-				<div class="faq_answer">${faq.answer}</div>
-			</div>
-		</c:forEach>
+		<div class="mainboard" id="faqSection">
+			<h2>자주 묻는 질문</h2>
+			<c:forEach var="faq" items="${faqList}">
+				<div class="faq_item">
+					<h4>${faq.question}</h4>
+					<div class="faq_answer">${faq.answer}</div>
+				</div>
+			</c:forEach>
+		</div>
 	</div>
 
 

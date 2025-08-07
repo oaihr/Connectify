@@ -6,11 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고객센터 - QnA</title>
+<title>고객센터</title>
 <style>
 body {
-	margin: 0;
-	padding: 0;
+	margin: 0px;
+	padding: 0px;
 	box-sizing: border-box;
 	font-family: Arial, sans-serif;
 }
@@ -19,13 +19,35 @@ body {
 	display: flex;
 }
 
-.sidebar {
-	width: 250px;
-	background-color: #f2f2f2;
-	height: 100vh;
-	padding: 20px;
+.h1 {
+	text-align: center;
+	margin: 20px;
 }
 
+.sidebar {
+	width: 200px;
+	background-color: #f8f9fa;
+	padding: 20px;
+}
+.sidebar-menu {
+	list-style: none;
+	padding: 0;
+	text-align: center;
+}
+
+.sidebar-menu li {
+	margin-bottom: 15px;
+}
+
+.sidebar-menu li a {
+	text-decoration: none;
+	color: #333;
+	font-weight: bold;
+}
+.mainboard {
+	flex: 1;
+	padding: 30px;
+}
 .content {
 	flex: 1;
 	padding: 20px;
@@ -58,40 +80,7 @@ body {
 	display: none;
 }
 </style>
-<script>
-	//탭을 두개로 나뉘어 보이게함
-	function showTab(tabName) {
-		document.getElementById("oneToOneTab").classList.add("hidden");
-		document.getElementById("publicQnATab").classList.add("hidden");
-		document.getElementById(tabName).classList.remove("hidden");
 
-		document.getElementById("tabOneToOne").classList.remove("active");
-		document.getElementById("tabPublicQnA").classList.remove("active");
-		if (tabName === "oneToOneTab") {
-			document.getElementById("tabOneToOne").classList.add("active");
-		} else {
-			document.getElementById("tabPublicQnA").classList.add("active");
-		}
-	}
-	//게시판 팝업창
-	function public_qna_popup() {
-		window.open("/qna/public_qna_popup", "QnAPopup",
-				"width=500,height=400,resizable=no");
-	}
-	//1:1문의 팝업창
-	function private_qna_popup() {
-		window.open("/qna/private_qna_popup", "QnAPopup",
-				"width=500,height=400,resizable=no");
-	}
-	//게시글 삭제
-	function deleteQna(qnaId) {
-		 if (confirm("정말 이 질문을 삭제하시겠습니까?")) {
-	            // '확인'을 누르면 서버에 삭제 요청을 보냅니다.
-	            // URL에 삭제할 게시물의 ID를 쿼리 파라미터로 포함시킵니다.
-	            window.location.href = "/qna/delete?qnaId=" + qnaId;
-	        }
-	}
-</script>
 </head>
 <body>
 
@@ -101,12 +90,11 @@ body {
 			<ul class="sidebar-menu">
 				<h1 class="h1">고객센터</h1>
 				<li><a href="qna">문의하기</a></li>
-				<li><a href="faq" class="menu-btn" data-target="faqSection">자주
-						묻는 질문</a></li>
+				<li><a href="faq" class="menu-btn" data-target="faqSection">자주 묻는 질문</a></li>
 			</ul>
 		</div>
 
-		<div class="content">
+		<div class="mainboard">
 
 			<h2>QnA - 질문 게시판</h2>
 			<div class="tabs">
@@ -193,6 +181,40 @@ body {
 		</div>
 
 	</div>
+<script>
+	//탭을 두개로 나뉘어 보이게함
+	function showTab(tabName) {
+		document.getElementById("oneToOneTab").classList.add("hidden");
+		document.getElementById("publicQnATab").classList.add("hidden");
+		document.getElementById(tabName).classList.remove("hidden");
+
+		document.getElementById("tabOneToOne").classList.remove("active");
+		document.getElementById("tabPublicQnA").classList.remove("active");
+		if (tabName === "oneToOneTab") {
+			document.getElementById("tabOneToOne").classList.add("active");
+		} else {
+			document.getElementById("tabPublicQnA").classList.add("active");
+		}
+	}
+	//게시판 팝업창
+	function public_qna_popup() {
+		window.open("/qna/public_qna_popup", "QnAPopup",
+				"width=500,height=400,resizable=no");
+	}
+	//1:1문의 팝업창
+	function private_qna_popup() {
+		window.open("/qna/private_qna_popup", "QnAPopup",
+				"width=500,height=400,resizable=no");
+	}
+	//게시글 삭제
+	function deleteQna(qnaId) {
+		 if (confirm("정말 이 질문을 삭제하시겠습니까?")) {
+	            // '확인'을 누르면 서버에 삭제 요청을 보냅니다.
+	            // URL에 삭제할 게시물의 ID를 쿼리 파라미터로 포함시킵니다.
+	            window.location.href = "/qna/delete?qnaId=" + qnaId;
+	        }
+	}
+</script>
 
 </body>
 </html>
