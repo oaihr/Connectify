@@ -9,4 +9,5 @@ public interface AdminUserService {
 	
 	public List<AdminUser> findAdminUserList();
 	public List<AdminUser> findAdminUserListBySearch(AdminUserSearch adminUserSearch);
+	public AdminUser findAdminUserById(String id);
 }

@@ -28,4 +28,10 @@ public class AdminUserServiceImpl implements AdminUserService{
 		return userList;
 	}
 
+	@Override
+	public AdminUser findAdminUserById(String id) {
+		AdminUser userId = adminUserDAO.findAdminUserById(id);
+		return userId;
+	}
+
 }

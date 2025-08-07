@@ -165,5 +165,12 @@ https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.5</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.7</version>
+		</dependency>
+
 	</dependencies>
 </project>

@@ -28,18 +28,28 @@
 		ORDER BY id
 	</select>
 	
+	<select id="findAdminUserById" resultType="AdminUser">
+		SELECT * FROM CON_T_USER
+		WHERE id = #{id}
+	</select>
+	
 	<select id="findAdminUserListBySearch" resultType="AdminUser" parameterType="AdminUserSearch">
 		SELECT * 
 		FROM CON_T_USER
 		<where>
-			<if test=" name != null and name != '' ">
-				name LIKE '%' || #{name} || '%'
+			<if test=" searchKeywordUser != null and searchKeywordUser != '' ">
+				name LIKE '%' || #{searchKeywordUser} || '%'
 			</if>
 		</where>
 		ORDER BY id
 	</select>
 	
 	
+	<!-- issues -->
+	<select id="findAdminIssuesList" resultType="AdminUser">
+		SELECT * FROM CON_T_INQUIRE
+		ORDER BY id
+	</select>
 	
 	
 	

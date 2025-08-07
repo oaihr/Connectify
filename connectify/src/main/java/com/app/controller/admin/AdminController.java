@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.app.dto.admin.Admin;
@@ -25,6 +26,8 @@ public class AdminController {
 	
 	@Autowired
 	AdminUserService  adminUserService;
+	
+	
 	
 
 	@GetMapping("/admin")
@@ -60,6 +63,15 @@ public class AdminController {
 			Admin admin = adminService.findAdminId(loginUserId);
 			model.addAttribute("admin", admin);
 			
+			//사용자
+			List<AdminUser> userList = adminUserService.findAdminUserList();
+			model.addAttribute("userList", userList);
+			
+			//질문
+			
+			
+			//신고
+			
 			return "admin/adminMain";
 		}
 		
@@ -78,29 +90,33 @@ public class AdminController {
 	@PostMapping("/admin/searchUser")
 	public String searchUser(Model model, AdminUserSearch adminUserSearch) {
 		
-		List<AdminUser> adminUserList = adminUserService.findAdminUserListBySearch(adminUserSearch);
-		List<AdminUser> userList = adminUserService.findAdminUserList();
-		
-		model.addAttribute("adminUserList", adminUserList);
-		model.addAttribute("adminUserSearch", adminUserSearch);
+		List<AdminUser> userList = adminUserService.findAdminUserListBySearch(adminUserSearch);
 		
 		model.addAttribute("userList", userList);
+		model.addAttribute("adminUserSearch", adminUserSearch);
 		
 		model.addAttribute("activeTab", "tab-2");
-
+		
+		System.out.println(userList);
+		System.out.println(adminUserSearch);
+		
 		return "admin/adminMain";
 	}
 	
 	//사용자 정보
-	@PostMapping("/admin/userInfo")
-	public String userInfo(Model model) {
-		List<AdminUser> userList = adminUserService.findAdminUserList();
-		
-		model.addAttribute("userList", userList);
-		
-		model.addAttribute("activeTab", "tab-2");
-		
-		return "admin/adminMain";
-	}
+//	@PostMapping("/admin/searchUser/{userId}")
+//	public String userInfo(@PathVariable String userId, Model model) {
+//		
+//		AdminUser user = adminUserService.findAdminUserById(userId);
+//		model.addAttribute("user", user);
+//		model.addAttribute("activeTab", "tab-2");
+//		
+//		System.out.println(user);
+//		
+//		return "admin/adminMain";
+//	}
+	
+	
+	
 	
 }

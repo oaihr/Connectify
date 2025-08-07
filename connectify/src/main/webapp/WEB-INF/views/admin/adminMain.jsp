@@ -183,6 +183,22 @@ a {
 	display: block;
 }
 
+.issues-form-content {
+	display: none;
+}
+
+.issues-form-content.active {
+	display: block;
+}
+
+.reports-form-content {
+	display: none;
+}
+
+.reports-form-content.active {
+	display: block;
+}
+
 /* input */
 .input {
 	padding: 10px 15px;
@@ -262,7 +278,7 @@ a {
 									<button type="button" class="btn">검색</button>
 								</div>
 
-								<div class="travel-list list">
+								<div class="list">
 									<a href="">여행 패키지 이름/가격(DB 불러올 예정)</a>
 									<div>
 										<button type="button"
@@ -312,22 +328,6 @@ a {
 
 					<div class="tab-all jua-regular">
 
-						<!-- User form0 -->
-						<div id="user-form0" class="user-form-content">
-							<div class="menu-header">
-								<p class="jua-regular">사용자 검색</p>
-							</div>
-
-							<form action="/admin/searchUser" method="post">
-								<div class="search-container search">
-									<input type="text" name="name" class="input"
-										placeholder="사용자 이름"">
-									<button type="submit" class="btn">검색</button>
-								</div>
-							</form>
-						</div>
-
-
 						<!-- User form1 -->
 						<!-- User 전체 -->
 						<div id="user-form1" class="user-form-content">
@@ -338,28 +338,30 @@ a {
 
 							<form action="/admin/searchUser" method="post">
 								<div class="search-container search">
-									<input type="text" name="name" class="input"
-										placeholder="사용자 이름" value="${adminUserSearch.name}">
+									<input type="text" name="searchKeywordUser" class="input"
+										placeholder="사용자 이름"
+										value="${adminUserSearch.searchKeywordUser}">
 									<button type="submit" class="btn">검색</button>
 								</div>
 							</form>
 
-							<form action="" method="">
+							<div>
 								<c:forEach var="user" items="${userList}">
-									<div class="travel-list list">
-										<a href="">NAME: ${user.name} || TEL): ${user.tel}</a>
+									<div class="list">
+											<a href="#" onClick="showUserForm('user-form4')">NAME: ${user.name} || ID: ${user.id}
+												|| TEL): ${user.tel}</a>
 										<div>
 											<button type="button"
 												class="btn btn-md-list btn-list jua-regular"
-												onClick="showUserForm('user-form4')">수정</button>
+												onClick="showUserForm('user-form5')">수정1</button>
 											<button type="button"
 												class="btn btn-md-list btn-list jua-regular">삭제</button>
 										</div>
 									</div>
 								</c:forEach>
-							</form>
-
-
+							</div>
+							
+							
 						</div>
 
 						<!-- User form2 -->
@@ -372,27 +374,30 @@ a {
 
 							<form action="/admin/searchUser" method="post">
 								<div class="search-container search">
-									<input type="text" name="name" class="input"
-										placeholder="사용자 이름" value="${adminUserSearch.name}">
+									<input type="text" name="searchKeywordUser" class="input"
+										placeholder="사용자 이름"
+										value="${adminUserSearch.searchKeywordUser}">
 									<button type="submit" class="btn">검색</button>
 								</div>
 							</form>
 
-							<form action="" method="">
-								<c:forEach var="user" items="${adminUserList}">
-									<div class="travel-list list">
-										<a href="">NAME: ${user.name} || TEL):
-											${user.tel}</a>
+							<div>
+								<c:forEach var="user" items="${userList}">
+									<div class="list">
+											<a href="#" onClick="showUserForm('user-form4')">NAME: ${user.name} || ID: ${user.id}
+												|| TEL): ${user.tel}</a>
 										<div>
 											<button type="button"
 												class="btn btn-md-list btn-list jua-regular"
-												onClick="showUserForm('user-form4')">수정</button>
+												onClick="showUserForm('user-form5')">수정2</button>
 											<button type="button"
 												class="btn btn-md-list btn-list jua-regular">삭제</button>
 										</div>
 									</div>
 								</c:forEach>
-							</form>
+							</div>
+							
+							
 						</div>
 
 						<!-- User form3 -->
@@ -403,7 +408,27 @@ a {
 
 						<!-- User form4 -->
 						<!-- 사용자 정보 -->
-						<div id="user-form4" class="user-form-content">
+						<div id="user-form4" class="user-form-content"">
+							<form action="" method="">
+								<div class="menu-header">
+									<p class="jua-regular"></p>
+									<button type="button"
+										class="btn btn-add-travel jua-regular btn-travel"
+										onClick="showUserForm('user-form4')">수정하기</button>
+									<button type="button"
+										class="btn btn-add-travel jua-regular btn-travel"
+										onClick="showUserForm('user-form2')">돌아가기</button>
+								</div>
+
+								<div>
+									<p>User info ${user.id}</p>
+								</div>
+							</form>
+						</div>
+
+						<!-- User form5 -->
+						<!-- 사용자 정보 수정 -->
+						<div id="user-form5" class="user-form-content">
 							<form action="" method="">
 								<div class="menu-header">
 									<p class="jua-regular"></p>
@@ -411,7 +436,10 @@ a {
 										class="btn btn-add-travel jua-regular btn-travel"
 										onClick="showUserForm('user-form2')">돌아가기</button>
 								</div>
-								<p>사용자 정보~~~</p>
+
+								<div>
+									<p>User 수정 ${user.id}</p>
+								</div>
 							</form>
 						</div>
 
@@ -423,18 +451,33 @@ a {
 				<div id="tab-3" class="tab-content">
 
 					<div class="tab-all jua-regular">
+						<!-- isssues form1 -->
+						<!-- isssues 전체 -->
+						<div id="issues-form1" class="issues-form-content">
+							<form action="" method="">
+								<div class="menu-header">
+									<p class="jua-regular">질문 내역</p>
+								</div>
+								<div class="issues-list list">
+									<a href="#" onClick="showIssuesForm('issues-form2')">질문
+										List(DB 불러올 예정)</a>
+								</div>
+							</form>
+						</div>
 
-						<form class="form">
+						<!-- isssues form2 -->
+						<div id="issues-form2" class="issues-form-content">
+							<form action="" method="">
+								<div class="menu-header">
+									<p class="jua-regular">질문</p>
+									<button type="button"
+										class="btn btn-add-travel jua-regular btn-travel"
+										onClick="showIssuesForm('issues-form1')">돌아가기</button>
+								</div>
+								<p>내용내용</p>
 
-							<div class="menu-header">
-								<p class="jua-regular">질문 내역</p>
-							</div>
-
-							<%-- <c:forEach var="${}" items="${}"></c:forEach> --%>
-							<div class="issues-list list">
-								<a href="">질문 List(DB 불러올 예정)</a>
-							</div>
-						</form>
+							</form>
+						</div>
 
 					</div>
 
@@ -446,17 +489,33 @@ a {
 
 					<div class="tab-all jua-regular">
 
-						<form class="form">
+						<!-- reports form1 -->
+						<!-- reports 전체 -->
+						<div id="reports-form1" class="reports-form-content">
+							<form action="" method="">
+								<div class="menu-header">
+									<p class="jua-regular">신고 내역</p>
+								</div>
+								<div class="issues-list list">
+									<a href="#" onClick="showReportsForm('reports-form2')">신고
+										List(DB 불러올 예정)</a>
+								</div>
+							</form>
+						</div>
 
-							<div class="menu-header">
-								<p class="jua-regular">신고 내역</p>
-							</div>
+						<!-- reports form2 -->
+						<div id="reports-form2" class="reports-form-content">
+							<form action="" method="">
+								<div class="menu-header">
+									<p class="jua-regular">신고</p>
+									<button type="button"
+										class="btn btn-add-travel jua-regular btn-travel"
+										onClick="showReportsForm('reports-form1')">돌아가기</button>
+								</div>
+								<p>내용내용</p>
 
-							<%-- <c:forEach var="${}" items="${}"></c:forEach> --%>
-							<div class="reports-list list">
-								<a href="">신고 List(DB 불러올 예정)</a>
-							</div>
-						</form>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -504,15 +563,39 @@ a {
 	            
 	            document.getElementById(tabId).classList.add('active');
 	        }
+	 		showUserForm('user-form1');
 	 		
-	 		showUserForm('user-form0');
-	        
+
+	 		//질문
+	 			function showIssuesForm(tabId) {
+	            const tabs = document.querySelectorAll('.issues-form-content');
+	            tabs.forEach(tab => {
+	            	tab.classList.remove('active')
+	            });
+	            
+	            document.getElementById(tabId).classList.add('active');
+	        }
+	 		
+	 			showIssuesForm('issues-form1');
+	 			
+	 			
+		 		//신고
+	 			function showReportsForm(tabId) {
+	            const tabs = document.querySelectorAll('.reports-form-content');
+	            tabs.forEach(tab => {
+	            	tab.classList.remove('active')
+	            });
+	            
+	            document.getElementById(tabId).classList.add('active');
+	        }
+	 		
+	 			showReportsForm('reports-form1');
 
 
 	</script>
 
 	<!-- 사용자 검색 -->
-	<c:if test="${not empty adminUserSearch.name}">
+	<c:if test="${not empty adminUserSearch.searchKeywordUser}">
 		<script>
 			$(document).ready(function () {
 				showUserForm('user-form2');
@@ -521,7 +604,7 @@ a {
 	</c:if>
 
 	<c:if
-		test="${adminUserSearch.name == null || adminUserSearch.name == ''}">
+		test="${adminUserSearch.searchKeywordUser == null || adminUserSearch.searchKeywordUser == ''}">
 		<script>
 			$(document).ready(function () {
 				showUserForm('user-form1');

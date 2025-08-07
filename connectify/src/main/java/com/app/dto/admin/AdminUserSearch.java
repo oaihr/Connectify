@@ -5,6 +5,5 @@ import lombok.Data;
 @Data
 public class AdminUserSearch {
 	
-	String name;
 	String searchKeywordUser;
 }

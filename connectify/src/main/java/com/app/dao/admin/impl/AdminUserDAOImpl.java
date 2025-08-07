@@ -28,6 +28,12 @@ public class AdminUserDAOImpl implements AdminUserDAO{
 		return userList;
 	}
 
+	@Override
+	public AdminUser findAdminUserById(String id) {
+		AdminUser userId = sqlSessionTemplate.selectOne("admin_mapper.findAdminUserById", id);
+		return userId;
+	}
+
 
 	
 	
