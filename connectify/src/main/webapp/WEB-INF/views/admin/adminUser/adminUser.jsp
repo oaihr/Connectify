@@ -9,211 +9,265 @@
 <title>Insert title here</title>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
-	rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
 html, body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	overflow: hidden;
 }
 
-.body {
-	/* 	margin-top: 100px; */
-	font-family: 'Trebuchet MS', serif;
+body {
+	font-family: 'Noto Sans KR', sans-serif;
 	line-height: 1.6;
 	margin: 0;
 	padding: 0;
 	height: 100vh;
+	background-color: #f8f9fa;
 	overflow: hidden;
 }
+
+.body-container {
+	height: calc(100vh - 80px); /* Adjust based on header height */
+	display: flex;
+	flex-direction: column;
+}
+
 
 .header {
 	display: flex;
 	justify-content: space-between;
-
-	/* margin: 25px; */
+	align-items: center;
+	padding: 15px 50px;
+	background-color: #ffffff;
+	border-bottom: 1px solid #e9ecef;
 }
 
 .header-right {
 	display: flex;
-	margin: 20px;
+	align-items: center;
+	gap: 20px;
+}
+.h1 {
+	color: #4b365f;
+	margin: 0;
+	cursor: pointer;
+	font-size: 30px;
+	font-family: "Jua", sans-serif;
 }
 
-.h1 {
-	color: #D96846;
-	margin-left: 50px;
-	cursor: pointer;
+.header-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #4b365f;
+    margin: 0;
 }
+
 
 .btn-logout {
-	width: 150px;
-	padding: 20px;
-	font-size: 20px;
+	width: 120px;
+	height: 40px;
+	font-size: 16px;
+	padding: 0;
 	border-radius: 20px;
+	background-color: #4b365f;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.2s, transform 0.2s;
 }
 
+.btn-logout:hover {
+	background-color: #7d6eaa;
+	transform: translateY(-1px);
+}
 /* =============tab=================== */
 .tab-container {
-	height: 100vh;
+	flex-grow: 1;
 	display: flex;
 }
 
-.tab-link {
-	width: 100%;
-	height: 100%;
-	font-size: 25px;
-}
-
 ul.tabs {
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	width: 20%;
-	height: 150px;
+	min-width: 220px;
+	background-color: #e9ecef; /* Light gray for sidebar */
+	list-style: none;
+	height: 100%;
 }
 
 ul.tabs li {
-	color: #222;
-	border-top: 2px solid #e0e0e0;
+	padding: 25px 20px;
+	color: #495057;
+	border-bottom: 1px solid #dee2e6;
 	cursor: pointer;
+	font-size: 18px;
+	font-family: "Jua", sans-serif;
+	transition: all 0.2s;
+}
+
+ul.tabs li:hover {
+	background-color: #dfe3e7;
 }
 
 ul.tabs li.current {
-	background: #f1f5f9;
-	color: #3f4129;
+	background: #ffffff;
+	color: #4b365f;
+	border-right: 4px solid #4b365f;
 }
 
 .tab-content {
 	display: none;
-	background: #f1f5f9;
-	width: 100%;
-	overflow: auto;
-	border: 3px solid #f1f5f9;
-	border-left: 0;
+	background: #ffffff;
+	width: 80%;
+	flex-grow: 1;
+	padding: 30px 40px;
+	overflow-y: auto;
+	box-shadow: inset 5px 0 8px -5px rgba(0,0,0,0.05);
 }
 
 .tab-content.current {
-	display: inherit;
+	display: block;
 }
 
+/* =================== Menu Header =================== */
 .menu-header {
 	display: flex;
 	justify-content: space-between;
-	font-size: 30px;
-	margin: 50px;
+	align-items: center;
+	font-size: 28px;
+	margin-bottom: 30px;
+	padding-bottom: 15px;
+	border-bottom: 2px solid #f1f5f9;
 }
 
+.menu-header p {
+    margin: 0;
+    color: #4b365f;
+    font-family: "Jua", sans-serif;
+}
+
+
+/* =================== Buttons & Inputs =================== */
 .btn {
+	padding: 10px 20px;
 	color: white;
-	background-color: #1F2937;
+	background-color: #4b365f;
 	cursor: pointer;
+	border: none;
+	border-radius: 8px;
+	transition: background-color 0.2s, transform 0.2s;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
+.btn:hover {
+	background-color: #7d6eaa;
+	transform: translateY(-1px);
+}
+
+.btn-add-travel {
+	font-size: 18px;
+	width: 150px;
+	padding: 12px 20px;
+}
+
+.btn-md-list {
+	font-size: 14px;
+	width: 60px;
+	padding: 6px;
+	margin-left: 10px;
+}
+
+.input {
+	padding: 12px 15px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	font-size: 16px;
+	width: 100%;
+	max-width: 300px;
+	margin: 10px 0;
+	outline: none;
+	transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus {
+	border-color: #7d6eaa;
+	box-shadow: 0 0 5px rgba(125, 110, 170, 0.5);
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.search-container .input {
+    margin: 0;
+}
+.search-container .btn {
+    padding: 12px 25px;
+}
+
+.select {
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #fff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+/* =================== Lists =================== */
 .list {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	font-size: 17px;
-	padding: 30px;
-	border-bottom:;
+	font-size: 16px;
+	padding: 15px 20px;
+	border-bottom: 1px solid #e9ecef;
+	transition: background-color 0.2s;
 }
 
 .list:hover {
-	background-color: #d9e2ec;
-	border-radius: 15px;
+	background-color: #f1f3f5;
+	border-radius: 8px;
 }
 
-.tab-all {
-	width: 100%;
-	heigth: 100%;
+.list a {
+	text-decoration: none;
+	color: #495057;
+	flex-grow: 1;
 }
 
-/* travel */
-.btn-travel {
-	border-radius: 20px;
-}
-
-.btn-add-travel {
-	width: 200px;
-	height: 50px;
-	font-size: 20px;
-	margin-top: 20px;
-}
-
-.btn-md-list {
-	/* margin-top: 15px; */
-	font-size: 15px;
-	width: 70px;
-	padding: 5px;
-}
-
-/* font */
-.jua-regular {
-	font-family: "Jua", sans-serif;
-	font-weight: 400;
-	font-style: normal;
-	text-align: center;
+.list a:hover {
+    color: #4b365f;
 }
 
 .name-text {
-	color:;
+    color: #888;
+    font-size: 14px;
 }
 
-/* a */
-a {
-	text-decoration: none;
-	color: #001f3f;
+/* =================== Form Switching =================== */
+.travel-form-content, .user-form-content, .issues-form-content, .reports-form-content {
+    display: none;
+}
+.active {
+    display: block;
 }
 
-/* form 전환*/
-.travel-form-content {
-	display: none;
-}
-
-.travel-form-content.active {
-	display: block;
-}
-
-.user-form-content {
-	display: none;
-}
-
-.user-form-content.active {
-	display: block;
-}
-
-.issues-form-content {
-	display: none;
-}
-
-.issues-form-content.active {
-	display: block;
-}
-
-.reports-form-content {
-	display: none;
-}
-
-.reports-form-content.active {
-	display: block;
-}
-
-/* input */
-.input {
-	padding: 10px 15px;
-	border: 1px solid #ccc;
-	border-radius: 10px;
-	font-size: 16px;
-	width: 300px;
-	margin: 10px 0;
-	outline: none;
-	transition: all 0.2s ease-in-out;
-}
-
-.input:focus {
-	border-color: #3b82f6; /* 파란색 포커스 */
-	box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+/* Fonts */
+.jua-regular {
+	font-family: "Jua", sans-serif;
+	font-weight: 400;
 }
 </style>
 
@@ -236,92 +290,12 @@ a {
 			<div class="tab-container">
 
 				<ul class="tabs">
-					<li class="tab-link current jua-regular" data-tab="tab-0"><p>Home</p></li>
-					<li class="tab-link jua-regular" data-tab="tab-1"><p>여행지</p></li>
-					<li class="tab-link jua-regular" data-tab="tab-2"><p>
-							사용자<br> 검색
-						</p></li>
-					<li class="tab-link jua-regular" data-tab="tab-3"><p>질문내역</p></li>
-					<li class="tab-link jua-regular" data-tab="tab-4"><p>신고내역</p></li>
+					<li class="tab-link jua-regular" onClick="location.href='/admin/main'"><p>Home</p></li>
+					<li class="tab-link jua-regular" onClick="location.href='/admin/travel'"><p>여행지</p></li>
+					<li class="tab-link current jua-regular" onClick="location.href='/admin/user'"><p>사용자<br> 검색 </p></li>
+					<li class="tab-link jua-regular" onClick="location.href='/admin/issue'"><p>질문내역</p></li>
+					<li class="tab-link jua-regular" onClick="location.href='/admin/report'"><p>신고내역</p></li>
 				</ul>
-
-				<!-- menu 0 -->
-				<div id="tab-0" class="tab-content current">
-
-					<div class="menu-header">
-						<p class="jua-regular">관리자Home</p>
-					</div>
-
-				</div>
-
-
-				<!-- menu 1 -->
-				<div id="tab-1" class="tab-content">
-
-					<div class="tab-all jua-regular">
-
-						<!-- travel-form1 -->
-						<div id="travel-form1" class="travel-form-content">
-							<form action="" method="">
-
-								<div class="menu-header">
-									<p class="jua-regular">여행지</p>
-									<button type="button"
-										class="btn btn-add-travel jua-regular btn-travel"
-										onClick="showTravelForm('travel-form2')">여행지 등록</button>
-								</div>
-
-								<div class="search-container search">
-									<select name="languages" class="lang select">
-										<option value="select" class="option">Select area</option>
-									</select> <input type="text" class="input" placeholder="여행지 정보 검색">
-									<button type="button" class="btn">검색</button>
-								</div>
-
-								<div class="list">
-									<a href="">여행 패키지 이름/가격(DB 불러올 예정)</a>
-									<div>
-										<button type="button"
-											class="btn btn-md-list btn-list jua-regular">수정</button>
-										<button type="button"
-											class="btn btn-md-list btn-list jua-regular">삭제</button>
-									</div>
-								</div>
-							</form>
-						</div>
-
-						<!-- travel-form2 -->
-						<div id="travel-form2" class="travel-form-content">
-							<form action="" method="">
-
-								<div class="menu-header">
-									<p class="jua-regular">여행지 등록</p>
-									<button type="button"
-										class="btn btn-add-travel jua-regular btn-travel"
-										onClick="showTravelForm('travel-form1')">돌아가기</button>
-								</div>
-
-
-								<div class="travel-form2-body">
-									<select>
-										<option>여행지</option>
-										<option>호텔</option>
-										<option></option>
-										<option>숙소</option>
-									</select> <input type="text" class="jua-regular"
-										placeholder="제목을 입력해주세요."> <input type="text"
-										class="jua-regular" placeholder="제목을 입력해주세요."> <input
-										type="text" class="jua-regular" placeholder="제목을 입력해주세요.">
-								</div>
-
-							</form>
-						</div>
-
-					</div>
-
-				</div>
-
-
 
 				<!-- menu 2 -->
 				<div id="tab-2" class="tab-content">
@@ -447,44 +421,6 @@ a {
 
 				</div>
 
-				<!-- menu 3 -->
-				<div id="tab-3" class="tab-content">
-
-					<div class="tab-all jua-regular">
-						<!-- isssues form1 -->
-						<!-- isssues 전체 -->
-						<div id="issues-form1" class="issues-form-content">
-							<form action="" method="">
-								<div class="menu-header">
-									<p class="jua-regular">질문 내역</p>
-								</div>
-							<div>
-								<c:forEach var="issue" items="${issueList}">
-									<div class="list">
-											<a href="#" onClick="showIssuesForm('issues-form2')">
-											ID: ${issue.id} : ${issue.title}</a> <span>${issue.userId}|${issue.status}</span>
-									</div>
-								</c:forEach>
-							</div>
-							</form>
-						</div>
-
-						<!-- isssues form2 -->
-						<div id="issues-form2" class="issues-form-content">
-							<form action="" method="">
-								<div class="menu-header">
-									<p class="jua-regular">질문</p>
-									<button type="button"
-										class="btn btn-add-travel jua-regular btn-travel"
-										onClick="showIssuesForm('issues-form1')">돌아가기</button>
-								</div>
-								<div class="">
-									<p>${issueList.}</p>
-									
-								</div>>
-
-							</form>
-						</div>
 
 					</div>
 

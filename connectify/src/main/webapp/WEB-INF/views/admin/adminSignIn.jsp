@@ -23,7 +23,7 @@
 	
 	margin-top: 170px;
 	
-	background-color: #f0e9fa;
+	background-color: #e9ecef;
 }
 
 .admin-input {
@@ -52,20 +52,26 @@
 
 
 /* btn */
-.btn-sign-in {
+.btn {
+
 	margin: 40px;
-	
 	font-size: 25px;
-	
 	width: 230px;
 	height: 50px;
-	border-radius: 20px;
-	
+	padding: 10px 20px;
 	color: white;
-	background-color: #7c67bd;
+	background-color: #4b365f;
 	cursor: pointer;
+	border: none;
+	border-radius: 8px;
+	transition: background-color 0.2s, transform 0.2s;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
+.btn:hover {
+	background-color: #7d6eaa;
+	transform: translateY(-1px);
+}
 
 
 /* font */
@@ -114,7 +120,7 @@
 				<div class="sign-in-container">
 					<input type="text" name="id" class="admin-input id jua-regular" placeholder="관리자 아이디 코드">
 					<input type="password" name="pw" class="admin-input pw id jua-regular" placeholder="관리자 비밀번호">
-					<button type=submit class="btn-sign-in jua-regular">로그인</button>
+					<button type=submit class="btn jua-regular">로그인</button>
 				</div>
 			</div>
 		</form>
