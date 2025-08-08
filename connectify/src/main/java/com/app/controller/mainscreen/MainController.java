@@ -8,6 +8,9 @@ public class MainController {
 	
 	@GetMapping("/")
 	public String connectify() {
+		
+		
+		
 		return "/mainscreen/mainscreen";
 	}
 }
