@@ -23,7 +23,7 @@
 	
 	margin-top: 170px;
 	
-	background-color: #F5F7FA;
+	background-color: #f0e9fa;
 }
 
 .admin-input {
@@ -62,7 +62,7 @@
 	border-radius: 20px;
 	
 	color: white;
-	background-color: #1F2937;
+	background-color: #7c67bd;
 	cursor: pointer;
 }
 
@@ -79,7 +79,7 @@
 
 .h1 {
 	font-size: 70px;
-	color: #111827;
+	color: #4b365f;
 }
 
 

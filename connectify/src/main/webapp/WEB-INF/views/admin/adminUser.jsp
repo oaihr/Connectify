@@ -20,14 +20,13 @@ html, body {
 }
 
 .body {
+	/* 	margin-top: 100px; */
 	font-family: 'Trebuchet MS', serif;
 	line-height: 1.6;
 	margin: 0;
 	padding: 0;
 	height: 100vh;
 	overflow: hidden;
-	
-	background-color: #f0e9fa;
 }
 
 .header {
@@ -43,7 +42,7 @@ html, body {
 }
 
 .h1 {
-	color: #4b365f;
+	color: #D96846;
 	margin-left: 50px;
 	cursor: pointer;
 }
@@ -81,13 +80,13 @@ ul.tabs li {
 }
 
 ul.tabs li.current {
-	background: #ffffff;
+	background: #f1f5f9;
 	color: #3f4129;
 }
 
 .tab-content {
 	display: none;
-	background: #ffffff;
+	background: #f1f5f9;
 	width: 100%;
 	overflow: auto;
 	border: 3px solid #f1f5f9;
@@ -480,7 +479,7 @@ a {
 										onClick="showIssuesForm('issues-form1')">돌아가기</button>
 								</div>
 								<div class="">
-									<p>issues</p>
+									<p>${issueList.}</p>
 									
 								</div>>
 
@@ -492,40 +491,6 @@ a {
 
 				</div>
 
-				<!-- menu 4 -->
-				<div id="tab-4" class="tab-content">
-
-					<div class="tab-all jua-regular">
-
-						<!-- reports form1 -->
-						<!-- reports 전체 -->
-						<div id="reports-form1" class="reports-form-content">
-							<form action="" method="">
-								<div class="menu-header">
-									<p class="jua-regular">신고 내역</p>
-								</div>
-								<div class="issues-list list">
-									<a href="#" onClick="showReportsForm('reports-form2')">신고
-										List(DB 불러올 예정)</a>
-								</div>
-							</form>
-						</div>
-
-						<!-- reports form2 -->
-						<div id="reports-form2" class="reports-form-content">
-							<form action="" method="">
-								<div class="menu-header">
-									<p class="jua-regular">신고</p>
-									<button type="button"
-										class="btn btn-add-travel jua-regular btn-travel"
-										onClick="showReportsForm('reports-form1')">돌아가기</button>
-								</div>
-								<p>내용내용</p>
-
-							</form>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -550,17 +515,6 @@ a {
 		
 		
  		// tab menu form 이동
- 		
- 			//여행지 등록
-	 		function showTravelForm(tabId) {
-	            const tabs = document.querySelectorAll('.travel-form-content');
-	            tabs.forEach(tab => {
-	            	tab.classList.remove('active')
-	            });
-	            
-	            document.getElementById(tabId).classList.add('active');
-	        }
-	 		showTravelForm('travel-form1');
 	 		
 	 		//사용자 검색
 	 		function showUserForm(tabId) {
@@ -572,32 +526,7 @@ a {
 	            document.getElementById(tabId).classList.add('active');
 	        }
 	 		showUserForm('user-form1');
-	 		
 
-	 		//질문
-	 			function showIssuesForm(tabId) {
-	            const tabs = document.querySelectorAll('.issues-form-content');
-	            tabs.forEach(tab => {
-	            	tab.classList.remove('active')
-	            });
-	            
-	            document.getElementById(tabId).classList.add('active');
-	        }
-	 		
-	 			showIssuesForm('issues-form1');
-	 			
-	 			
-		 		//신고
-	 			function showReportsForm(tabId) {
-	            const tabs = document.querySelectorAll('.reports-form-content');
-	            tabs.forEach(tab => {
-	            	tab.classList.remove('active')
-	            });
-	            
-	            document.getElementById(tabId).classList.add('active');
-	        }
-	 		
-	 			showReportsForm('reports-form1');
 
 
 	</script>

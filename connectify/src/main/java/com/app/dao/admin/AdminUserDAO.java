@@ -2,6 +2,7 @@ package com.app.dao.admin;
 
 import java.util.List;
 
+import com.app.dto.admin.AdminIssues;
 import com.app.dto.admin.AdminUser;
 import com.app.dto.admin.AdminUserSearch;
 

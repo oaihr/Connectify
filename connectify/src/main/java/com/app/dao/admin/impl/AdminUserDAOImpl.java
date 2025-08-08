@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.app.dao.admin.AdminUserDAO;
+import com.app.dto.admin.AdminIssues;
 import com.app.dto.admin.AdminUser;
 import com.app.dto.admin.AdminUserSearch;
 
@@ -32,6 +33,12 @@ public class AdminUserDAOImpl implements AdminUserDAO{
 	public AdminUser findAdminUserById(String id) {
 		AdminUser userId = sqlSessionTemplate.selectOne("admin_mapper.findAdminUserById", id);
 		return userId;
+	}
+
+	@Override
+	public List<AdminIssues> findAdminIssuesList() {
+		List<AdminIssues> adminIssuesList = sqlSessionTemplate.selectList("admin_mapper.findAdminIssuesList");
+		return adminIssuesList;
 	}
 
 

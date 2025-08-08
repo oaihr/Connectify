@@ -8,12 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.app.dto.admin.Admin;
+import com.app.dto.admin.AdminIssues;
 import com.app.dto.admin.AdminUser;
 import com.app.dto.admin.AdminUserSearch;
+import com.app.service.admin.AdminIssuesService;
 import com.app.service.admin.AdminService;
 import com.app.service.admin.AdminUserService;
 import com.app.util.LoginManager;
@@ -27,7 +28,8 @@ public class AdminController {
 	@Autowired
 	AdminUserService  adminUserService;
 	
-	
+	@Autowired
+	AdminIssuesService adminIssuesService;
 	
 
 	@GetMapping("/admin")
@@ -55,7 +57,7 @@ public class AdminController {
 	}
 	
 	@GetMapping("/admin/main")
-	public String adminMain(Model model, HttpSession session) {
+	public String adminMain(Model model, HttpSession session, AdminUserSearch adminUserSearch) {
 		
 		if(LoginManager.isLogin(session)) {
 			String loginUserId = LoginManager.getLoginUserId(session);
@@ -67,10 +69,19 @@ public class AdminController {
 			List<AdminUser> userList = adminUserService.findAdminUserList();
 			model.addAttribute("userList", userList);
 			
-			//질문
+			//사용자 키워드
+//			List<AdminUser> userSearchList = adminUserService.findAdminUserListBySearch(adminUserSearch);
+//			model.addAttribute("userSearchList", userSearchList);
+//			model.addAttribute("adminUserSearch", adminUserSearch);
+//			System.out.println(userSearchList);
+//			System.out.println(adminUserSearch);
 			
+			//질문
+			List<AdminIssues> issueList = adminIssuesService.findAdminIssuesList();
+			model.addAttribute("issueList", issueList);
 			
 			//신고
+			
 			
 			return "admin/adminMain";
 		}

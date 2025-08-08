@@ -13,6 +13,7 @@
 		<typeAlias type="com.app.dto.admin.Admin" alias="Admin" />
 		<typeAlias type="com.app.dto.admin.AdminUser" alias="AdminUser" />
 		<typeAlias type="com.app.dto.admin.AdminUserSearch" alias="AdminUserSearch" />
+		<typeAlias type="com.app.dto.admin.AdminIssues" alias="AdminIssues" />
 	</typeAliases>
 
 </configuration>					

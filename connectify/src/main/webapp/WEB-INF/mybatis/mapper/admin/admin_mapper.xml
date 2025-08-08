@@ -46,9 +46,9 @@
 	
 	
 	<!-- issues -->
-	<select id="findAdminIssuesList" resultType="AdminUser">
+	<select id="findAdminIssuesList" resultType="AdminIssues">
 		SELECT * FROM CON_T_INQUIRE
-		ORDER BY id
+		ORDER BY asktime
 	</select>
 	
 	
