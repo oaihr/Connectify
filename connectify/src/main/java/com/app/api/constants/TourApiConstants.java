@@ -5,6 +5,8 @@ public class TourApiConstants {
 	public static final String LDONG_CODE_OPERATION = "/ldongCode2";
 	public static final String LCLS_SYSTEM_CODE_LIST_OPERATION = "/lclsSystmCode2";
 	public static final String AREA_BASED_LIST_OPERATION = "/areaBasedList2";
+	public static final String DETAIL_INTRO_OPERATION = "/detailIntro2";
+	public static final String DETAIL_WITH_TOUR_OPERATION = "/detailWithTour2";
 	
 	public static final String MOBILE_OS = "ETC"; // ETC, IOS, AND, WIN
 	public static final String MOBILE_APP = "connectify";

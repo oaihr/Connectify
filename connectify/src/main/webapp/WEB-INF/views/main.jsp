@@ -46,6 +46,19 @@
         		}
         	});
         });
+        
+        $("#detailIntroBtn").click(function(){
+        	$.ajax({
+        		type: "POST",
+        		url: "/api/detail-intro/sync",
+        		success: function(response){
+        			alert("성공: "+response);
+        		},
+        		error: function(error){
+        			alert("오류: "+error.responseText);
+        		}
+        	});
+        });
     });
 </script>
 </head>
@@ -54,5 +67,6 @@
 	<button id="ldongCodeSyncBtn">법정동 코드 데이터 가져와서 DB 저장하기</button>
 	<button id="lclsSystemCodeSyncBtn">분류체계 코드 데이터 가져와서 DB 저장하기</button>
 	<button id="tourBtn">여행지 정보 모두 가져오기</button>
+	<button id="detailIntroBtn">여행지 소개정보 가져오기</button>
 </body>
 </html>

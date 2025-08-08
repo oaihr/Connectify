@@ -11,7 +11,15 @@
 	</settings>	
 		
 	<typeAliases>
-		<typeAlias type="com.app.api.dto.AreaBasedListItem"  alias="AreaBasedListItem"/>
+		<typeAlias type="com.app.api.dto.areaBasedList.AreaBasedListItem"  alias="AreaBasedListItem"/>
+		<typeAlias type="com.app.api.dto.detailIntro.DetailIntroItem"  alias="DetailIntroItem"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemAttraction"  alias="DetailIntroItemAttraction"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemCulturalFacility"  alias="DetailIntroItemCulturalFacility"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemFestival"  alias="DetailIntroItemFestival"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemLeports"  alias="DetailIntroItemLeports"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemLodging"  alias="DetailIntroItemLodging"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemShopping"  alias="DetailIntroItemShopping"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemFood"  alias="DetailIntroItemFood"/>
 	</typeAliases>	
 		
 <!-- 	<typeAliases>	 -->

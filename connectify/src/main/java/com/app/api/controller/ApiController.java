@@ -52,5 +52,16 @@ public class ApiController {
 			return ResponseEntity.internalServerError().body("동기화 중 오류가 발생했습니다: " + e.getMessage());
 		}
 	}
+	
+	@PostMapping("/detail-intro/sync")
+	public ResponseEntity<String> syncDetailIntro(){
+		
+		try {
+			apiService.syncDetailIntro();
+			return ResponseEntity.ok("여행지 정보 동기화가 성공적으로 완료되었습니다.");
+		} catch (Exception e) {
+			return ResponseEntity.internalServerError().body("동기화 중 오류가 발생했습니다: " + e.getMessage());
+		}
+	}
 }
 

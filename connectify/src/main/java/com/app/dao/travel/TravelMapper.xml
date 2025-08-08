@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="TravelMapper">
+		
+		
+    <select id="getDestinationsListByContentTypeId" resultType="AreaBasedListItem">
+	SELECT *
+	FROM (
+			SELECT ROWNUM rnum, a.*
+			FROM (
+				SELECT *
+				FROM TOUR_DESTINATION
+				WHERE CONTENT_TYPE_ID = #{contentTypeId}
+				ORDER BY CONTENT_ID ) a
+			)
+	WHERE rnum BETWEEN #{startRow} AND #{endRow}
+    </select>
+    
+    
+    <select id="getDestinationsListCountByContentTypeId" parameterType="int" resultType="int">
+    	SELECT count(*) FROM TOUR_DESTINATION
+    	WHERE CONTENT_TYPE_ID = #{contentId}    
+    </select>
+    
+    <insert id="mergeLclsSystmCodes" parameterType="java.util.List">
+    	MERGE INTO TOUR_CLASSIFICATION_SYSTEM_CODE target
+        USING (
+            <foreach collection="list" item="item" separator=" UNION ALL ">
+                SELECT
+                	#{item.rnum} AS RNUM,
+                    #{item.lclsSystm1Cd} AS LCLS_SYSTM1_CD,
+                    #{item.lclsSystm1Nm} AS LCLS_SYSTM1_NM,
+                    #{item.lclsSystm2Cd} AS LCLS_SYSTM2_CD,
+                    #{item.lclsSystm2Nm} AS LCLS_SYSTM2_NM,
+                    #{item.lclsSystm3Cd} AS LCLS_SYSTM3_CD,
+                    #{item.lclsSystm3Nm} AS LCLS_SYSTM3_NM                    
+                FROM DUAL
+            </foreach>
+        ) source
+        ON (target.RNUM = source.RNUM)
+        WHEN MATCHED THEN
+            UPDATE SET
+                target.LCLS_SYSTM1_CD = source.LCLS_SYSTM1_CD,
+                target.LCLS_SYSTM1_NM = source.LCLS_SYSTM1_NM,
+                target.LCLS_SYSTM2_CD = source.LCLS_SYSTM2_CD,
+                target.LCLS_SYSTM2_NM = source.LCLS_SYSTM2_NM,
+                target.LCLS_SYSTM3_CD = source.LCLS_SYSTM3_CD,
+                target.LCLS_SYSTM3_NM = source.LCLS_SYSTM3_NM,
+                target.MODIFIED_TIME = SYSTIMESTAMP
+        WHEN NOT MATCHED THEN
+            INSERT (RNUM, LCLS_SYSTM1_CD, LCLS_SYSTM1_NM, LCLS_SYSTM2_CD, LCLS_SYSTM2_NM, LCLS_SYSTM3_CD, LCLS_SYSTM3_NM, CREATED_TIME, MODIFIED_TIME)
+            VALUES (source.RNUM, source.LCLS_SYSTM1_CD, source.LCLS_SYSTM1_NM, source.LCLS_SYSTM2_CD, source.LCLS_SYSTM2_NM,source.LCLS_SYSTM3_CD, source.LCLS_SYSTM3_NM, SYSTIMESTAMP, SYSTIMESTAMP)
+    </insert>
+    
+    
+  
+	
+	<update id="mergeDetailIntroForType28" parameterType="DetailIntroItemLeports">
+		MERGE INTO TOUR_DETAIL_INTRO_LEPORTS T1
+	USING DUAL
+	ON (T1.CONTENT_ID = #{contentid})
+	WHEN MATCHED THEN
+		UPDATE SET
+			T1.ACCOM_COUNT_LEPORTS = #{accomCountLeports},
+			T1.CHK_BABY_CARRIAGE_LEPORTS = #{chkBabyCarriageLeports},
+			T1.CHK_CREDIT_CARD_LEPORTS = #{chkCreditCardLeports},
+			T1.CHK_PET_LEPORTS = #{chkPetLeports},
+			T1.EXP_AGE_RANGE_LEPORTS = #{expAgeRangeLeports},
+			T1.INFO_CENTER_LEPORTS = #{infoCenterLeports},
+			T1.OPEN_PERIOD = #{openPeriod},
+			T1.PARKING_FEE_LEPORTS = #{parkingFeeLeports},
+			T1.PARKING_LEPORTS = #{parkingLeports},
+			T1.RESERVATION = #{reservation},
+			T1.REST_DATE_LEPORTS = #{restDateLeports},
+			T1.SCALE_LEPORTS = #{scaleLeports},
+			T1.USE_FEE_LEPORTS = #{useFeeLeports},
+			T1.USE_TIME_LEPORTS = #{useTimeLeports},
+			T1.MODIFIED_TIME = TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
+	WHEN NOT MATCHED THEN
+		INSERT (
+			CONTENT_ID, CONTENT_TYPE_ID,
+			ACCOM_COUNT_LEPORTS, CHK_BABY_CARRIAGE_LEPORTS, CHK_CREDIT_CARD_LEPORTS, CHK_PET_LEPORTS,
+			EXP_AGE_RANGE_LEPORTS, INFO_CENTER_LEPORTS, OPEN_PERIOD, PARKING_FEE_LEPORTS,
+			PARKING_LEPORTS, RESERVATION, REST_DATE_LEPORTS, SCALE_LEPORTS, USE_FEE_LEPORTS,
+			USE_TIME_LEPORTS, CREATED_TIME, MODIFIED_TIME
+		) VALUES (
+			#{contentid}, #{contenttypeid},
+			#{accomCountLeports}, #{chkBabyCarriageLeports}, #{chkCreditCardLeports}, #{chkPetLeports},
+			#{expAgeRangeLeports}, #{infoCenterLeports}, #{openPeriod}, #{parkingFeeLeports},
+			#{parkingLeports}, #{reservation}, #{restDateLeports}, #{scaleLeports}, #{useFeeLeports},
+			#{useTimeLeports}, TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS'), TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
+		)
+	</update>
+	
+	
+	
+
+</mapper>

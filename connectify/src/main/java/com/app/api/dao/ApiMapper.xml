@@ -105,5 +105,298 @@
 	            )
 	   
 	</update>
-
+	
+	<select id="getDestinationsList" resultType="AreaBasedListItem">
+		SELECT CONTENT_ID, CONTENT_TYPE_ID
+		FROM TOUR_DESTINATION	
+	</select>
+	
+	<update id="mergeDetailIntroForType12" parameterType="DetailIntroItemAttraction">
+		MERGE INTO TOUR_DETAIL_INTRO_ATTRACTION T1
+	USING DUAL
+	ON (T1.CONTENT_ID = #{contentid})
+	WHEN MATCHED THEN
+		UPDATE SET
+			T1.ACCOM_COUNT = #{accomCount},
+			T1.CHK_BABY_CARRIAGE = #{chkBabyCarriage},
+			T1.CHK_CREDIT_CARD = #{chkCreditCard},
+			T1.CHK_PET = #{chkPet},
+			T1.EXP_AGE_RANGE = #{expAgeRange},
+			T1.EXP_GUIDE = #{expGuide},
+			T1.HERITAGE1 = #{heritage1},
+			T1.HERITAGE2 = #{heritage2},
+			T1.HERITAGE3 = #{heritage3},
+			T1.INFO_CENTER = #{infoCenter},
+			T1.OPEN_DATE = #{openDate},
+			T1.PARKING = #{parking},
+			T1.REST_DATE = #{restDate},
+			T1.USE_SEASON = #{useSeason},
+			T1.USE_TIME = #{useTime},
+			T1.MODIFIED_TIME = TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
+	WHEN NOT MATCHED THEN
+		INSERT (
+			CONTENT_ID, CONTENT_TYPE_ID,
+			ACCOM_COUNT, CHK_BABY_CARRIAGE, CHK_CREDIT_CARD, CHK_PET,
+			EXP_AGE_RANGE, EXP_GUIDE, HERITAGE1, HERITAGE2, HERITAGE3,
+			INFO_CENTER, OPEN_DATE, PARKING, REST_DATE, USE_SEASON,
+			USE_TIME, CREATED_TIME, MODIFIED_TIME
+		) VALUES (
+			#{contentid}, #{contenttypeid},
+			#{accomCount}, #{chkBabyCarriage}, #{chkCreditCard}, #{chkPet},
+			#{expAgeRange}, #{expGuide}, #{heritage1}, #{heritage2}, #{heritage3},
+			#{infoCenter}, #{openDate}, #{parking}, #{restDate}, #{useSeason},
+			#{useTime}, TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS'), TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
+		)
+	</update>
+	
+	<update id="mergeDetailIntroForType14" parameterType="DetailIntroItemCulturalFacility">
+		MERGE INTO TOUR_DETAIL_INTRO_CULTURAL_FACILITY T1
+	USING DUAL
+	ON (T1.CONTENT_ID = #{contentid})
+	WHEN MATCHED THEN
+		UPDATE SET
+			T1.ACCOM_COUNT_CULTURE = #{accomCountCulture},
+			T1.CHK_BABY_CARRIAGE_CULTURE = #{chkBabyCarriageCulture},
+			T1.CHK_CREDIT_CARD_CULTURE = #{chkCreditCardCulture},
+			T1.CHK_PET_CULTURE = #{chkPetCulture},
+			T1.DISCOUNT_INFO = #{discountInfo},
+			T1.INFO_CENTER_CULTURE = #{infoCenterCulture},
+			T1.PARKING_CULTURE = #{parkingCulture},
+			T1.PARKING_FEE = #{parkingFee},
+			T1.REST_DATE_CULTURE = #{restDateCulture},
+			T1.USE_FEE = #{useFee},
+			T1.USE_TIME_CULTURE = #{useTimeCulture},
+			T1.SCALE = #{scale},
+			T1.SPEND_TIME = #{spendTime},
+			T1.MODIFIED_TIME = TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
+	WHEN NOT MATCHED THEN
+		INSERT (
+			CONTENT_ID, CONTENT_TYPE_ID,
+			ACCOM_COUNT_CULTURE, CHK_BABY_CARRIAGE_CULTURE, CHK_CREDIT_CARD_CULTURE, CHK_PET_CULTURE,
+			DISCOUNT_INFO, INFO_CENTER_CULTURE, PARKING_CULTURE, PARKING_FEE, REST_DATE_CULTURE,
+			USE_FEE, USE_TIME_CULTURE, SCALE, SPEND_TIME,
+			CREATED_TIME, MODIFIED_TIME
+		) VALUES (
+			#{contentid}, #{contenttypeid},
+			#{accomCountCulture}, #{chkBabyCarriageCulture}, #{chkCreditCardCulture}, #{chkPetCulture},
+			#{discountInfo}, #{infoCenterCulture}, #{parkingCulture}, #{parkingFee}, #{restDateCulture},
+			#{useFee}, #{useTimeCulture}, #{scale}, #{spendTime},
+			TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS'), TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
+		)
+	</update>
+	
+	<update id="mergeDetailIntroForType15" parameterType="DetailIntroItemFestival">
+		MERGE INTO TOUR_DETAIL_INTRO_FESTIVAL T1
+	USING DUAL
+	ON (T1.CONTENT_ID = #{contentid})
+	WHEN MATCHED THEN
+		UPDATE SET
+			T1.AGE_LIMIT = #{ageLimit},
+			T1.BOOKING_PLACE = #{bookingPlace},
+			T1.DISCOUNT_INFO_FESTIVAL = #{discountInfoFestival},
+			T1.EVENT_END_DATE = #{eventEndDate},
+			T1.EVENT_HOMEPAGE = #{eventHomepage},
+			T1.EVENT_PLACE = #{eventPlace},
+			T1.EVENT_START_DATE = #{eventStartDate},
+			T1.FESTIVAL_GRADE = #{festivalGrade},
+			T1.PLACE_INFO = #{placeInfo},
+			T1.PLAY_TIME = #{playTime},
+			T1.PROGRAM = #{program},
+			T1.SPEND_TIME_FESTIVAL = #{spendTimeFestival},
+			T1.SPONSOR1 = #{sponsor1},
+			T1.SPONSOR1_TEL = #{sponsor1Tel},
+			T1.SPONSOR2 = #{sponsor2},
+			T1.SPONSOR2_TEL = #{sponsor2Tel},
+			T1.SUB_EVENT = #{subEvent},
+			T1.USE_TIME_FESTIVAL = #{useTimeFestival},
+			T1.MODIFIED_TIME = TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
+	WHEN NOT MATCHED THEN
+		INSERT (
+			CONTENT_ID, CONTENT_TYPE_ID,
+			AGE_LIMIT, BOOKING_PLACE, DISCOUNT_INFO_FESTIVAL, EVENT_END_DATE, EVENT_HOMEPAGE,
+			EVENT_PLACE, EVENT_START_DATE, FESTIVAL_GRADE, PLACE_INFO, PLAY_TIME,
+			PROGRAM, SPEND_TIME_FESTIVAL, SPONSOR1, SPONSOR1_TEL, SPONSOR2,
+			SPONSOR2_TEL, SUB_EVENT, USE_TIME_FESTIVAL,
+			CREATED_TIME, MODIFIED_TIME
+		) VALUES (
+			#{contentid}, #{contenttypeid},
+			#{ageLimit}, #{bookingPlace}, #{discountInfoFestival}, #{eventEndDate}, #{eventHomepage},
+			#{eventPlace}, #{eventStartDate}, #{festivalGrade}, #{placeInfo}, #{playTime},
+			#{program}, #{spendTimeFestival}, #{sponsor1}, #{sponsor1Tel}, #{sponsor2},
+			#{sponsor2Tel}, #{subEvent}, #{useTimeFestival},
+			TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS'), TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
+		)
+	</update>
+	
+	<update id="mergeDetailIntroForType28" parameterType="DetailIntroItemLeports">
+		MERGE INTO TOUR_DETAIL_INTRO_LEPORTS T1
+	USING DUAL
+	ON (T1.CONTENT_ID = #{contentid})
+	WHEN MATCHED THEN
+		UPDATE SET
+			T1.ACCOM_COUNT_LEPORTS = #{accomCountLeports},
+			T1.CHK_BABY_CARRIAGE_LEPORTS = #{chkBabyCarriageLeports},
+			T1.CHK_CREDIT_CARD_LEPORTS = #{chkCreditCardLeports},
+			T1.CHK_PET_LEPORTS = #{chkPetLeports},
+			T1.EXP_AGE_RANGE_LEPORTS = #{expAgeRangeLeports},
+			T1.INFO_CENTER_LEPORTS = #{infoCenterLeports},
+			T1.OPEN_PERIOD = #{openPeriod},
+			T1.PARKING_FEE_LEPORTS = #{parkingFeeLeports},
+			T1.PARKING_LEPORTS = #{parkingLeports},
+			T1.RESERVATION = #{reservation},
+			T1.REST_DATE_LEPORTS = #{restDateLeports},
+			T1.SCALE_LEPORTS = #{scaleLeports},
+			T1.USE_FEE_LEPORTS = #{useFeeLeports},
+			T1.USE_TIME_LEPORTS = #{useTimeLeports},
+			T1.MODIFIED_TIME = TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
+	WHEN NOT MATCHED THEN
+		INSERT (
+			CONTENT_ID, CONTENT_TYPE_ID,
+			ACCOM_COUNT_LEPORTS, CHK_BABY_CARRIAGE_LEPORTS, CHK_CREDIT_CARD_LEPORTS, CHK_PET_LEPORTS,
+			EXP_AGE_RANGE_LEPORTS, INFO_CENTER_LEPORTS, OPEN_PERIOD, PARKING_FEE_LEPORTS,
+			PARKING_LEPORTS, RESERVATION, REST_DATE_LEPORTS, SCALE_LEPORTS, USE_FEE_LEPORTS,
+			USE_TIME_LEPORTS, CREATED_TIME, MODIFIED_TIME
+		) VALUES (
+			#{contentid}, #{contenttypeid},
+			#{accomCountLeports}, #{chkBabyCarriageLeports}, #{chkCreditCardLeports}, #{chkPetLeports},
+			#{expAgeRangeLeports}, #{infoCenterLeports}, #{openPeriod}, #{parkingFeeLeports},
+			#{parkingLeports}, #{reservation}, #{restDateLeports}, #{scaleLeports}, #{useFeeLeports},
+			#{useTimeLeports}, TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS'), TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
+		)
+	</update>
+	
+	<update id="mergeDetailIntroForType32" parameterType="DetailIntroItemLodging">
+		MERGE INTO TOUR_DETAIL_INTRO_LODGING T1
+	USING DUAL
+	ON (T1.CONTENT_ID = #{contentid})
+	WHEN MATCHED THEN
+		UPDATE SET
+			T1.ACCOM_COUNT_LODGING = #{accomCountLodging},
+			T1.CHECKIN_TIME = #{checkinTime},
+			T1.CHECKOUT_TIME = #{checkoutTime},
+			T1.CHK_COOKING = #{chkCooking},
+			T1.FOOD_PLACE = #{foodPlace},
+			T1.INFO_CENTER_LODGING = #{infoCenterLodging},
+			T1.PARKING_LODGING = #{parkingLodging},
+			T1.PICKUP = #{pickup},
+			T1.ROOM_COUNT = #{roomCount},
+			T1.RESERVATION_LODGING = #{reservationLodging},
+			T1.RESERVATION_URL = #{reservationUrl},
+			T1.ROOM_TYPE = #{roomType},
+			T1.SCALE_LODGING = #{scaleLodging},
+			T1.SUB_FACILITY = #{subFacility},
+			T1.BARBECUE = #{barbecue},
+			T1.BEAUTY = #{beauty},
+			T1.BEVERAGE = #{beverage},
+			T1.BICYCLE = #{bicycle},
+			T1.CAMPFIRE = #{campfire},
+			T1.FITNESS = #{fitness},
+			T1.KARAOKE = #{karaoke},
+			T1.PUBLIC_BATH = #{publicBath},
+			T1.PUBLIC_PC = #{publicPc},
+			T1.SAUNA = #{sauna},
+			T1.SEMINAR = #{seminar},
+			T1.SPORTS = #{sports},
+			T1.REFUND_REGULATION = #{refundRegulation},
+			T1.MODIFIED_TIME = TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
+	WHEN NOT MATCHED THEN
+		INSERT (
+			CONTENT_ID, CONTENT_TYPE_ID,
+			ACCOM_COUNT_LODGING, CHECKIN_TIME, CHECKOUT_TIME, CHK_COOKING, FOOD_PLACE,
+			INFO_CENTER_LODGING, PARKING_LODGING, PICKUP, ROOM_COUNT, RESERVATION_LODGING,
+			RESERVATION_URL, ROOM_TYPE, SCALE_LODGING, SUB_FACILITY, BARBECUE, BEAUTY,
+			BEVERAGE, BICYCLE, CAMPFIRE, FITNESS, KARAOKE, PUBLIC_BATH, PUBLIC_PC,
+			SAUNA, SEMINAR, SPORTS, REFUND_REGULATION,
+			CREATED_TIME, MODIFIED_TIME
+		) VALUES (
+			#{contentid}, #{contenttypeid},
+			#{accomCountLodging}, #{checkinTime}, #{checkoutTime}, #{chkCooking}, #{foodPlace},
+			#{infoCenterLodging}, #{parkingLodging}, #{pickup}, #{roomCount}, #{reservationLodging},
+			#{reservationUrl}, #{roomType}, #{scaleLodging}, #{subFacility}, #{barbecue}, #{beauty},
+			#{beverage}, #{bicycle}, #{campfire}, #{fitness}, #{karaoke}, #{publicBath}, #{publicPc},
+			#{sauna}, #{seminar}, #{sports}, #{refundRegulation},
+			TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS'), TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
+		)
+	</update>
+	
+	<update id="mergeDetailIntroForType38" parameterType="DetailIntroItemShopping">
+		MERGE INTO TOUR_DETAIL_INTRO_SHOPPING T1
+	USING DUAL
+	ON (T1.CONTENT_ID = #{contentid})
+	WHEN MATCHED THEN
+		UPDATE SET
+			T1.CHK_BABY_CARRIAGE_SHOPPING = #{chkBabyCarriageShopping},
+			T1.CHK_CREDIT_CARD_SHOPPING = #{chkCreditCardShopping},
+			T1.CHK_PET_SHOPPING = #{chkPetShopping},
+			T1.CULTURE_CENTER = #{cultureCenter},
+			T1.FAIR_DAY = #{fairDay},
+			T1.INFO_CENTER_SHOPPING = #{infoCenterShopping},
+			T1.OPEN_DATE_SHOPPING = #{openDateShopping},
+			T1.OPEN_TIME = #{openTime},
+			T1.PARKING_SHOPPING = #{parkingShopping},
+			T1.REST_DATE_SHOPPING = #{restDateShopping},
+			T1.REST_ROOM = #{restRoom},
+			T1.SALE_ITEM = #{saleItem},
+			T1.SALE_ITEM_COST = #{saleItemCost},
+			T1.SCALE_SHOPPING = #{scaleShopping},
+			T1.SHOP_GUIDE = #{shopGuide},
+			T1.MODIFIED_TIME = TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
+	WHEN NOT MATCHED THEN
+		INSERT (
+			CONTENT_ID, CONTENT_TYPE_ID,
+			CHK_BABY_CARRIAGE_SHOPPING, CHK_CREDIT_CARD_SHOPPING, CHK_PET_SHOPPING,
+			CULTURE_CENTER, FAIR_DAY, INFO_CENTER_SHOPPING, OPEN_DATE_SHOPPING,
+			OPEN_TIME, PARKING_SHOPPING, REST_DATE_SHOPPING, REST_ROOM, SALE_ITEM,
+			SALE_ITEM_COST, SCALE_SHOPPING, SHOP_GUIDE,
+			CREATED_TIME, MODIFIED_TIME
+		) VALUES (
+			#{contentid}, #{contenttypeid},
+			#{chkBabyCarriageShopping}, #{chkCreditCardShopping}, #{chkPetShopping},
+			#{cultureCenter}, #{fairDay}, #{infoCenterShopping}, #{openDateShopping},
+			#{openTime}, #{parkingShopping}, #{restDateShopping}, #{restRoom}, #{saleItem},
+			#{saleItemCost}, #{scaleShopping}, #{shopGuide},
+			TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS'), TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
+		)
+	</update>
+	
+	<update id="mergeDetailIntroForType39" parameterType="DetailIntroItemFood">
+		MERGE INTO TOUR_DETAIL_INTRO_FOOD T1
+	USING DUAL
+	ON (T1.CONTENT_ID = #{contentid})
+	WHEN MATCHED THEN
+		UPDATE SET
+			T1.CHK_CREDIT_CARD_FOOD = #{chkCreditCardFood},
+			T1.DISCOUNT_INFO_FOOD = #{discountInfoFood},
+			T1.FIRST_MENU = #{firstMenu},
+			T1.INFO_CENTER_FOOD = #{infoCenterFood},
+			T1.KIDS_FACILITY = #{kidsFacility},
+			T1.OPEN_DATE_FOOD = #{openDateFood},
+			T1.OPEN_TIME_FOOD = #{openTimeFood},
+			T1.PACKING = #{packing},
+			T1.PARKING_FOOD = #{parkingFood},
+			T1.RESERVATION_FOOD = #{reservationFood},
+			T1.REST_DATE_FOOD = #{restDateFood},
+			T1.SCALE_FOOD = #{scaleFood},
+			T1.SEAT = #{seat},
+			T1.SMOKING = #{smoking},
+			T1.TREAT_MENU = #{treatMenu},
+			T1.LCNS_NO = #{lcnsNo},
+			T1.MODIFIED_TIME = TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
+	WHEN NOT MATCHED THEN
+		INSERT (
+			CONTENT_ID, CONTENT_TYPE_ID,
+			CHK_CREDIT_CARD_FOOD, DISCOUNT_INFO_FOOD, FIRST_MENU, INFO_CENTER_FOOD,
+			KIDS_FACILITY, OPEN_DATE_FOOD, OPEN_TIME_FOOD, PACKING, PARKING_FOOD,
+			RESERVATION_FOOD, REST_DATE_FOOD, SCALE_FOOD, SEAT, SMOKING,
+			TREAT_MENU, LCNS_NO,
+			CREATED_TIME, MODIFIED_TIME
+		) VALUES (
+			#{contentid}, #{contenttypeid},
+			#{chkCreditCardFood}, #{discountInfoFood}, #{firstMenu}, #{infoCenterFood},
+			#{kidsFacility}, #{openDateFood}, #{openTimeFood}, #{packing}, #{parkingFood},
+			#{reservationFood}, #{restDateFood}, #{scaleFood}, #{seat}, #{smoking},
+			#{treatMenu}, #{lcnsNo},
+			TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS'), TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
+		)
+	</update>
 </mapper>

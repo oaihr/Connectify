@@ -13,6 +13,7 @@ import com.app.api.dao.ApiDAO;
 import com.app.api.dto.LclsSystmCode.LclsSystmCodeItem;
 import com.app.api.dto.LdongCode.LdongCodeItem;
 import com.app.api.dto.areaBasedList.AreaBasedListItem;
+import com.app.api.dto.detailIntro.DetailIntroItem;
 
 @Service
 public class ApiService {
@@ -108,4 +109,76 @@ public class ApiService {
         }
         logger.info("AreaBasedList synchronization process completed successfully.");
     }
+    
+    
+    public List<AreaBasedListItem> getDestinationsList(){
+    	List<AreaBasedListItem> getDestinationsList = apiDAO.getDestinationsList();
+    	return getDestinationsList;
+    } 
+    
+    
+    
+    @Transactional
+    public void syncDetailIntro() {
+		logger.info("Starting DetailIntro synchronization process...");
+
+		try {
+			List<AreaBasedListItem> destinationsList = getDestinationsList();
+			// 전체 여행지에 대한 소개 정보 목록 조회
+			List<DetailIntroItem> allDetailIntro = tourApiClient
+					.getAllTourDetailIntroByContentIdAndContentTypeID(destinationsList);
+
+			if (allDetailIntro.isEmpty()) {
+				logger.warn("No DetailIntro fetched from TourAPI. Synchronization skipped.");
+				return;
+			}
+
+			logger.info("Successfully fetched {} DetailIntro from TourAPI.", allDetailIntro.size());
+
+			// 조회된 여행지 정보 목록을 데이터베이스에 MERGE (UPSERT)
+			for (DetailIntroItem item : allDetailIntro) {
+				String contentTypeId = item.getContenttypeid();
+
+				 if (contentTypeId == null) {
+				        logger.warn("Skipping item due to null contentTypeId. Item: {}", item.getContentId());
+				        continue; // 다음 루프로
+				 }
+				 
+	            // contentTypeId에 따라 다른 DAO 메서드 호출
+	            switch (contentTypeId) {
+	                case "12":
+	                    apiDAO.mergeDetailIntroForType12(item);
+	                    break;
+	                case "14":
+	                    apiDAO.mergeDetailIntroForType14(item);
+	                    break;
+	                case "15":
+	                    apiDAO.mergeDetailIntroForType15(item);
+	                    break;
+	                case "28":
+	                    apiDAO.mergeDetailIntroForType28(item);
+	                    break;
+	                case "32":
+	                    apiDAO.mergeDetailIntroForType32(item);
+	                    break;
+	                case "38":
+	                    apiDAO.mergeDetailIntroForType38(item);
+	                    break;
+	                case "39":
+	                    apiDAO.mergeDetailIntroForType39(item);
+	                    break;    
+	                default:
+	                    logger.warn("Unsupported contentTypeId: {}. Skipping item.", contentTypeId);
+	                    break;
+	            }
+			}
+			logger.info("Successfully merged DetailIntro into the database.");
+
+		} catch (Exception e) {
+			logger.error("Failed to synchronize DetailIntro: {}", e.getMessage(), e);
+			throw new RuntimeException("DetailIntro synchronization failed.", e);
+		}
+		logger.info("DetailIntro synchronization process completed successfully.");
+    }
+
 }
