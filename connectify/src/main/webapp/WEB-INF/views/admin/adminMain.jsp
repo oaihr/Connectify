@@ -280,7 +280,7 @@ ul.tabs li.current {
 		<div class="header">
 			
 			<!-- <h1 class="h1 jua-regular" onClick="location.href='/admin/main'">Admin</h1> -->
-			<img src="image/connectify_logo.png" class="logo" width="150"
+			<img src="/image/connectify_logo.png" class="logo" width="150"
 					onClick="location.href='/admin/main'" />
 			<div class="header-right">
 				<p class="header-name">${sessionScope.admin.name}</p>
