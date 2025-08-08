@@ -38,7 +38,8 @@ public class CustomerServiceController {
 
 	//문의하기
 	@GetMapping("/qna")
-	public String showQnaPage(Model model, HttpSession session) {
+	public String showQnaPage(Model model, HttpSession session, @RequestParam(defaultValue = "public") String tab,
+            @RequestParam(required = false) String keyword) {
 	    System.out.println("qna접속");
 	    
 	    // 1. 공개 질문 목록 가져오기 (isPublic = 1)

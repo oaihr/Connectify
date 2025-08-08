@@ -9,26 +9,34 @@
 <title>고객센터</title>
 <style>
 body {
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
-	font-family: Arial, sans-serif;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background: #f0e9fa; /* 연한 하늘색 배경 */
+	color: #333;
 }
 
 .container {
 	display: flex;
+	min-height: 100vh;
 }
 
 .h1 {
 	text-align: center;
-	margin: 20px;
+	margin-bottom: 30px;
+	color: #4b365f;
+	letter-spacing: 2px;
+	font-weight: 700;
 }
 
 .sidebar {
 	width: 200px;
-	background-color: #f8f9fa;
-	padding: 20px;
+	background-color: #d3d3ff; /* 연한 블루 */
+	padding: 30px 20px;
+	box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
 }
+
 .sidebar-menu {
 	list-style: none;
 	padding: 0;
@@ -36,48 +44,111 @@ body {
 }
 
 .sidebar-menu li {
-	margin-bottom: 15px;
+	margin-bottom: 25px;
 }
 
 .sidebar-menu li a {
 	text-decoration: none;
-	color: #333;
+	color: #7d6eaa;
+	font-weight: 600;
+	font-size: 20px;
+	transition: color 1s ease;
+}
+
+.sidebar-menu li a:hover {
+	color: #ffffff;
 	font-weight: bold;
 }
+
 .mainboard {
 	flex: 1;
-	padding: 30px;
+	padding: 40px 50px;
+	background-color: #ffffff;
+	border-radius: 10px;
+	margin: 30px;
+	box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
 }
-.content {
-	flex: 1;
-	padding: 20px;
+
+h2 {
+	color: #024a86;
+	margin-bottom: 25px;
 }
 
 .tabs {
 	display: flex;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #7d6eaa;
 }
 
 .tab {
-	padding: 15px 30px;
+	padding: 12px 25px;
 	cursor: pointer;
-	border: 1px solid #ccc;
-	background-color: #eee;
+	border: none;
+	background-color: transparent;
+	color: #7d6eaa;
+	font-weight: 600;
+	transition: background-color 0.5s ease, color 0.3s ease;
+	border-radius: 8px 8px 0 0;
+	margin-right: 8px;
+}
+
+.tab:hover {
+	background-color: #d0c1ff;
 }
 
 .tab.active {
-	background-color: white;
-	border-bottom: none;
+	background-color: #7d6eaa;
+	color: white;
 }
 
 .tab-content {
-	border: 1px solid #ccc;
-	padding: 20px;
-	background-color: white;
+	background-color: #f9fbff;
+	padding: 25px;
+	border-radius: 0 10px 10px 10px;
+	box-shadow: inset 0 0 8px rgba(3, 102, 214, 0.1);
+	min-height: 250px;
 }
 
 .hidden {
 	display: none;
+}
+
+button {
+	background-color: #7d6eaa;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 25px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin-bottom: 20px;
+}
+
+button:hover {
+	background-color: #d0c1ff;
+}
+
+.qna-box {
+	border: 2px solid #c6d9f1;
+	padding: 15px 20px;
+	margin-bottom: 15px;
+	border-radius: 12px;
+	background: #ffffff;
+	box-shadow: 0 2px 6px rgba(3, 102, 214, 0.1);
+	transition: box-shadow 0.3s ease;
+}
+
+.qna-box:hover {
+	box-shadow: 0 6px 16px rgba(3, 102, 214, 0.2);
+}
+
+.qna-box p {
+	margin: 6px 0;
+}
+
+.qna-box strong {
+	color: #014a9c;
 }
 </style>
 
@@ -142,7 +213,7 @@ body {
 
 			<!-- 공개 질문/답변 -->
 			<div id="publicQnATab" class="tab-content hidden">
-				<h3>공개 질문 목록</h3>
+				<h3>게시판 질문 목록</h3>
 				<button type="button" onclick="public_qna_popup()">게시판 글 남기기</button>
 				<c:choose>
 					<c:when test="${not empty qnaList}">
@@ -199,12 +270,12 @@ body {
 	//게시판 팝업창
 	function public_qna_popup() {
 		window.open("/qna/public_qna_popup", "QnAPopup",
-				"width=500,height=400,resizable=no");
+				"width=700,height=600,resizable=no");
 	}
 	//1:1문의 팝업창
 	function private_qna_popup() {
 		window.open("/qna/private_qna_popup", "QnAPopup",
-				"width=500,height=400,resizable=no");
+				"width=700,height=600,resizable=no");
 	}
 	//게시글 삭제
 	function deleteQna(qnaId) {
