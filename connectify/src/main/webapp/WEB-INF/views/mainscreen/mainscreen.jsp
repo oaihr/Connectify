@@ -11,14 +11,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
 	rel="stylesheet">
-
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
 
+
 <style>
 * {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
@@ -160,12 +160,12 @@ body {
 	width: 700px;
 	height: 450px;
 	margin-right: 30px;
-	border: 2px solid #e0e0e0;
+	/* border: 2px solid #e0e0e0; */
 	border-radius: 20px;
-	background-color: #f8f9fa;
-	display: flex;
+	/* background-color: #f8f9fa; */
+/* 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: center; */
 }
 
 .search-container {
@@ -292,60 +292,94 @@ a {
 }
 
 /*=================== slideshow ===================*/
-.slideshow {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    border-radius: 20px;
+.slide-container {
+	width: 100%;
+	height: 450px;
+	
+	position: relative;
 }
 
-.slides {
-    display: none;
-    width: 100%;
-    height: 100%;
+.slide-container img {
+	width: 100%;
+	height: 450px;
+	border-radius: 20px;
 }
 
-.slides img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.slide{
+    -webkit-animation: fade 1.2s;
+    animation: fade 1.2s;
 }
 
-.slides.active {
-    display: block;
-    animation: slideLeft 0.8s ease-in-out;
-}
-
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 10px;
-    color: white;
-    font-weight: bold;
-    font-size: 24px;
-    background-color: rgba(0,0,0,0.3);
-    border-radius: 50%;
-    user-select: none;
-}
-
-.prev { left: 10px; }
-.next { right: 10px; }
-
-.fade {
-    animation: fade 1.5s ease-in-out;
+@-webkit-keyframes fade {
+    from {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fade {
-	from {
-        transform: translateX(100%);
+    from {
+        opacity: 0.4;
     }
     to {
-        transform: translateX(0);
+        opacity: 1;
     }
 }
+
+.prev, .next{
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-size: 25px; 
+    transition: 0.6s ease;
+    user-select: none;
+}
+
+.next{
+    right: 0;
+}
+
+.prev:hover, .next:hover{
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+.text{
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    font-size: 15px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+}
+
+.dots {
+    position: relative;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.dot{
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    background-color: #bdbdbd;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.active, .dot:hover{
+    background-color: #949494;
+}
+
+
 </style>
 
 <!-- flatpickr CSS -->
@@ -410,31 +444,19 @@ a {
 
 			<form action="" method="post" class="travelBox">
 				<div class="travel-container">
-
-					<div class="slideshow">
-						<div class="slides fade">
-							<img
-								src="https://tong.visitkorea.or.kr/cms/resource/04/3304404_image2_1.jpg">
+					<div class="slide-container">
+						<div class="slide"> <img src="https://tong.visitkorea.or.kr/cms/resource/04/3304404_image2_1.jpg"> </div>
+						<div class="slide"> <img src="https://tong.visitkorea.or.kr/cms/resource/33/2667333_image2_1.jpg"> </div>
+						<div class="slide"> <img src="https://tong.visitkorea.or.kr/cms/resource/77/2655177_image2_1.jpg"> </div> 
+						<div class="slide"> <img src="https://tong.visitkorea.or.kr/cms/resource/68/2631068_image2_1.jpg"> </div>
+			            <a class="prev">&#10094;</a>
+			            <a class="next">&#10095;</a>
+						<div class="dots">
+					            <span class="dot" data-val="0"></span>
+					            <span class="dot" data-val="1"></span>
+					            <span class="dot" data-val="2"></span>
+					            <span class="dot" data-val="3"></span>
 						</div>
-
-						<div class="slides fade">
-							<img
-								src="https://tong.visitkorea.or.kr/cms/resource/33/2667333_image2_1.jpg">
-						</div>
-
-						<div class="slides fade">
-							<img
-								src="https://tong.visitkorea.or.kr/cms/resource/77/2655177_image2_1.jpg">
-						</div>
-						
-						<div class="slides fade">
-							<img
-								src="https://tong.visitkorea.or.kr/cms/resource/68/2631068_image2_1.jpg">
-						</div>
-
-						<a class="prev" onClick="plusSlides(-1)">&#10094;</a> <a
-							class="next" onclick="plusSlides(1)">&#10095;</a>
-
 					</div>
 				</div>
 			</form>
@@ -503,8 +525,6 @@ a {
 		  // 예: "2025-08-03 ~ 2025-08-10"
 		});
 		
-		
-		
 		const selectedRange = document.querySelector('#rangePicker').value;
 
 		const fp = flatpickr("#rangePicker", {
@@ -516,40 +536,86 @@ a {
 				  },
 			onChange: function (selectedDates) {
 					const [startDate, endDate] = selectedDates;
-					console.log("시작일:", startDate);
-					console.log("종료일:", endDate);
+					
+					const startStr = this.formatDate(startDate, "Y-m-d");
+					const endStr = this.formatDate(endDate, "Y-m-d");
+
 				},
 			minDate: "today"
 		});
 		
 		
 		//슬라이드 쇼
+		const $prev = document.querySelector('.prev');
+		const $next = document.querySelector('.next');
+		const $slide = document.querySelectorAll('.slide');
+		const $dots = document.querySelectorAll('.dot');
+		const $dot = document.querySelector('.dots');
+		
 		let slideIndex = 0;
-		showSlides(slideIndex);
-
-		// 버튼으로 슬라이드 변경
-		function plusSlides(n) {
-		    showSlides(slideIndex += n);
-		}
-
-		// 자동 재생
-		function autoSlides() {
-		    slideIndex++;
+		
+		//실행
+		window.onload = function(){
 		    showSlides(slideIndex);
-		    setTimeout(autoSlides, 3000);
+		
+		    let sec = 6000;
+		    setInterval(function(){
+		        slideIndex++;
+		        showSlides(slideIndex);
+		    }, sec);
 		}
-
-		function showSlides(n) {
-		    let slides = document.getElementsByClassName("slides");
-		    if (n >= slides.length) { slideIndex = 0; }
-		    if (n < 0) { slideIndex = slides.length - 1; }
-		    for (let i = 0; i < slides.length; i++) {
-		        slides[i].style.display = "none";  
+		
+		//이전 버튼을 누르면 이전으로, 다음버튼을 누르면 다음으로 이동
+		function moveSlides(n){
+		    slideIndex = slideIndex + n
+		    showSlides(slideIndex);
+		}
+		
+		$prev.addEventListener('click', () => moveSlides(-1))
+		$next.addEventListener('click', () => moveSlides(1))
+		
+		
+		//하단 동그라미를 누르면 해당하는 이미지로 이동
+		function currentSlide(e){
+		    const val = e.target.dataset.val
+		    if(val !== undefined) {
+		        slideIndex = +val;
+		        showSlides(slideIndex);
 		    }
-		    slides[slideIndex].style.display = "block";  
 		}
-
-		autoSlides();
+		
+		$dot.addEventListener('click', currentSlide)
+		
+		
+		//슬라이드쇼 실행
+		function showSlides(n){
+		    let size = $slide.length;
+		
+		    //슬라이드쇼의 길이보다 slideIndex가 커지면 다시 처음으로 돌아가도록
+		    if((n+1) > size){
+		        slideIndex = 0;
+		        n = 0;
+		    } else if(n < 0) {  //slideIndex가 0보다 작아지면 마지막으로 가도록
+		        slideIndex = (size - 1);
+		        n = (size - 1);
+		    }
+		    
+		    //슬라이드쇼를 전부 안보이게
+		    for(let i=0; i<size; i++){
+		        $slide[i].style.display = 'none';
+		    }
+		
+		    //하단 동그라미 부분을 모두 진하게 표시되지 않도록 한다.
+		    for(let i=0; i<$dots.length; i++){
+		        $dots[i].className = $dots[i].className.replace("active", "");
+		    }
+		
+		    //해당하는 슬라이드만 보이도록 한다.
+		    $slide[n].style.display = "block";
+		
+		    //해당하는 동그라미만 진하게 표시되도록 한다.
+		    $dots[n].classList.toggle("active");
+		}
 
 		
 	</script>
