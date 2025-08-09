@@ -19,4 +19,9 @@ public class CsServiceImpl implements CsService {
 	public List<Cs> getAllFaqs() {
 		return csDAO.getAllFaqs();
 	}
+	
+	@Override
+	public List<Cs> searchByQuestion(String keyword) {
+        return csDAO.searchByQuestion(keyword);
+    }
 }

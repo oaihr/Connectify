@@ -5,7 +5,15 @@
 <mapper namespace="faqMapper">
 
 	<select id="getAllFaqs" resultType="com.app.dto.cs.Cs">
-		SELECT id, question, answer FROM CON_T_FAQ
+		SELECT id, question, answer
+		FROM CON_T_FAQ
 	</select>
 
+	<select id="searchByQuestion" parameterType="String"
+		resultType="com.app.dto.cs.Cs">
+		SELECT *
+		FROM CON_T_FAQ
+		WHERE QUESTION LIKE '%' || #{keyword} || '%'
+		ORDER BY ID DESC
+	</select>
 </mapper>

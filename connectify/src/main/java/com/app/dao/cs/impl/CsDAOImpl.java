@@ -21,4 +21,9 @@ public class CsDAOImpl implements CsDAO {
 	public List<Cs> getAllFaqs() {
 		return sqlSession.selectList(NAMESPACE + "getAllFaqs");
 	}
+
+	@Override
+	public List<Cs> searchByQuestion(String keyword) {
+		return sqlSession.selectList(NAMESPACE + "searchByQuestion", keyword);
+	}
 }

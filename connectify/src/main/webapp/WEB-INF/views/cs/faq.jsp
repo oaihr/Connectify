@@ -48,7 +48,6 @@ body {
 }
 
 .sidebar-menu li a {
-
 	text-decoration: none;
 	color: #7d6eaa;
 	font-weight: 600;
@@ -68,6 +67,39 @@ body {
 	border-radius: 10px;
 	margin: 30px;
 	box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
+}
+
+.faq_top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+/* 기존 .faq_top 안에 있는 검색창 스타일링 추가 */
+.faq_top form {
+	margin: 0; /* form 자체에 불필요한 여백 제거 */
+}
+
+.faq_top input[type="search"] {
+	padding: 8px 14px;
+	font-size: 15px;
+	border: 1.5px solid #b3a5d9; /* 연한 보라 */
+	border-radius: 8px;
+	outline: none;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
+	background-color: #f9f7fd; /* 아주 연한 보라빛 배경 */
+	color: #4b365f; /* 어두운 보라색 글자 */
+	width: 220px;
+	box-sizing: border-box;
+}
+
+.faq_top input[type="search"]::placeholder {
+	color: #a09bbc; /* 연한 보라 회색 느낌의 placeholder */
+}
+
+.faq_top input[type="search"]:focus {
+	border-color: #7d6eaa; /* 좀 더 진한 보라 */
+	box-shadow: 0 0 6px 2px rgba(125, 110, 170, 0.3);
+	background-color: #fff;
 }
 
 h2 {
@@ -105,6 +137,34 @@ hr {
 	border-top: 0.5px solid #c6d9f1;
 	margin: 15px 0 0 0;
 }
+
+.pagination {
+	text-align: center;
+	margin-top: 30px;
+}
+
+.pagination a, .pagination span.current {
+	display: inline-block;
+	margin: 0 6px;
+	padding: 8px 14px;
+	border-radius: 8px;
+	text-decoration: none;
+	font-weight: 600;
+	color: #7d6eaa;
+	border: 1px solid #7d6eaa;
+	transition: background-color 0.3s ease;
+}
+
+.pagination a:hover {
+	background-color: #7d6eaa;
+	color: #fff;
+}
+
+.pagination span.current {
+	background-color: #4b365f;
+	color: #fff;
+	border-color: #4b365f;
+}
 </style>
 
 </head>
@@ -123,16 +183,42 @@ hr {
 		</div>
 
 		<div class="mainboard" id="faqSection">
-			<h2>자주 묻는 질문</h2>
+			<div class="faq_top">
+				<h2>자주 묻는 질문</h2>
+				<form action="/search" method="GET">
+					<input type="search" name="searchValue" placeholder="질문 검색">
+				</form>
+			</div>
 			<c:forEach var="faq" items="${faqList}">
 				<div class="faq_item">
 					<h4>Q. ${faq.question}</h4>
 					<div class="faq_answer">
 						<strong>A.</strong> ${faq.answer}
 					</div>
-<!-- 					<hr> -->
 				</div>
 			</c:forEach>
+
+			<div class="pagination">
+				<c:if test="${currentPage > 1}">
+					<a href="?page=${currentPage - 1}">이전</a>
+				</c:if>
+
+				<c:forEach begin="1" end="${totalPages}" var="i">
+					<c:choose>
+						<c:when test="${i == currentPage}">
+							<span class="current">${i}</span>
+						</c:when>
+						<c:otherwise>
+							<a href="?page=${i}">${i}</a>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+				<c:if test="${currentPage < totalPages}">
+					<a href="?page=${currentPage + 1}">다음</a>
+				</c:if>
+			</div>
+
 		</div>
 	</div>
 

@@ -8,4 +8,6 @@ public interface CsService {
 
 	public List<Cs> getAllFaqs();
 
+	public List<Cs> searchByQuestion(String keyword);
+
 }
