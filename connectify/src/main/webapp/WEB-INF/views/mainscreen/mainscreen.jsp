@@ -20,6 +20,12 @@ body {
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
+/*=================== font ===================*/
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
 .mainscreen-container {
 	width: 100%;
 	height: 100vh;
@@ -28,9 +34,6 @@ body {
 	flex-direction: column;
 }
 
-.menu-title {
-	
-}
 
 .span {
 	font-family: 'Jua', sans-serif;
@@ -312,11 +315,6 @@ body {
 	font-size: 14px;
 }
 
-/*=================== font ===================*/
-a {
-	text-decoration: none;
-	color: inherit;
-}
 
 /*=================== logo ===================*/
 .logo {
