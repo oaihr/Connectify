@@ -10,11 +10,8 @@
         <setting name="jdbcTypeForNull" value="NULL" />
     </settings>
 
-    <!--
-        <typeAliases>
-        <typeAlias type="com.app.dto.room.Room" alias="Room"/>
-        <typeAlias type="com.app.dto.room.RoomSearchCondition" alias="RoomSearchCondition"/>
-    </typeAliases>
-    -->
+    <mappers>
+        <mapper resource="mappers/customerMapper.xml"/>
+    </mappers>
 
 </configuration>
