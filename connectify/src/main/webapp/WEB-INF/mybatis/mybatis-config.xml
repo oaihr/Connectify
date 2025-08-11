@@ -14,6 +14,24 @@
 		<typeAlias type="com.app.dto.admin.AdminUser" alias="AdminUser" />
 		<typeAlias type="com.app.dto.admin.AdminUserSearch" alias="AdminUserSearch" />
 		<typeAlias type="com.app.dto.admin.AdminIssues" alias="AdminIssues" />
-	</typeAliases>
+		<typeAlias type="com.app.api.dto.areaBasedList.AreaBasedListItem"  alias="AreaBasedListItem"/>
+		<typeAlias type="com.app.api.dto.detailIntro.DetailIntroItem"  alias="DetailIntroItem"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemAttraction"  alias="DetailIntroItemAttraction"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemCulturalFacility"  alias="DetailIntroItemCulturalFacility"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemFestival"  alias="DetailIntroItemFestival"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemLeports"  alias="DetailIntroItemLeports"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemLodging"  alias="DetailIntroItemLodging"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemShopping"  alias="DetailIntroItemShopping"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemFood"  alias="DetailIntroItemFood"/>
+	</typeAliases>	
 
+		<setting name="defaultExecutorType" value="BATCH" />
+	</settings>	
+		
+		
+<!-- 	<typeAliases>	 -->
+<!-- 		<typeAlias type="com.app.dto.room.Room" alias="Room"/> -->
+<!-- 		<typeAlias type="com.app.dto.room.RoomSearchCondition" alias="RoomSearchCondition"/> -->
+<!-- 	</typeAliases>		 -->
+		
 </configuration>					

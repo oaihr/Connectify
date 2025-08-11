@@ -72,5 +72,6 @@ public class AdminController {
 		LoginManager.logout(session);
 		return "redirect:/admin";
 	}
-
+	
+	
 }
