@@ -3,15 +3,16 @@ package com.app.dto.admin;
 import lombok.Data;
 
 @Data
-public class Admin {
+public class AdminUser {
 	
 	String id;
 	String pw;
 	String name;
 	String tel;
-	String position;
-	String role;
+	String mail;
+	String adress;
+	String joinDate;
 	String status;
-	String empDate;
+	int point;
 	
 }
