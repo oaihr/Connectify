@@ -20,6 +20,7 @@
 	<context:component-scan base-package="com.app.api.client"></context:component-scan>
 	<context:component-scan base-package="com.app.api.service"></context:component-scan>
 	<context:component-scan base-package="com.app.api.dao"></context:component-scan>
+	<context:component-scan base-package="com.app.config"></context:component-scan>
 	
 	<!--뷰리졸버 설정 부분 -->
 	<beans:bean

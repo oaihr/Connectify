@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="TravelMapper">
+		
+		
+    <select id="getDestinationsListByContentTypeId" resultType="AreaBasedListItem">
+	SELECT *
+	FROM (
+			SELECT ROWNUM rnum, a.*
+			FROM (
+				SELECT *
+				FROM TOUR_DESTINATION
+				WHERE CONTENT_TYPE_ID = #{contentTypeId}
+				ORDER BY CONTENT_ID ) a
+			)
+	WHERE rnum BETWEEN #{startRow} AND #{endRow}
+    </select>
+    
+    
+    <select id="getDestinationsListCountByContentTypeId" parameterType="int" resultType="int">
+    	SELECT count(*) FROM TOUR_DESTINATION
+    	WHERE CONTENT_TYPE_ID = #{contentId}    
+    </select>
+    
+    <select id="getLodgingListCountByLclsSystm3" parameterType="String" resultType="int">
+    	SELECT count(*) FROM TOUR_DESTINATION
+    	WHERE LCLS_SYSTM3 = #{category, jdbcType=VARCHAR}
+    </select>
+    
+    
+    <select id="getLodgingListByLcslSystm3" resultType="AreaBasedListItem">
+    SELECT *
+	FROM (
+			SELECT ROWNUM rnum, a.*
+			FROM (
+				SELECT *
+				FROM TOUR_DESTINATION
+				WHERE LCLS_SYSTM3 = #{category}
+				ORDER BY LCLS_SYSTM3 ) a
+			)
+	WHERE rnum BETWEEN #{startRow} AND #{endRow}
+    </select>
+</mapper>

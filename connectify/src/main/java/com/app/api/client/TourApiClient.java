@@ -342,11 +342,12 @@ public class TourApiClient {
                 
                 URI uri = URI.create(url);
                 
-                ResponseEntity<String> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
-                String jsonResponse = responseEntity.getBody();
+                ResponseEntity<DetailIntroResponse> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, entity, DetailIntroResponse.class);
+
+                //String jsonResponse = responseEntity.getBody();
                 
 				
-				DetailIntroResponse response = objectMapper.readValue(jsonResponse, DetailIntroResponse.class);
+				DetailIntroResponse response = responseEntity.getBody();
 				
 				if (response == null || response.getResponse().getHeader() == null || response.getResponse().getBody() == null) {
 	                logger.error("유효하지 않은 API 응답 구조 또는 빈 응답입니다. URL: {}", url);
@@ -355,7 +356,7 @@ public class TourApiClient {
 
 	            if (!"0000".equals(response.getResponse().getHeader().getResultCode())) {
 	                logger.error("TourAPI에서 오류 코드를 반환했습니다. {} - {}", response.getResponse().getHeader().getResultCode(), response.getResponse().getHeader().getResultMsg());
-	                throw new TourApiException(response.getResponse().getHeader().getResultCode(), response.getResponse().getHeader().getResultMsg(), jsonResponse);
+	                throw new TourApiException(response.getResponse().getHeader().getResultCode(), response.getResponse().getHeader().getResultMsg(), responseEntity.getBody());
 	            }
 
 	            if (response.getResponse().getBody() != null

@@ -1,5 +1,6 @@
 package com.app.api.dto;
 
+import com.app.api.dto.detailIntro.DetailIntroResponse;
 
 public class TourApiException extends RuntimeException {
     private String errorCode;
@@ -21,7 +22,10 @@ public class TourApiException extends RuntimeException {
         this.errorAuthMessage = errorAuthMessage;
     }
 
-    public String getErrorCode() {
+    public TourApiException(String resultCode, String resultMsg, DetailIntroResponse response) {
+	}
+
+	public String getErrorCode() {
         return errorCode;
     }
 

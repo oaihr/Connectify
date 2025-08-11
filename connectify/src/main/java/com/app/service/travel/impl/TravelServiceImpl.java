@@ -26,4 +26,14 @@ public class TravelServiceImpl implements TravelService{
 		return travelDAO.getDestinationsListCountByContentTypeId(contentTypeId);
 	}
 
+	@Override
+	public int getLodgingListCountByLclsSystm3(String category) {
+		return travelDAO.getLodgingListCountByLclsSystm3(category);
+	}
+
+	@Override
+	public List<AreaBasedListItem> getLodgingListByLcslSystm3(Map<String, Object> params) {		
+		return travelDAO.getLodgingListByLcslSystm3(params);
+	}
+
 }

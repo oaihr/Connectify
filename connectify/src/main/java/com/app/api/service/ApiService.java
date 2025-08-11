@@ -110,7 +110,7 @@ public class ApiService {
         logger.info("AreaBasedList synchronization process completed successfully.");
     }
     
-    
+   
     public List<AreaBasedListItem> getDestinationsList(){
     	List<AreaBasedListItem> getDestinationsList = apiDAO.getDestinationsList();
     	return getDestinationsList;
@@ -125,8 +125,7 @@ public class ApiService {
 		try {
 			List<AreaBasedListItem> destinationsList = getDestinationsList();
 			// 전체 여행지에 대한 소개 정보 목록 조회
-			List<DetailIntroItem> allDetailIntro = tourApiClient
-					.getAllTourDetailIntroByContentIdAndContentTypeID(destinationsList);
+			List<DetailIntroItem> allDetailIntro = tourApiClient.getAllTourDetailIntroByContentIdAndContentTypeID(destinationsList);
 
 			if (allDetailIntro.isEmpty()) {
 				logger.warn("No DetailIntro fetched from TourAPI. Synchronization skipped.");

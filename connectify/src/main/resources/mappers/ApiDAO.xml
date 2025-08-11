@@ -111,7 +111,7 @@
 		FROM TOUR_DESTINATION	
 	</select>
 	
-	<update id="mergeDetailIntroForType12" parameterType="DetailIntroItemAttraction">
+	<insert id="mergeDetailIntroForType12" parameterType="DetailIntroItemAttraction">
 		MERGE INTO TOUR_DETAIL_INTRO_ATTRACTION T1
 	USING DUAL
 	ON (T1.CONTENT_ID = #{contentid})
@@ -147,9 +147,9 @@
 			#{infoCenter}, #{openDate}, #{parking}, #{restDate}, #{useSeason},
 			#{useTime}, TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS'), TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
 		)
-	</update>
+	</insert>
 	
-	<update id="mergeDetailIntroForType14" parameterType="DetailIntroItemCulturalFacility">
+	<insert id="mergeDetailIntroForType14" parameterType="DetailIntroItemCulturalFacility">
 		MERGE INTO TOUR_DETAIL_INTRO_CULTURAL_FACILITY T1
 	USING DUAL
 	ON (T1.CONTENT_ID = #{contentid})
@@ -183,9 +183,9 @@
 			#{useFee}, #{useTimeCulture}, #{scale}, #{spendTime},
 			TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS'), TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
 		)
-	</update>
+	</insert>
 	
-	<update id="mergeDetailIntroForType15" parameterType="DetailIntroItemFestival">
+	<insert id="mergeDetailIntroForType15" parameterType="DetailIntroItemFestival">
 		MERGE INTO TOUR_DETAIL_INTRO_FESTIVAL T1
 	USING DUAL
 	ON (T1.CONTENT_ID = #{contentid})
@@ -226,9 +226,9 @@
 			#{sponsor2Tel}, #{subEvent}, #{useTimeFestival},
 			TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS'), TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
 		)
-	</update>
+	</insert>
 	
-	<update id="mergeDetailIntroForType28" parameterType="DetailIntroItemLeports">
+	<insert id="mergeDetailIntroForType28" parameterType="DetailIntroItemLeports">
 		MERGE INTO TOUR_DETAIL_INTRO_LEPORTS T1
 	USING DUAL
 	ON (T1.CONTENT_ID = #{contentid})
@@ -263,9 +263,9 @@
 			#{parkingLeports}, #{reservation}, #{restDateLeports}, #{scaleLeports}, #{useFeeLeports},
 			#{useTimeLeports}, TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS'), TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
 		)
-	</update>
+	</insert>
 	
-	<update id="mergeDetailIntroForType32" parameterType="DetailIntroItemLodging">
+	<insert id="mergeDetailIntroForType32" parameterType="DetailIntroItemLodging">
 		MERGE INTO TOUR_DETAIL_INTRO_LODGING T1
 	USING DUAL
 	ON (T1.CONTENT_ID = #{contentid})
@@ -317,9 +317,9 @@
 			#{sauna}, #{seminar}, #{sports}, #{refundRegulation},
 			TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS'), TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
 		)
-	</update>
+	</insert>
 	
-	<update id="mergeDetailIntroForType38" parameterType="DetailIntroItemShopping">
+	<insert id="mergeDetailIntroForType38" parameterType="DetailIntroItemShopping">
 		MERGE INTO TOUR_DETAIL_INTRO_SHOPPING T1
 	USING DUAL
 	ON (T1.CONTENT_ID = #{contentid})
@@ -357,9 +357,9 @@
 			#{saleItemCost}, #{scaleShopping}, #{shopGuide},
 			TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS'), TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
 		)
-	</update>
+	</insert>
 	
-	<update id="mergeDetailIntroForType39" parameterType="DetailIntroItemFood">
+	<insert id="mergeDetailIntroForType39" parameterType="DetailIntroItemFood">
 		MERGE INTO TOUR_DETAIL_INTRO_FOOD T1
 	USING DUAL
 	ON (T1.CONTENT_ID = #{contentid})
@@ -398,5 +398,5 @@
 			#{treatMenu}, #{lcnsNo},
 			TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS'), TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
 		)
-	</update>
+	</insert>
 </mapper>

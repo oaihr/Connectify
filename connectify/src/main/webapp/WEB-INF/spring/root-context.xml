@@ -33,7 +33,7 @@
 	<!-- <property name="roomDAO" ref="roomDAO"></property> -->
 	<!-- </bean> -->
 	
-	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
+<!-- 	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate" /> -->
 	
 	<bean class="org.apache.commons.dbcp2.BasicDataSource" id="data_source">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
@@ -45,7 +45,7 @@
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
 		<property name="dataSource" ref="data_source"></property>
 <!-- 		<property name="mapperLocations" value="/WEB-INF/mybatis/mapper/**/*_mapper.xml"></property> -->
-		<property name="mapperLocations" value="classpath*:com/app/dao/**/*Mapper.xml" />
+		<property name="mapperLocations" value="classpath*:mappers/*.xml" />
 		<property name="configLocation" value="/WEB-INF/mybatis/mybatis-config.xml"></property>
 	</bean>
 	

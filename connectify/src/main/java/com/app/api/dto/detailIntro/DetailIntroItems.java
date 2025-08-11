@@ -19,7 +19,7 @@ import lombok.Data;
 @Data
 public class DetailIntroItems {
 	
-	@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = "contenttypeid")
+	@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "contenttypeid")
 	@JsonSubTypes({
         @JsonSubTypes.Type(value = DetailIntroItemAttraction.class, name = "12"),
         @JsonSubTypes.Type(value = DetailIntroItemCulturalFacility.class, name = "14"),
@@ -29,6 +29,6 @@ public class DetailIntroItems {
         @JsonSubTypes.Type(value = DetailIntroItemShopping.class, name = "38"),
         @JsonSubTypes.Type(value = DetailIntroItemFood.class, name = "39")
     })
-    @JsonDeserialize(using = TourApiItemDeserializer.class)
+    //@JsonDeserialize(using = TourApiItemDeserializer.class)
 	List<DetailIntroItem> item;
 }

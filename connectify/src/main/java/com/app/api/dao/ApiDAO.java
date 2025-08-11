@@ -22,7 +22,7 @@ public interface ApiDAO {
     
     void mergeAreaBasedList(AreaBasedListItem AreaBasedListItem);
 
-	List<AreaBasedListItem> getDestinationsList();
+	public List<AreaBasedListItem> getDestinationsList();
 	
 	//관광지
 	void mergeDetailIntroForType12(DetailIntroItem detailIntroItem);

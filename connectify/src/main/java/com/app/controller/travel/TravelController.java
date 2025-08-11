@@ -58,4 +58,36 @@ public class TravelController {
 		return "travel/travel";
 	}
 	
+	@RequestMapping("/lodging")
+	public String lodging(@RequestParam String category, @RequestParam(defaultValue="1") int page, Model model) {
+		
+		final int pageSize = 9; // 한 페이지에 9개씩
+		int startRow = (page-1) * pageSize + 1; // 시작할 행
+		int endRow = page * pageSize;
+		
+		int count = travelService.getLodgingListCountByLclsSystm3(category);
+		logger.info("Category: " + category + ", Total count: " + count);
+
+		// contentTypeId 별 전체 페이지 수 
+		int totalPages = (int)Math.ceil((double)count/pageSize);
+		logger.info("Total pages: " + totalPages);
+
+		Map<String, Object> params = new HashMap<>();
+		params.put("category", category);
+		params.put("startRow", startRow);
+		params.put("endRow", endRow);
+		
+		List<AreaBasedListItem> lodgings = travelService.getLodgingListByLcslSystm3(params);
+		
+		if(lodgings != null) {
+			model.addAttribute("lodgings", lodgings);
+			model.addAttribute("currentPage", page);
+			model.addAttribute("totalPages", totalPages);
+			model.addAttribute("currentCategory", category);
+		}else {
+			logger.warn("lodgings가 비어있음");
+		}
+		
+		return "travel/lodging";
+	}
 }

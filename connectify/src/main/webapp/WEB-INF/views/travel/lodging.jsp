@@ -55,7 +55,7 @@ body {
 
 .header {
 	width: 100%;
-	padding: 10px 50px;
+	padding: 0px 50px;
 	background-color: #ffffff;
 	border-bottom: 1px solid #eee;
 }
@@ -119,7 +119,7 @@ body {
 .submenu li {
 	padding: 10px 15px;
 	font-size: 16px;
-	font-weight: 400;	
+	font-weight: 400;
 }
 
 .submenu li:hover {
@@ -140,8 +140,8 @@ body {
 	border: none;
 }
 
-/* travel-list 컨테이너 스타일 */
-.travel-list {
+/* lodging-list 컨테이너 스타일 */
+.lodging-list {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center; 
@@ -152,7 +152,7 @@ body {
 }
 
 /* 각 여행지 아이템 스타일 */
-.travel-list>div {
+.lodging-list>div {
 	flex-basis: calc(33.333% - 20px);
 	max-width: calc(33.333% - 20px); 
 	border: 1px solid #ddd;
@@ -165,25 +165,25 @@ body {
 	text-align: center;
 }
 
-.travel-list>div:hover {
+.lodging-list>div:hover {
 	transform: translateY(-5px); /* 호버 시 약간 위로 올라가는 효과 */
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.travel-list img {
+.lodging-list img {
 	width: 100%; 
 	height: 200px; 
 	object-fit: cover; 
 	border-bottom: 1px solid #ddd;
 }
 
-.travel-list h3 {
+.lodging-list h3 {
 	font-size: 1.2em;
 	color: #333;
 	margin: 10px 5px 0;
 }
 
-.travel-list p {
+.lodging-list p {
 	font-size: 0.9em;
 	color: #666;
 	margin: 5px;
@@ -280,12 +280,12 @@ body {
 
 		<hr class="hr">
 	
-	<div class="travel-list">
-		<c:forEach var="dest" items="${destinations}">
+	<div class="lodging-list">
+		<c:forEach var="lodging" items="${lodgings}">
 			<div>
-				<img src="${dest.firstimage}">
-				<h3>${dest.title}</h3>
-				<p>${dest.addr1} ${dest.addr2} ${dest.zipcode}</p>
+				<img src="${lodging.firstimage}">
+				<h3>${lodging.title}</h3>
+				<p>${lodging.addr1} ${lodging.addr2} ${lodging.zipcode}</p>
 			</div>
 		</c:forEach>
 	</div>
@@ -300,7 +300,7 @@ body {
 		<%-- 이전 페이지 버튼 --%>
 		<c:if test="${currentPage > 1}">
 			<a
-				href="/travels?page=${currentPage - 1}&category=${currentCategory}">이전</a>
+				href="/lodging?page=${currentPage - 1}&category=${currentCategory}">이전</a>
 		</c:if>
 
 		<%-- 페이지 번호 링크 --%>
@@ -310,14 +310,14 @@ body {
 					<span>${i}</span>
 				</c:when>
 				<c:otherwise>
-					<a href="/travels?page=${i}&category=${currentCategory}">${i}</a>
+					<a href="/lodging?page=${i}&category=${currentCategory}">${i}</a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 
 		<%-- 다음 페이지 버튼 --%>
 		<c:if test="${currentPage < totalPages}">
-			<a href="/travels?page=${currentPage + 1}&category=${currentCategory}">다음</a>
+			<a href="/lodging?page=${currentPage + 1}&category=${currentCategory}">다음</a>
 		</c:if>
 	</div>
 
