@@ -9,14 +9,12 @@
 <title>고객센터</title>
 <style>
 * {
+	padding: 0;
 	box-sizing: border-box;
 }
 
 body {
-	margin: 0;
-	padding: 0;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	background-color: #f0e9fa; /* 연한 하늘색 배경 */
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;	
 	color: #333;
 }
 
@@ -152,6 +150,7 @@ a {
 .container {
 	display: flex;
 	min-height: 100vh;
+	background-color: #f0e9fa;
 }
 
 .h1 {
@@ -199,6 +198,7 @@ a {
 	border-radius: 10px;
 	margin: 30px;
 	box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
+	overflow-y: auto;
 }
 
 h2 {
@@ -336,6 +336,11 @@ button:hover {
 	justify-content: center;
 	align-items: center;
 }
+
+/*=================== logo ===================*/
+.logo {
+	cursor: pointer;
+}
 </style>
 
 </head>
@@ -374,9 +379,7 @@ button:hover {
 						</ul>
 					</li>
 
-					<li class="menu-title menu-span span"><a href="/qna">고객센터</a>
-
-					</li>
+					<li class="menu-title menu-span span"><a href="/qna">고객센터</a></li>
 				</ul>
 
 				<!-- ==================signBox 구간========================== -->
@@ -387,7 +390,7 @@ button:hover {
 				</form>
 			</div>
 		</div>
-
+		<hr class="hr">
 		<div class="container">
 
 			<div class="sidebar">
