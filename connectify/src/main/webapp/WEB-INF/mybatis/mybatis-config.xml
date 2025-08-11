@@ -1,13 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>						
-<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"						
-					"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
-<configuration>		
-		
-	<settings>	
-		<setting name="mapUnderscoreToCamelCase" value="true"/>
+<configuration>
+
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true" />
 		<setting name="jdbcTypeForNull" value="NULL" />
-	</settings>	
+		<setting name="defaultExecutorType" value="BATCH" />
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="com.app.dto.admin.Admin" alias="Admin" />
+		<typeAlias type="com.app.dto.admin.AdminUser" alias="AdminUser" />
+		<typeAlias type="com.app.dto.admin.AdminUserSearch" alias="AdminUserSearch" />
+		<typeAlias type="com.app.dto.admin.AdminIssues" alias="AdminIssues" />
+		<typeAlias type="com.app.dto.customer.Customer" alias="Customer" />
+		<typeAlias type="com.app.api.dto.areaBasedList.AreaBasedListItem"  alias="AreaBasedListItem"/>
+		<typeAlias type="com.app.api.dto.detailIntro.DetailIntroItem"  alias="DetailIntroItem"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemAttraction"  alias="DetailIntroItemAttraction"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemCulturalFacility"  alias="DetailIntroItemCulturalFacility"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemFestival"  alias="DetailIntroItemFestival"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemLeports"  alias="DetailIntroItemLeports"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemLodging"  alias="DetailIntroItemLodging"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemShopping"  alias="DetailIntroItemShopping"/>
+		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemFood"  alias="DetailIntroItemFood"/>
+	</typeAliases>	
+
+		
 		
 		
 <!-- 	<typeAliases>	 -->

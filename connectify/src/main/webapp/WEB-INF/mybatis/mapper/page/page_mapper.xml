@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.app.dao.page.PageDAO">
+
+	<select id="getFaqList" parameterType="map"
+		resultType="com.app.dto.cs.Cs">
+		SELECT ID, QUESTION, ANSWER
+		FROM CON_T_FAQ
+		ORDER BY ID DESC
+		OFFSET #{offset} ROWS FETCH NEXT #{pageSize} ROWS ONLY
+	</select>
+
+	<select id="getFaqCount" resultType="int">
+		SELECT COUNT(*) FROM con_t_faq
+	</select>
+
+</mapper>
