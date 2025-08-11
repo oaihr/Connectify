@@ -9,7 +9,8 @@
 <title>고객센터</title>
 <style>
 * {
-	padding: 0;
+	padding : 0;
+	margin : 0;
 	box-sizing: border-box;
 }
 
@@ -254,6 +255,10 @@ h2 {
 	font-weight: 600;
 	cursor: pointer;
 	transition: background-color 0.3s ease;
+	margin: 20px 0px;
+}
+
+p{
 	margin-bottom: 20px;
 }
 
@@ -379,7 +384,7 @@ button:hover {
 						</ul>
 					</li>
 
-					<li class="menu-title menu-span span"><a href="/qna">고객센터</a></li>
+					<li class="menu-title menu-span span"><a href="/faq">고객센터</a></li>
 				</ul>
 
 				<!-- ==================signBox 구간========================== -->
@@ -398,9 +403,10 @@ button:hover {
 					<li>
 						<h1 class="h1">고객센터</h1>
 					</li>
-					<li><a href="qna">문의하기</a></li>
 					<li><a href="faq" class="menu-btn" data-target="faqSection">자주
 							묻는 질문</a></li>
+					<li><a href="qna">문의하기</a></li>
+					
 				</ul>
 			</div>
 

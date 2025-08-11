@@ -13,4 +13,8 @@ public interface CsDAO {
 
 	public List<Cs> searchByQuestion(String keyword);
 
+	public int getFaqCountByKeyword(String keyword);
+
+	public List<Cs> searchByQuestionWithPaging(String keyword, int offset, int pageSize);
+
 }

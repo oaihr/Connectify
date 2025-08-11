@@ -10,10 +10,12 @@
 <style>
 * {
 	padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	box-sizing: border-box;
 }
+
 body {
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;	
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	color: #333;
 }
 
@@ -149,7 +151,7 @@ a {
 .container {
 	display: flex;
 	min-height: 100vh;
-	background-color: #f0e9fa; 
+	background-color: #f0e9fa;
 }
 
 .sidebar {
@@ -391,7 +393,7 @@ h2 {
 						</ul>
 					</li>
 
-					<li class="menu-title menu-span span"><a href="/qna">고객센터</a></li>
+					<li class="menu-title menu-span span"><a href="/faq">고객센터</a></li>
 				</ul>
 
 				<!-- ==================signBox 구간========================== -->
@@ -407,14 +409,13 @@ h2 {
 
 			<div class="sidebar">
 				<ul class="sidebar-menu">
-					<!-- <li><img src="/image/connectify_logo.png"
-					style="width: 100px; height: auto;"></li> -->
 					<li>
 						<h1 class="h1">고객센터</h1>
 					</li>
-					<li><a href="qna">문의하기</a></li>
 					<li><a href="faq" class="menu-btn" data-target="faqSection">자주
 							묻는 질문</a></li>
+					<li><a href="qna">문의하기</a></li>
+					
 				</ul>
 			</div>
 
