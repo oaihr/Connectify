@@ -14,6 +14,7 @@
 <style>
 * {
 	padding: 0;
+	margin : 0;
 	box-sizing: border-box;
 }
 
@@ -510,7 +511,7 @@ to {
 						</ul>
 					</li>
 
-					<li class="menu-title menu-span span"><a href="/qna">고객센터</a></li>
+					<li class="menu-title menu-span span"><a href="/faq">고객센터</a></li>
 				</ul>
 
 				<!-- ==================signBox 구간========================== -->

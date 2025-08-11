@@ -85,9 +85,9 @@ button[type="submit"]:hover {
 			<label for="title">제목</label><br> <input type="hidden"
 				name="isPublic" value="1"> <input type="hidden"
 				name="status" value="대기"> <input type="text" id="title"
-				name="title" required><br> <br> <label
+				name="title" required placeholder="제목을 입력하세요"><br> <br> <label
 				for="content">내용</label><br>
-			<textarea id="question" name="question" rows="7" cols="60" required></textarea>
+			<textarea id="question" name="question" rows="7" cols="60" required placeholder="내용을 입력하세요"></textarea>
 			<br> <br>
 			<button type="submit">질문 등록</button>
 

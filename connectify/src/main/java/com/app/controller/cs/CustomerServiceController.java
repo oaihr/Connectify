@@ -66,10 +66,25 @@ public class CustomerServiceController {
 	}
 	
 	@GetMapping("/search")
-	public String searchFaq(@RequestParam("searchValue") String keyword, Model model) {
-	    List<Cs> results = csService.searchByQuestion(keyword);
+	public String searchFaq(@RequestParam("searchValue") String keyword, 
+	                        @RequestParam(defaultValue = "1") int page, 
+	                        Model model) {
+
+	    int pageSize = 5;
+	    int offset = (page - 1) * pageSize;
+	    
+	    int totalCount = csService.getFaqCountByKeyword(keyword); 
+
+	    List<Cs> results = csService.searchByQuestionWithPaging(keyword, offset, pageSize);
+	    
+	    int totalPages = (int) Math.ceil((double) totalCount / pageSize);
+
 	    model.addAttribute("faqList", results);
-	    return "cs/faq"; // jsp 이름
+	    model.addAttribute("currentPage", page);
+	    model.addAttribute("totalPages", totalPages);
+	    model.addAttribute("searchValue", keyword);
+
+	    return "cs/faq"; 
 	}
 
 

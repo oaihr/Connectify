@@ -7,6 +7,7 @@
 	<select id="getAllFaqs" resultType="com.app.dto.cs.Cs">
 		SELECT id, question, answer
 		FROM CON_T_FAQ
+		ORDER BY ID
 	</select>
 
 	<select id="searchByQuestion" parameterType="String"
@@ -14,6 +15,21 @@
 		SELECT *
 		FROM CON_T_FAQ
 		WHERE QUESTION LIKE '%' || #{keyword} || '%'
+		ORDER BY ID
+	</select>
+	
+	 <select id="getFaqCountByKeyword" resultType="int">
+        SELECT COUNT(*)
+        FROM CON_T_FAQ WHERE question LIKE '%' || #{keyword} || '%'
+    </select>
+
+	<select id="searchByQuestionWithPaging"
+		resultType="com.app.dto.cs.Cs">
+		SELECT *
+		FROM CON_T_FAQ
+		WHERE question LIKE '%' || #{keyword} || '%'
 		ORDER BY ID DESC
+		OFFSET #{offset} ROWS
+		FETCH NEXT #{pageSize} ROWS ONLY
 	</select>
 </mapper>
