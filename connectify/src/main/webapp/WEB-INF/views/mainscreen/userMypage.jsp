@@ -18,14 +18,12 @@
 	width: 100%;
 	heigth: 100%;
 	display: flex;
-	
-	
 	font-family: sans-serif;
 }
 
 .mypage-left {
 	width: 300px;
-	heigth: 100%p
+	heigth: 100%;
 	border: 2px solid #ccc;
 	border-radius: 10px;
 	margin: 30px;
@@ -76,8 +74,6 @@
 .follow-info {
 	font-size: 14px;
 }
-
-
 
 .mypage-right {
 	flex: 1;
@@ -149,14 +145,18 @@
 </style>
 
 <body>
-	<h1>Mypage</h1>
+	<div class="header">
+		<img src="/image/connectify_logo.png" class="logo" width="150" onClick="location.href='/admin/main'" >
+	</div>
+	
+	
 	<div class="mypage-container">
-		<!-- 왼쪽 영역 -->
+	
+<!-- 왼쪽 -->
 		<div class="mypage-left">
 			<div class="profile-container">
 				<div class="profile-pic">
-					<img src="profile.jpg" alt="프로필 사진"> 
-					<span class="grade-circle">A</span>
+					<img src="" alt="프로필 사진"> <span class="grade-circle">A</span>
 				</div>
 				<button class="edit-btn">개인정보 수정</button>
 			</div>
@@ -167,15 +167,58 @@
 			</div>
 		</div>
 
-		<!-- 오른쪽 영역 -->
+<!-- 오른쪽 -->
 		<div class="mypage-right">
 			<div class="tab-menu">
-				<button class="tab-link active" data-tab="reservations">예약
-					현황</button>
-				<button class="tab-link" data-tab="reviews">나의 리뷰</button>
-				<button class="tab-link" data-tab="inquiries">문의 내역</button>
-				<button class="tab-link" data-tab="reports">신고 내역</button>
+				<ul class="tabs">
+					<li class="tab-link current jua-regular" data-tab="tab-0"><p>예약현황</p></li>
+					<li class="tab-link jua-regular" data-tab="tab-1"><p>나의 리뷰</p></li>
+					<li class="tab-link jua-regular" data-tab="tab-2"><p>문의 내역</p></li>
+					<li class="tab-link jua-regular" data-tab="tab-3"><p>신고내역</p></li>
+				</ul>
 			</div>
+
+<!-- 예약현황 -->
+			<div id="tab-0" class="tab-content current">
+
+				<div class="menu-header">
+					<p class="jua-regular">예약현황</p>
+				</div>
+
+			</div>
+			
+			
+			
+<!-- 나의 리뷰 -->
+			<div id="tab-1" class="tab-content current">
+
+				<div class="menu-header">
+					<p class="jua-regular">나의 리뷰</p>
+				</div>
+
+			</div>
+			
+			
+			
+<!-- 문의 내역 -->
+			<div id="tab-2" class="tab-content current">
+
+				<div class="menu-header">
+					<p class="jua-regular">문의 내역</p>
+				</div>
+
+			</div>
+			
+			
+<!-- 신고 내역 -->
+			<div id="tab-3" class="tab-content current">
+
+				<div class="menu-header">
+					<p class="jua-regular">신고 내역</p>
+				</div>
+
+			</div>
+
 
 			<div class="tab-content active" id="reservations">
 				<div class="res-item">
@@ -209,31 +252,34 @@
 	</div>
 
 	<script>
-/* =============tab menu================= */
-/* $(document).ready(function() {
-
-	$('ul.tabs li').click(function() {
-		var tab_id = $(this).attr('data-tab');
-
-		$('ul.tabs li').removeClass('current');
-		$('.tab-content').removeClass('current');
-
-		$(this).addClass('current');
-		$("#" + tab_id).addClass('current');
-	})
-
-}); */
-
-
-document.querySelectorAll(".tab-link").forEach(button => {
-    button.addEventListener("click", () => {
-        document.querySelectorAll(".tab-link").forEach(btn => btn.classList.remove("active"));
-        document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active"));
-
-        button.classList.add("active");
-        document.getElementById(button.dataset.tab).classList.add("active");
-    });
-});
+	
+		/* =============tab menu================= */
+		 $(document).ready(function() {
+		
+			$('ul.tabs li').click(function() {
+				var tab_id = $(this).attr('data-tab');
+		
+				$('ul.tabs li').removeClass('current');
+				$('.tab-content').removeClass('current');
+		
+				$(this).addClass('current');
+				$("#" + tab_id).addClass('current');
+			})
+		
+		});
+		
+	 		// tab menu form 이동
+	 		
+			//여행지 tab
+	 		function showTravelForm(tabId) {
+	            const tabs = document.querySelectorAll('.travel-form-content');
+	            tabs.forEach(tab => {
+	            	tab.classList.remove('active')
+	            });
+	            
+	            document.getElementById(tabId).classList.add('active');
+	        }
+	 		showTravelForm('travel-form1');
 
 </script>
 
