@@ -20,7 +20,7 @@ import com.app.service.admin.AdminService;
 import com.app.service.admin.AdminUserService;
 import com.app.util.LoginManager;
 
-@Controller
+@Controller  
 public class AdminController {  
 	
 	@Autowired
