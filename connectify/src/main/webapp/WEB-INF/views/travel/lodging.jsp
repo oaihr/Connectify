@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
 * {
 	box-sizing: border-box;
@@ -13,6 +15,11 @@
 
 body {
 	font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
 }
 
 .mainscreen-container {
@@ -126,10 +133,6 @@ body {
 	background-color: #f0f0f0;
 }
 
-.submenu a {
-	text-decoration: none;
-	color: black;
-}
 
 .btn-sign {
 	width: 120px;
@@ -286,7 +289,7 @@ body {
 		<div class="header">
 			<div class="main-menu-container">
 
-				<img src="image/connectify_logo.png" class="logo" width="200" onClick="location.href='/'" />
+				<img src="image/connectify_logo1.png" class="logo" width="200" style="margin: 20px 0 ;" onClick="location.href='/'" />
 
 				<ul class="menu">
 					<li class="menu-title menu-span span">여행정보

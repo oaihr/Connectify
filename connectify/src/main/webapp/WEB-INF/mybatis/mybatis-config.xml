@@ -7,6 +7,7 @@
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true" />
 		<setting name="jdbcTypeForNull" value="NULL" />
+		<setting name="defaultExecutorType" value="BATCH" />
 	</settings>
 
 	<typeAliases>
@@ -25,8 +26,7 @@
 		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemFood"  alias="DetailIntroItemFood"/>
 	</typeAliases>	
 
-		<setting name="defaultExecutorType" value="BATCH" />
-	</settings>	
+		
 		
 		
 <!-- 	<typeAliases>	 -->

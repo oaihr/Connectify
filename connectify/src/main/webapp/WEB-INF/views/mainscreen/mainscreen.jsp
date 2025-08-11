@@ -9,11 +9,6 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
-	rel="stylesheet">
 
 
 <style>
@@ -64,9 +59,47 @@ body {
 }
 
 /*=================== header ===================*/
+.mainscreen-container {
+	width: 100%;
+	height: 100vh;
+	background-color: #fffff;
+	display: flex;
+	flex-direction: column;
+}
+
+.menu-title {
+	
+}
+
+.span {
+	font-family: 'Jua', sans-serif;
+	font-size: 25px;
+}
+
+.menu-span {
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
+.btn {
+	border-radius: 20px;
+	cursor: pointer;
+	border: 2.5px groove #ccc;
+	transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hr {
+	margin: 15px;
+}
+
 .header {
 	width: 100%;
-	padding: 10px 50px;
+	padding: 0px 50px;
 	background-color: #ffffff;
 	border-bottom: 1px solid #eee;
 }
@@ -287,7 +320,6 @@ a {
 
 /*=================== logo ===================*/
 .logo {
-	width: 150px;
 	cursor: pointer;
 }
 
@@ -397,26 +429,33 @@ a {
 		<div class="header">
 			<div class="main-menu-container">
 
-				<img src="image/connectify_logo.png" class="logo" width="150"
+				<img src="image/connectify_logo1.png" class="logo" width="200" style="margin: 20px 0 ;"
 					onClick="location.href='/'" />
 
 				<ul class="menu">
 					<li class="menu-title menu-span span">여행정보
 						<ul class="submenu">
-							<li><a href="">관광지</a></li>
-							<li><a href="">문화시설</a></li>
-							<li><a href="">행사/축제</a></li>
-							<li><a href="">레포츠</a></li>
-							<li><a href="">쇼핑</a></li>
-							<li><a href="">음식점</a></li>
+							<li><a href="/travels?category=12">관광지</a></li>
+							<li><a href="/travels?category=14">문화시설</a></li>
+							<li><a href="/travels?category=15">행사/축제</a></li>
+							<li><a href="/travels?category=28">레포츠</a></li>
+							<li><a href="/travels?category=38">쇼핑</a></li>
+							<li><a href="/travels?category=39">음식점</a></li>
 						</ul>
 					</li>
 
 					<li class="menu-title menu-span span">숙소
 						<ul class="submenu">
-							<li><a href="">호텔</a></li>
-							<li><a href="">팬션</a></li>
-							<li><a href="">게스트 하우스</a></li>
+							<li><a href="/lodging?category=AC010100">호텔</a></li>
+							<li><a href="/lodging?category=AC020100">콘도</a></li>
+							<li><a href="/lodging?category=AC020200">레지던스</a></li>
+							<li><a href="/lodging?category=AC030100">팬션</a></li>
+							<li><a href="/lodging?category=AC030200">한옥스테이</a></li>
+							<li><a href="/lodging?category=AC030300">농어촌민박</a></li>
+							<li><a href="/lodging?category=AC030400">홈스테이</a></li>
+							<li><a href="/lodging?category=AC040100">모텔</a></li>
+							<li><a href="/lodging?category=AC050100">일반야영장</a></li>
+							<li><a href="/lodging?category=AC050200">오토캠핑장</a></li>
 						</ul>
 					</li>
 
