@@ -7,8 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-* {
+*{
 	padding: 0;
+	margin : 0;
 	box-sizing: border-box;
 }
 
@@ -324,7 +325,7 @@ a {
 						</ul>
 					</li>
 
-					<li class="menu-title menu-span span"><a href="/qna">고객센터</a></li>
+					<li class="menu-title menu-span span"><a href="/faq">고객센터</a></li>
 				</ul>
 
 				<!-- ==================signBox 구간========================== -->
