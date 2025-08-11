@@ -152,6 +152,7 @@ a {
 	display: flex;
 	min-height: 100vh;
 	background-color: #f0e9fa;
+	border-radius: 20px;
 }
 
 .h1 {
@@ -166,6 +167,8 @@ a {
 	width: 200px;
 	background-color: #d3d3ff; /* 연한 블루 */
 	padding: 30px 20px;
+	border-top-left-radius : 20px;
+	border-bottom-left-radius : 20px;
 	box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
 }
 
@@ -196,7 +199,7 @@ a {
 	flex: 1;
 	padding: 40px 50px;
 	background-color: #ffffff;
-	border-radius: 10px;
+	border-radius: 20px;
 	margin: 30px;
 	box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
 	overflow-y: auto;
