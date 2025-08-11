@@ -16,6 +16,7 @@
 		<typeAlias type="com.app.dto.admin.AdminUser" alias="AdminUser" />
 		<typeAlias type="com.app.dto.admin.AdminUserSearch" alias="AdminUserSearch" />
 		<typeAlias type="com.app.dto.admin.AdminIssues" alias="AdminIssues" />
+		<typeAlias type="com.app.dto.customer.Customer" alias="Customer" />
 		<typeAlias type="com.app.api.dto.areaBasedList.AreaBasedListItem"  alias="AreaBasedListItem"/>
 		<typeAlias type="com.app.api.dto.detailIntro.DetailIntroItem"  alias="DetailIntroItem"/>
 		<typeAlias type="com.app.api.dto.detailIntro.impl.DetailIntroItemAttraction"  alias="DetailIntroItemAttraction"/>

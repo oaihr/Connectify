@@ -19,6 +19,11 @@
 
 body {
 	font-family: 'Noto Sans KR', sans-serif;
+	/* 스크랩 방지 */
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none
 }
 
 /*=================== font ===================*/
@@ -196,12 +201,7 @@ a {
 	width: 700px;
 	height: 450px;
 	margin-right: 30px;
-	/* border: 2px solid #e0e0e0; */
 	border-radius: 20px;
-	/* background-color: #f8f9fa; */
-	/* 	display: flex;
-	align-items: center;
-	justify-content: center; */
 }
 
 .search-container {
@@ -480,7 +480,7 @@ to {
 		<div class="header">
 			<div class="main-menu-container">
 
-				<img src="image/connectify_logo1.png" class="logo" width="200"
+				<img src="/image/connectify_logo1.png" class="logo" width="200"
 					style="margin: 20px 0;" onClick="location.href='/'" />
 
 				<ul class="menu">
@@ -514,11 +514,30 @@ to {
 				</ul>
 
 				<!-- ==================signBox 구간========================== -->
-				<form action="" method="post" class="signBox">
-					<div class="sign-container">
-						<button type="button" class="btn-sign btn">로그인</button>
-					</div>
-				</form>
+
+				<c:choose>
+					<c:when test="${ customer.id == null }">
+						<form action="" method="post">
+							<div class="sign-container">
+								<button type="button" class="btn-sign btn"
+									onClick="location.href='/customer/login'">로그인</button>
+							</div>
+						</form>
+					</c:when>
+					<c:otherwise>
+						<form action="" method="post">
+							<div class="sign-container">
+							<p>${sessionScope.customer.name} 님
+								<button type="button" class="btn-sign btn"
+									onClick="location.href='/customer/logout'">로그아웃</button></p>
+							</div>
+						</form>
+					</c:otherwise>
+				</c:choose>
+
+
+
+
 			</div>
 		</div>
 

@@ -11,19 +11,27 @@ import com.app.service.customer.CustomerService;
 public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
-    private CustomerDAO customerDAO;
+    CustomerDAO customerDAO;
 
     @Override
-    public Customer login(String id, String pw) {
+    public Customer findById(String id) {
         Customer customer = customerDAO.findById(id);
-        if (customer != null && customer.getPw().equals(pw)) {
-            return customer;
-        }
-        return null;
+
+        return customer;
     }
 
     @Override
     public int signup(Customer customer) {
-        return customerDAO.insert(customer);
+    	int result = customerDAO.signup(customer);
+    	
+        return result;
     }
+
+	@Override
+	public Customer checkCustomerLogin(Customer customer) {
+		Customer loginCus = customerDAO.checkCustomerLogin(customer);
+		return loginCus;
+	}
+
+
 }

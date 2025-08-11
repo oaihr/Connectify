@@ -1,6 +1,6 @@
 package com.app.dao.customer.impl;
 
-import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -11,15 +11,28 @@ import com.app.dto.customer.Customer;
 public class CustomerDAOImpl implements CustomerDAO {
 
     @Autowired
-    private SqlSession sqlSession;
+    SqlSessionTemplate sqlSessionTemplate;
 
     @Override
     public Customer findById(String id) {
-        return sqlSession.selectOne("customerMapper.findById", id);
+    	
+    	Customer customer = sqlSessionTemplate.selectOne("customer_mapper.findById", id);
+    	
+        return customer;
     }
 
     @Override
-    public int insert(Customer customer) {
-        return sqlSession.insert("customerMapper.insert", customer);
+    public int signup(Customer customer) {
+    	
+    	int result = sqlSessionTemplate.insert("customer_mapper.signup", customer);
+        return result;
     }
+
+	@Override
+	public Customer checkCustomerLogin(Customer customer) {
+		Customer loginCus = sqlSessionTemplate.selectOne("customer_mapper.checkCustomerLogin", customer);
+		return loginCus;
+	}
+
+
 }

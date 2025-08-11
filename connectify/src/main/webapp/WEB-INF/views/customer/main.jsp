@@ -9,6 +9,6 @@
 <body>
 <h1>고객 메인 페이지</h1>
 <p>${customer.name}님 환영합니다!</p>
-<a href="${pageContext.request.contextPath}/customer/logout">로그아웃</a>
+<a href="/customer/logout">로그아웃</a>
 </body>
 </html>

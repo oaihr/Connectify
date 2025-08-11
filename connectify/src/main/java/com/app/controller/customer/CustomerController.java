@@ -11,34 +11,37 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.app.dto.customer.Customer;
 import com.app.service.customer.CustomerService;
+import com.app.util.LoginManager;
 
 @Controller
 public class CustomerController {
 
     @Autowired
-    private CustomerService customerService;
+    CustomerService customerService;
 
+  //로그인
     @GetMapping("/customer/login")
     public String loginForm() {
         return "customer/login";
     }
 
     @PostMapping("/customer/login")
-    public String login(@RequestParam String id,
-                        @RequestParam String pw,
-                        HttpSession session,
-                        Model model) {
+    public String login(Customer customer, HttpSession session) {
 
-        Customer customer = customerService.login(id, pw);
-        if (customer != null) {
-            session.setAttribute("customer", customer);
-            return "redirect:/customer/main";
+        Customer loginCus = customerService.checkCustomerLogin(customer);
+        System.out.println(loginCus);
+        
+        if (loginCus == null) {
+            return "redirect:/customer/login";
         } else {
-            model.addAttribute("error", "아이디 또는 비밀번호가 올바르지 않습니다.");
-            return "customer/login";
+        	LoginManager.setSessionLoginUserId(session, loginCus.getId());
+        	session.setAttribute("customer", loginCus);
+        	return "redirect:/";
         }
     }
-
+    
+    
+//회원가입
     @GetMapping("/customer/signup")
     public String signupForm() {
         return "customer/signup";
@@ -46,12 +49,27 @@ public class CustomerController {
 
     @PostMapping("/customer/signup")
     public String signup(Customer customer) {
-        customerService.signup(customer);
-        return "redirect:/customer/login";
+    	
+        int result = customerService.signup(customer);
+        
+		if(result > 0){
+			return "redirect:customer/signup";
+		} else {
+			return "redirect:/";
+		}
+        
     }
 
+   //로그인 성공 임시 페이지
     @GetMapping("/customer/main")
     public String main() {
         return "customer/main";
     }
+    
+    //로그아웃
+	@GetMapping("/customer/logout")
+	public String customerlogout(HttpSession session) {
+		LoginManager.logout(session);
+		return "redirect:/";
+	}
 }

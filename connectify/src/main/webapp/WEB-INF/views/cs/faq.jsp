@@ -395,11 +395,25 @@ h2 {
 				</ul>
 
 				<!-- ==================signBox 구간========================== -->
-				<form action="" method="post" class="signBox">
-					<div class="sign-container">
-						<button type="button" class="btn-sign btn">로그인</button>
-					</div>
-				</form>
+				<c:choose>
+					<c:when test="${ customer.id == null }">
+						<form action="" method="post">
+							<div class="sign-container">
+								<button type="button" class="btn-sign btn"
+									onClick="location.href='/customer/login'">로그인</button>
+							</div>
+						</form>
+					</c:when>
+					<c:otherwise>
+						<form action="" method="post">
+							<div class="sign-container">
+							<p>${sessionScope.customer.name} 님
+								<button type="button" class="btn-sign btn"
+									onClick="location.href='/customer/logout'">로그아웃</button></p>
+							</div>
+						</form>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 		<hr class="hr">
