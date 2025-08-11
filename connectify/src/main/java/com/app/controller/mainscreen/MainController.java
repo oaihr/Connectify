@@ -23,6 +23,7 @@ public class MainController {
 		
 			String loginCusId = LoginManager.getLoginUserId(session);
 			Customer customer = customerService.findById(loginCusId);
+			System.out.println(customer);
 			model.addAttribute("customer", customer);
 
 		return "/mainscreen/mainscreen";

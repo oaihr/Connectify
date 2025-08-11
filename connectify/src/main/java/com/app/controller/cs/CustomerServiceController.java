@@ -98,8 +98,8 @@ public class CustomerServiceController {
 	    List<Qna> qnaList = qnaService.getPublicQna();
 
 	    // 2. 로그인된 사용자의 1:1 질문 목록 가져오기 (isPublic = 0)
-	    //String userId = (String) session.getAttribute("loginId");
-	    String userId = "user01";// 임시방편 로그인
+	    String userId = (String) session.getAttribute("loginId");
+	    //String userId = "user01";// 임시방편 로그인
 	    List<Qna> privateList = null;
 	    if(userId != null) {
 	        privateList = qnaService.getPrivateQnaForUser(userId);
