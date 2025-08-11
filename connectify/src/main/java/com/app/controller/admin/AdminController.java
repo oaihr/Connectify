@@ -21,7 +21,7 @@ import com.app.service.admin.AdminUserService;
 import com.app.util.LoginManager;
 
 @Controller  
-public class AdminController {  
+public class AdminController {   
 	
 	@Autowired
 	AdminService adminService;
