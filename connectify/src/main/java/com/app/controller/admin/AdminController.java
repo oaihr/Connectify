@@ -25,13 +25,6 @@ public class AdminController {
 	
 	@Autowired
 	AdminService adminService;
-	
-	@Autowired
-	AdminUserService  adminUserService;
-	
-	@Autowired
-	AdminIssuesService adminIssuesService;
-	
 
 	@GetMapping("/admin")
 	public String adminSignIn() {
@@ -66,18 +59,6 @@ public class AdminController {
 			
 			Admin admin = adminService.findAdminId(loginUserId);
 			model.addAttribute("admin", admin);
-			
-			//사용자
-			List<AdminUser> userList = adminUserService.findAdminUserList();
-			model.addAttribute("userList", userList);
-			
-			//질문
-			List<AdminIssues> issueList = adminIssuesService.findAdminIssuesList();
-			model.addAttribute("issueList", issueList);
-			
-			//신고
-			
-			
 			return "admin/adminMain";
 		}
 		
@@ -91,82 +72,5 @@ public class AdminController {
 		LoginManager.logout(session);
 		return "redirect:/admin";
 	}
-	
-	
-/* ============ 여행지 ================ */
-	//여행지 페이지
-	@GetMapping("/admin/travel")
-	public String tarvel(Model model) {
-		
-		model.addAttribute("activeTab", "tab-1");
-		
-		return "admin/adminTravel/adminTravel";
-	}
-	
-	
-	
-	
 
-/* ============ 사용자 ================ */
-	//사용자 페이지
-	@GetMapping("/admin/user")
-	public String user(Model model) {
-		
-		model.addAttribute("activeTab", "tab-2");
-		
-		return "admin/adminUser/adminUser";
-	}
-	
-
-	//사용자 검색
-	@PostMapping("/admin/user")
-	public String searchUser(Model model, AdminUserSearch adminUserSearch) {
-		
-		List<AdminUser> userList = adminUserService.findAdminUserListBySearch(adminUserSearch);
-		
-		model.addAttribute("userList", userList);
-		model.addAttribute("adminUserSearch", adminUserSearch);
-		
-		model.addAttribute("activeTab", "tab-2");
-		
-		return "admin/adminUser/adminUser";
-	}
-	
-	//사용자 정보
-	@GetMapping("/admin/user/{userId}")
-	public String userInfo(@PathVariable String userId, Model model) {
-		
-		AdminUser user = adminUserService.findAdminUserById(userId);
-		model.addAttribute("user", user);
-		model.addAttribute("activeTab", "tab-2");
-		
-		System.out.println(user);
-		
-		return "admin/adminUser/adminUserInfo";
-	}
-	
-	
-	
-/* ============ 질문 ================ */
-	//질문 페이지
-	@GetMapping("/admin/issue")
-	public String issue(Model model) {
-		
-		model.addAttribute("activeTab", "tab-3");
-		
-		return "admin/adminIssue/adminIssue";
-	}
-	
-
-	
-/* ============ 신고 ================ */
-	//신고 페이지
-	@GetMapping("/admin/report")
-	public String report(Model model) {
-		
-		model.addAttribute("activeTab", "tab-4");
-		
-		return "admin/adminReport/adminReport";
-	}
-	
 }

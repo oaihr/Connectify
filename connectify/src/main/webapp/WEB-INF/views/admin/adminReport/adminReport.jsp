@@ -258,13 +258,11 @@ ul.tabs li.current {
 }
 
 /* =================== Form Switching =================== */
-.travel-form-content, .user-form-content, .issues-form-content,
-	.reports-form-content {
-	display: none;
+.travel-form-content, .user-form-content, .issues-form-content, .reports-form-content {
+    display: none;
 }
-
 .active {
-	display: block;
+    display: block;
 }
 
 /* Fonts */
@@ -281,7 +279,9 @@ ul.tabs li.current {
 	<div class="body">
 
 		<div class="header">
-			<h1 class="h1 jua-regular" onClick="location.href='/admin/main'">Admin</h1>
+			
+			<img src="/image/connectify_logo.png" class="logo" width="150"
+					onClick="location.href='/admin/main'" />
 			<div class="header-right">
 				<p class="header-name">${sessionScope.admin.name}</p>
 				<button onClick="location.href='/admin/logout'"
@@ -299,7 +299,7 @@ ul.tabs li.current {
 						onClick="location.href='/admin/travel'"><p>여행지</p></li>
 					<li class="tab-link jua-regular"
 						onClick="location.href='/admin/user'"><p>
-							사용자<br> 검색
+							사용자 검색
 						</p></li>
 					<li class="tab-link jua-regular"
 						onClick="location.href='/admin/issue'"><p>질문내역</p></li>
@@ -343,8 +343,6 @@ ul.tabs li.current {
 			</div>
 		</div>
 	</div>
-	</div>
-	</div>
 
 
 
@@ -381,22 +379,6 @@ ul.tabs li.current {
 
 	</script>
 
-
-
-	<!-- 탭 유지 코드 -->
-	<c:if test="${not empty activeTab}">
-		<script>
-			$(document).ready(function () {
-				const activeTab = '${activeTab}';
-	
-				// 탭 UI 갱신
-				$('ul.tabs li').removeClass('current');
-				$('.tab-content').removeClass('current');
-				$(`ul.tabs li[data-tab="${activeTab}"]`).addClass('current');
-				$(`#${activeTab}`).addClass('current');
-			});
-		</script>
-	</c:if>
 
 
 </body>

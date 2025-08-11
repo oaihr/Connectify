@@ -10,8 +10,11 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
+	rel="stylesheet">
 
 <style>
 html, body {
@@ -36,7 +39,6 @@ body {
 	flex-direction: column;
 }
 
-
 .header {
 	display: flex;
 	justify-content: space-between;
@@ -51,6 +53,7 @@ body {
 	align-items: center;
 	gap: 20px;
 }
+
 .h1 {
 	color: #4b365f;
 	margin: 0;
@@ -60,12 +63,11 @@ body {
 }
 
 .header-name {
-    font-size: 16px;
-    font-weight: 700;
-    color: #4b365f;
-    margin: 0;
+	font-size: 16px;
+	font-weight: 700;
+	color: #4b365f;
+	margin: 0;
 }
-
 
 .btn-logout {
 	width: 120px;
@@ -127,7 +129,7 @@ ul.tabs li.current {
 	flex-grow: 1;
 	padding: 30px 40px;
 	overflow-y: auto;
-	box-shadow: inset 5px 0 8px -5px rgba(0,0,0,0.05);
+	box-shadow: inset 5px 0 8px -5px rgba(0, 0, 0, 0.05);
 }
 
 .tab-content.current {
@@ -146,11 +148,10 @@ ul.tabs li.current {
 }
 
 .menu-header p {
-    margin: 0;
-    color: #4b365f;
-    font-family: "Jua", sans-serif;
+	margin: 0;
+	color: #4b365f;
+	font-family: "Jua", sans-serif;
 }
-
 
 /* =================== Buttons & Inputs =================== */
 .btn {
@@ -200,31 +201,38 @@ ul.tabs li.current {
 }
 
 .search-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 20px;
 }
+
 .search-container .input {
-    margin: 0;
+	margin: 0;
 }
+
 .search-container .btn {
-    padding: 12px 25px;
+	padding: 12px 25px;
 }
 
 .select {
-    padding: 12px 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    background-color: #fff;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    cursor: pointer;
+	padding: 12px 15px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	font-size: 16px;
+	background-color: #fff;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	cursor: pointer;
 }
 
 /* =================== Lists =================== */
+.list-container {
+	max-height: 500px;
+	overflow-y: auto;
+}
+
 .list {
 	display: flex;
 	justify-content: space-between;
@@ -247,20 +255,22 @@ ul.tabs li.current {
 }
 
 .list a:hover {
-    color: #4b365f;
+	color: #4b365f;
 }
 
 .name-text {
-    color: #888;
-    font-size: 14px;
+	color: #888;
+	font-size: 14px;
 }
 
 /* =================== Form Switching =================== */
-.travel-form-content, .user-form-content, .issues-form-content, .reports-form-content {
-    display: none;
+.travel-form-content, .user-form-content, .issues-form-content,
+	.reports-form-content {
+	display: none;
 }
+
 .active {
-    display: block;
+	display: block;
 }
 
 /* Fonts */
@@ -277,7 +287,9 @@ ul.tabs li.current {
 	<div class="body">
 
 		<div class="header">
-			<h1 class="h1 jua-regular" onClick="location.href='/admin/main'">Admin</h1>
+
+			<img src="/image/connectify_logo.png" class="logo" width="150"
+				onClick="location.href='/admin/main'" />
 			<div class="header-right">
 				<p class="header-name">${sessionScope.admin.name}</p>
 				<button onClick="location.href='/admin/logout'"
@@ -289,56 +301,56 @@ ul.tabs li.current {
 			<div class="tab-container">
 
 				<ul class="tabs">
-					<li class="tab-link jua-regular" onClick="location.href='/admin/main'"><p>Home</p></li>
-					<li class="tab-link jua-regular" onClick="location.href='/admin/travel'"><p>여행지</p></li>
-					<li class="tab-link jua-regular" onClick="location.href='/admin/user'"><p>사용자<br> 검색 </p></li>
-					<li class="tab-link current jua-regular" onClick="location.href='/admin/issue'"><p>질문내역</p></li>
-					<li class="tab-link jua-regular" onClick="location.href='/admin/report'"><p>신고내역</p></li>
+					<li class="tab-link jua-regular"
+						onClick="location.href='/admin/main'"><p>Home</p></li>
+					<li class="tab-link jua-regular"
+						onClick="location.href='/admin/travel'"><p>여행지</p></li>
+					<li class="tab-link jua-regular"
+						onClick="location.href='/admin/user'"><p>사용자 검색</p></li>
+					<li class="tab-link current jua-regular"
+						onClick="location.href='/admin/issue'"><p>질문내역</p></li>
+					<li class="tab-link jua-regular"
+						onClick="location.href='/admin/report'"><p>신고내역</p></li>
 				</ul>
-				<!-- menu 3 -->
-				<div id="tab-3" class="tab-content">
 
+
+				<!-- menu 2 -->
+				<div id="tab-2" class="tab-content current">
 					<div class="tab-all jua-regular">
-						<!-- isssues form1 -->
-						<!-- isssues 전체 -->
-						<div id="issues-form1" class="issues-form-content">
-							<form action="" method="">
-								<div class="menu-header">
-									<p class="jua-regular">질문 내역</p>
-								</div>
-							<div>
-								<c:forEach var="issue" items="${issueList}">
-									<div class="list">
-											<a href="#" onClick="showIssuesForm('issues-form2')">
-											ID: ${issue.id} : ${issue.title}</a> <span>${issue.userId}|${issue.status}</span>
-									</div>
-								</c:forEach>
-							</div>
-							</form>
-						</div>
 
-						<!-- isssues form2 -->
-						<div id="issues-form2" class="issues-form-content">
-							<form action="" method="">
+						<!-- user-form1 -->
+						<div id="issue-form1" class="issue-form-content">
+							<form action="/admin/user" method="post">
 								<div class="menu-header">
-									<p class="jua-regular">질문</p>
-									<button type="button"
-										class="btn btn-add-travel jua-regular btn-travel"
-										onClick="showIssuesForm('issues-form1')">돌아가기</button>
+									<p class="jua-regular">질문내역</p>
 								</div>
-								<div class="">
-									<p>issues</p>
-									
-								</div>>
-
+								<div class="search-container search">
+									<input type="text" class="input" name="searchKeywordUser"
+										value="${adminUserSearch.searchKeywordUser}"
+										placeholder="사용자 이름 검색">
+									<button type="submit" class="btn">검색</button>
+								</div>
+								<div class="list-container">
+									<c:forEach var="issue" items="${issueList}">
+										<div class="list">
+											<a href="">
+											${issue.question} || 사용자: ${issue.userId}
+											<p>사용자: ${issue.userId} ${issue.status}</p>
+											</a>
+											<div>
+												<button type="button"
+													class="btn btn-md-list btn-list jua-regular">답변</button>
+												<button type="button"
+													class="btn btn-md-list btn-list jua-regular">삭제</button>
+											</div>
+										</div>
+									</c:forEach>
+								</div>
 							</form>
 						</div>
 
 					</div>
-
-
 				</div>
-
 			</div>
 		</div>
 	</div>
@@ -363,37 +375,20 @@ ul.tabs li.current {
 		
 		
  		// tab menu form 이동
-	 		//질문
-	 			function showIssuesForm(tabId) {
-	            const tabs = document.querySelectorAll('.issues-form-content');
+ 		
+ 			//사용자 검색
+	 		function showTravelForm(tabId) {
+	            const tabs = document.querySelectorAll('.issue-form-content');
 	            tabs.forEach(tab => {
 	            	tab.classList.remove('active')
 	            });
 	            
 	            document.getElementById(tabId).classList.add('active');
 	        }
-	 		
-	 			showIssuesForm('issues-form1');
+	 		showTravelForm('issue-form1');
 
 
 	</script>
-
-
-	<!-- 탭 유지 코드 -->
-	<c:if test="${not empty activeTab}">
-		<script>
-			$(document).ready(function () {
-				const activeTab = '${activeTab}';
-	
-				// 탭 UI 갱신
-				$('ul.tabs li').removeClass('current');
-				$('.tab-content').removeClass('current');
-				$(`ul.tabs li[data-tab="${activeTab}"]`).addClass('current');
-				$(`#${activeTab}`).addClass('current');
-			});
-		</script>
-	</c:if>
-
 
 </body>
 </html>
