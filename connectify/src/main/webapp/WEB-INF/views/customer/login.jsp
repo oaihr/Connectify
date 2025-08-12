@@ -183,7 +183,7 @@ a {
 
 /*=================== login ===================*/
 .login-container {
-	max-width: 400px;
+	width: 400px;
 	margin: 80px auto; /* 화면 중앙 배치 */
 	padding: 30px;
 	background-color: #fff;
