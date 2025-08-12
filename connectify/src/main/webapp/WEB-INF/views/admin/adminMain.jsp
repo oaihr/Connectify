@@ -229,6 +229,11 @@ ul.tabs li.current {
 }
 
 /* =================== Lists =================== */
+.list-container {
+	max-height: 500px;
+	overflow-y: auto;
+}
+
 .list {
 	display: flex;
 	justify-content: space-between;
@@ -280,7 +285,6 @@ img {
 	width: 200px;
 	cursor: pointer;
 }
-
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -319,6 +323,30 @@ img {
 
 					<div class="menu-header">
 						<p class="jua-regular">관리자Home</p>
+					</div>
+
+					<div class="list-container">
+						<p>질문 답변 대기리스트</p>
+						<c:forEach var="issue" items="${issueList}">
+
+							<c:if test="${ issue.status == '대기' }">
+								<div class="list">
+									<a href="/admin/issue/${issue.id}"> ${issue.question} 👤
+										${issue.userId}
+										<p>답변 : ${issue.status}</p>
+									</a>
+									<div>
+										<button type="button"
+											class="btn btn-md-list btn-list jua-regular"
+											onClick="location.href='/admin/issue/${issue.id}'">답변</button>
+										<button type="button"
+											class="btn btn-md-list btn-list jua-regular"
+											onClick="removeIssue('${issue.id}')">삭제</button>
+									</div>
+								</div>
+							</c:if>
+
+						</c:forEach>
 					</div>
 
 				</div>

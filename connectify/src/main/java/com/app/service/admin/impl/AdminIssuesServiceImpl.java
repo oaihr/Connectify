@@ -38,4 +38,11 @@ public class AdminIssuesServiceImpl implements AdminIssuesService{
 		int result = adminIssuesDAO.removeIssue(id);
 		return result;
 	}
+
+	@Override
+	public int updateStatus(AdminIssues adminIssues) {
+		int result = adminIssuesDAO.updateStatus(adminIssues);
+		return result;
+	}
+
 }

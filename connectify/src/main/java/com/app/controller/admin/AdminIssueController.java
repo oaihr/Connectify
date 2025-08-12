@@ -67,11 +67,13 @@ public class AdminIssueController {
 		if(result > 0) {
 			return "redirect:/admin/issue/" + adminIssues.getId();
 		} else {
-			
+
 			return "redirect:/admin/issue/" + adminIssues.getId();
 		}
 		
 	}
+	
+	
 	
 	
 }

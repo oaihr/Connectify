@@ -9,4 +9,5 @@ public interface AdminIssuesService {
 	public int updateAnswer(AdminIssues adminIssues);
 	public AdminIssues findAdminIssueId(int id);
 	public int removeIssue(int id);
+	public int updateStatus(AdminIssues adminIssues);
 }

@@ -38,6 +38,13 @@ public class AdminIssuesDAOImpl implements AdminIssuesDAO{
 		return result;
 	}
 
+	@Override
+	public int updateStatus(AdminIssues adminIssues) {
+		int result = sqlSessionTemplate.update("admin_mapper.updateStatus", adminIssues);
+		return result;
+	}
+
+
 
 	
 	

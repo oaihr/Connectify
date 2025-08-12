@@ -34,6 +34,7 @@ body {
 }
 
 .body-container {
+	height: calc(100vh - 80px); /* Adjust based on header height */
 	display: flex;
 	flex-direction: column;
 }
@@ -87,8 +88,6 @@ body {
 }
 /* =============tab=================== */
 .tab-container {
-	max-height: 100%;
-	overflow-y: auto;
 	flex-grow: 1;
 	display: flex;
 }
@@ -98,7 +97,7 @@ ul.tabs {
 	padding: 0;
 	width: 20%;
 	min-width: 220px;
-	background-color: #e9ecef;
+	background-color: #e9ecef; /* Light gray for sidebar */
 	list-style: none;
 	height: 100%;
 }
@@ -129,6 +128,7 @@ ul.tabs li.current {
 	width: 80%;
 	flex-grow: 1;
 	padding: 30px 40px;
+	overflow-y: auto;
 	box-shadow: inset 5px 0 8px -5px rgba(0, 0, 0, 0.05);
 }
 

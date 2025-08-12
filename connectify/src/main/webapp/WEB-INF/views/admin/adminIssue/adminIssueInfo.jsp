@@ -413,7 +413,7 @@ img {
 											<div class="answer-actions">
 												<button type="submit" 
 														class="btn btn-add-travel jua-regular"
-														onClick="location.href='/admin/updateIssue'">답변 등록</button>
+														onClick="location.href='/admin/issue/${issue.id}'">답변 등록</button>
 											</div>
 										</c:when>
 										<c:otherwise>

@@ -75,6 +75,13 @@
 		WHERE id = #{id}
 	</update>
 	
+	<update id="updateStatus" parameterType="AdminIssues">
+	    UPDATE CON_T_INQUIRE
+	    SET
+	        status = #{status}
+		WHERE id = #{id}
+	</update>
+	
 	
 	
 </mapper>
