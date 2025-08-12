@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -24,7 +26,7 @@ public class TravelController {
 	TravelService travelService;
 	
 	@RequestMapping("/travels")
-	public String travel(@RequestParam int category, 
+	public String travels(@RequestParam int category, 
 						 @RequestParam(defaultValue="1") int page,
 						Model model) {
 		
@@ -55,11 +57,45 @@ public class TravelController {
 			logger.warn("destinations가 비어있음");
 		}
 		
+		return "travel/travels";
+	}
+	
+	@GetMapping("/travel/{id}")
+	public String travelInfo(@PathVariable("id") String id, Model model) {
+		
+		AreaBasedListItem destination = travelService.getDetailIntroByContentId12(id);
+//		switch(destination.getContenttypeid()) {
+//			case 12:
+//				destination = travelService.getDetailIntroByContentId12(id);
+//				break;
+//			case 14:
+//				destination = travelService.getDetailIntroByContentId14(id);
+//				break;
+//			case 15:
+//				destination = travelService.getDetailIntroByContentId15(id);
+//				break;
+//			case 28:
+//				destination = travelService.getDetailIntroByContentId28(id);
+//				break;
+//			case 38:
+//				destination = travelService.getDetailIntroByContentId38(id);
+//				break;
+//			case 39:
+//				destination = travelService.getDetailIntroByContentId39(id);
+//				break;
+//		}
+		
+		if(destination != null) {
+			model.addAttribute("destination", destination);
+		}else {
+			logger.warn("destination이 비어있음");
+		}
+		
 		return "travel/travel";
 	}
 	
-	@RequestMapping("/lodging")
-	public String lodging(@RequestParam String category, @RequestParam(defaultValue="1") int page, Model model) {
+	@RequestMapping("/lodgings")
+	public String lodgings(@RequestParam String category, @RequestParam(defaultValue="1") int page, Model model) {
 		
 		final int pageSize = 9; // 한 페이지에 9개씩
 		int startRow = (page-1) * pageSize + 1; // 시작할 행
@@ -86,6 +122,20 @@ public class TravelController {
 			model.addAttribute("currentCategory", category);
 		}else {
 			logger.warn("lodgings가 비어있음");
+		}
+		
+		return "travel/lodgings";
+	}
+	
+	@GetMapping("/lodging/{id}")
+	public String lodgingInfo(@PathVariable("id") String id, Model model) {
+		
+		AreaBasedListItem destination = travelService.getDestinationByContentID(id);
+		
+		if(destination != null) {
+			model.addAttribute("destination", destination);
+		}else {
+			logger.warn("destination이 비어있음");
 		}
 		
 		return "travel/lodging";

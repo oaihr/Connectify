@@ -1,18 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
 * {
 	padding: 0;
-	margin : 0;
 	box-sizing: border-box;
 }
 
@@ -33,7 +30,6 @@ a {
 	flex-direction: column;
 }
 
-/* header 스타일 */
 .menu-title {
 	
 }
@@ -145,6 +141,91 @@ a {
 	color: #fff;
 	border: none;
 }
+
+/* lodging-list 컨테이너 스타일 */
+.lodging-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 20px;
+	padding: 20px;
+	width: 90%;
+	margin: 20px auto;
+}
+
+/* 각 여행지 아이템 스타일 */
+.lodging-list>div {
+	flex-basis: calc(33.333% - 20px);
+	max-width: calc(33.333% - 20px);
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	overflow: hidden; /* 이미지 모서리 둥글게 처리 */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition: transform 0.2s ease-in-out;
+	background-color: #fff;
+	cursor: pointer;
+	text-align: center;
+}
+
+.lodging-list>div:hover {
+	transform: translateY(-5px); /* 호버 시 약간 위로 올라가는 효과 */
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.lodging-list img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	border-bottom: 1px solid #ddd;
+}
+
+.lodging-list h3 {
+	font-size: 1.2em;
+	color: #333;
+	margin: 10px 5px 0;
+}
+
+.lodging-list p {
+	font-size: 0.9em;
+	color: #666;
+	margin: 5px;
+	padding-bottom: 10px;
+}
+
+/* 페이지네이션 스타일 */
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px 0;
+	gap: 10px;
+}
+
+.pagination a, .pagination span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 8px 12px;
+	min-width: 40px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	text-decoration: none;
+	color: #555;
+	transition: all 0.2s;
+}
+
+.pagination a:hover {
+	background-color: #f0f0f0;
+}
+
+.pagination span {
+	color: #fff;
+	background-color: #7d6eaa;
+	border: 1px solid #7d6eaa;
+	padding: 8px 12px;
+	font-weight: bold;
+	cursor: default;
+}
 /*footer 스타일*/
 .footer {
 	display: flex;
@@ -207,13 +288,12 @@ a {
 </style>
 </head>
 <body>
-	${destination.title}
 	<div class="mainscreen-container">
 		<!-- ==================header 구간========================== -->
 		<div class="header">
 			<div class="main-menu-container">
 
-				<img src="/image/connectify_logo1.png" class="logo" width="200" style="margin: 20px 0;" onClick="location.href='/'" />
+				<img src="image/connectify_logo1.png" class="logo" width="200" style="margin: 20px 0;" onClick="location.href='/'" />
 
 				<ul class="menu">
 					<li class="menu-title menu-span span">여행정보
@@ -229,70 +309,56 @@ a {
 
 					<li class="menu-title menu-span span">숙소
 						<ul class="submenu">
-							<li><a href="/lodging?category=AC010100">호텔</a></li>
-							<li><a href="/lodging?category=AC020100">콘도</a></li>
-							<li><a href="/lodging?category=AC020200">레지던스</a></li>
-							<li><a href="/lodging?category=AC030100">팬션</a></li>
-							<li><a href="/lodging?category=AC030200">한옥스테이</a></li>
-							<li><a href="/lodging?category=AC030300">농어촌민박</a></li>
-							<li><a href="/lodging?category=AC030400">홈스테이</a></li>
-							<li><a href="/lodging?category=AC040100">모텔</a></li>
-							<li><a href="/lodging?category=AC050100">일반야영장</a></li>
-							<li><a href="/lodging?category=AC050200">오토캠핑장</a></li>
+							<li><a href="/lodgings?category=AC010100">호텔</a></li>
+							<li><a href="/lodgings?category=AC020100">콘도</a></li>
+							<li><a href="/lodgings?category=AC020200">레지던스</a></li>
+							<li><a href="/lodgings?category=AC030100">팬션</a></li>
+							<li><a href="/lodgings?category=AC030200">한옥스테이</a></li>
+							<li><a href="/lodgings?category=AC030300">농어촌민박</a></li>
+							<li><a href="/lodgings?category=AC030400">홈스테이</a></li>
+							<li><a href="/lodgings?category=AC040100">모텔</a></li>
+							<li><a href="/lodgings?category=AC050100">일반야영장</a></li>
+							<li><a href="/lodgings?category=AC050200">오토캠핑장</a></li>
 						</ul>
 					</li>
 
-					<li class="menu-title menu-span span"><a href="/faq">고객센터</a></li>
+					<li class="menu-title menu-span span"><a href="/qna">고객센터</a></li>
 				</ul>
 
 				<!-- ==================signBox 구간========================== -->
-				<c:choose>
-					<c:when test="${ customer.id == null }">
-						<form action="" method="post">
-							<div class="sign-container">
-								<button type="button" class="btn-sign btn"
-									onClick="location.href='/customer/login'">로그인</button>
-							</div>
-						</form>
-					</c:when>
-					<c:otherwise>
-						<form action="" method="post">
-							<div class="sign-container">
-							<p>${sessionScope.customer.name} 님
-								<button type="button" class="btn-sign btn"
-									onClick="location.href='/customer/logout'">로그아웃</button></p>
-							</div>
-						</form>
-					</c:otherwise>
-				</c:choose>
+				<form action="" method="post" class="signBox">
+					<div class="sign-container">
+						<button type="button" class="btn-sign btn">로그인</button>
+					</div>
+				</form>
 			</div>
 		</div>
 
 		<hr class="hr">
-
+	
 		<div class="lodging-list">
 			<c:forEach var="lodging" items="${lodgings}">
-				<div>
+				<div onClick="location.href='/lodgings/${lodging.contentid}'">
 					<img src="${lodging.firstimage}">
 					<h3>${lodging.title}</h3>
-					<p>${lodging.addr1}${lodging.addr2} ${lodging.zipcode}</p>
+					<p>${lodging.addr1} ${lodging.addr2} ${lodging.zipcode}</p>
 				</div>
 			</c:forEach>
 		</div>
-
+	
 		<div class="pagination">
 			<%-- 시작 페이지와 끝 페이지 계산 --%>
 			<c:set var="startPage"
 				value="${currentPage - 2 > 1 ? currentPage - 2 : 1}" />
 			<c:set var="endPage"
 				value="${currentPage + 2 < totalPages ? currentPage + 2 : totalPages}" />
-
+	
 			<%-- 이전 페이지 버튼 --%>
 			<c:if test="${currentPage > 1}">
 				<a
-					href="/lodging?page=${currentPage - 1}&category=${currentCategory}">이전</a>
+					href="/lodgings?page=${currentPage - 1}&category=${currentCategory}">이전</a>
 			</c:if>
-
+	
 			<%-- 페이지 번호 링크 --%>
 			<c:forEach var="i" begin="${startPage}" end="${endPage}">
 				<c:choose>
@@ -300,15 +366,14 @@ a {
 						<span>${i}</span>
 					</c:when>
 					<c:otherwise>
-						<a href="/lodging?page=${i}&category=${currentCategory}">${i}</a>
+						<a href="/lodgings?page=${i}&category=${currentCategory}">${i}</a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
-
+	
 			<%-- 다음 페이지 버튼 --%>
 			<c:if test="${currentPage < totalPages}">
-				<a
-					href="/lodging?page=${currentPage + 1}&category=${currentCategory}">다음</a>
+				<a href="/lodgings?page=${currentPage + 1}&category=${currentCategory}">다음</a>
 			</c:if>
 		</div>
 
@@ -316,36 +381,39 @@ a {
 			<div class="footer-container">
 				<div class="footer-info">
 					<div class="info-group">
-						<span>(주)커넥티파이</span> 
-						<span>대표이사 우정영</span> 
-						<span>사업자등록번호	202-81-45295</span> 
-						<span>통신판매업신고번호 중구 제03500호</span> 
-						<span>호스팅 업체 (주)카오스네트워크</span>
+						<span>(주)커넥티파이</span> <span>대표이사 우정영</span> <span>사업자등록번호
+							202-81-45295</span> <span>통신판매업신고번호 중구 제03500호</span> <span>호스팅
+							업체 (주)카오스네트워크</span>
 					</div>
 					<div class="info-group">
-						<span>관광사업자 등록번호 2025-08</span> <span>영업보증보험 15억1천만원</span> 
-						<span>기획여행영업보증 7억원</span>
+						<span>관광사업자 등록번호 2025-08</span> <span>영업보증보험 15억 1천만원</span> <span>기획여행영업보증
+							7억원</span>
 					</div>
 					<div class="info-group">
-						<span>상담문의 1566-9564</span> 
-						<span>팩스 041-561-1122</span> 
-						<span>충남천안시 동남구 대흥로 215 7층</span>
+						<span>상담문의 1566-9564</span> <span>팩스 041-561-1122</span> <span>충남
+							천안시 동남구 대흥로 215 7층</span>
 					</div>
 				</div>
 				<div class="footer-notes">
 					<ul>
 						<li>※ 부득이한 사정에 의해 확정된 여행일정이 변경되는 경우 여행자의 사전 동의를 받습니다.</li>
-						<li>※ (주)커넥티파이는 항공사가 제공하는 항공권 및 여행사가 제공하는 일부 여행상품에 대하여 통신판매중개자의 지위를 가지며, 해당 상품, 상거래 정보에 대한 의무와 거래에 관한 책임은 판매자에게 있습니다.</li>
-						<li><b>※ 커넥티파이의 법인계좌가 아닌 다른 계좌로 입금하여 발생한 피해에 관하여, 당사는 책임지지 않습니다. 타 계좌의 입금을 유도하는 행위가 발생하는 경우 반드시 커넥티파이 고객센터로 문의하거나 신고하여 주시기 바랍니다.</b></li>
+						<li>※ (주)커넥티파이는 항공사가 제공하는 항공권 및 여행사가 제공하는 일부 여행상품에 대하여
+							통신판매중개자의 지위를 가지며, 해당 상품, 상거래 정보에 대한 의무와 거래에 관한 책임은 판매자에게 있습니다.</li>
+						<li><b>※ 커넥티파이의 법인계좌가 아닌 다른 계좌로 입금하여 발생한 피해에 관하여, 당사는
+								책임지지 않습니다. 타 계좌의 입금을 유도하는 행위가 발생하는 경우 반드시 커넥티파이 고객센터로 문의하거나 신고하여
+								주시기 바랍니다.</b></li>
 					</ul>
 				</div>
-				<div class="footer-copyright">COPYRIGHT CONNECTIFY, ALL RIGHTS RESERVED.</div>
+				<div class="footer-copyright">COPYRIGHT CONNECTIFY, ALL RIGHTS
+					RESERVED.</div>
 			</div>
 			<div class="social-icons">
-				<a href="#" class="icon"><img src="/image/SNS_kakaotalk.svg"	alt="카카오톡"></a> 
-				<a href="#" class="icon"><img src="/image/SNS_insta.svg" alt="인스타그램"></a> 
-				<a href="#"	class="icon"><img src="/image/SNS_naverblog.svg" alt="네이버블로그"></a>
-				<a href="#" class="icon"><img src="/image/SNS_youtube.svg" alt="유튜브"></a>
+				<a href="#" class="icon"><img src="image/SNS_kakaotalk.svg"
+					alt="카카오톡"></a> <a href="#" class="icon"><img
+					src="image/SNS_insta.svg" alt="인스타그램"></a> <a href="#"
+					class="icon"><img src="image/SNS_naverblog.svg" alt="네이버블로그"></a>
+				<a href="#" class="icon"><img src="image/SNS_youtube.svg"
+					alt="유튜브"></a>
 			</div>
 		</footer>
 	</div>	
