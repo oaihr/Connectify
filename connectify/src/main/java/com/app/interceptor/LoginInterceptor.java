@@ -2,27 +2,30 @@ package com.app.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 public class LoginInterceptor implements HandlerInterceptor {
+	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 
-		/*
+		HttpSession session = request.getSession();
 		System.out.println("여기는 인터셉터 preHandle");
+		String userId = (String)session.getAttribute("loginId");
 		//로그인 안했으면? 진행 X -> 로그인부터 해라~
-		if(LoginManager.isLogin(request) == false) {  //로그인 안한 상태!
-			response.sendRedirect("/customer/signin");	//로그인 화면으로 리다이렉트
-			return false; //이후 과정 진행 X
+		if(userId == null) {
+            session.setAttribute("msg", "로그인이 필요한 서비스입니다.");
+            System.out.println("로그인이 되어있지않아서 로그인페이지로 리다이렉트");
+            // 로그인 페이지로 리다이렉트
+            response.sendRedirect(request.getContextPath() + "/customer/login");
+            return false; // 컨트롤러로 요청이 넘어가지 않도록 중단
 		}
 		
-		//로그인 했으면? 그냥 진행
-		*/
-		return HandlerInterceptor.super.preHandle(request, response, handler);
-
+		return true;
 	}
 	
 	@Override

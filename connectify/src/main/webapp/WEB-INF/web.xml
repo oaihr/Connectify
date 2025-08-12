@@ -49,11 +49,15 @@
 		</init-param>
 	</filter>
 
-
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+<!-- 	테스트용도로 세션 로그아웃시간을 무제한으로 늘림, 원래 톰캣은 기본 30분  -->
+<!-- 	-1로 설정해놓으면 서버가 종료 및 재부팅을 제외하면 계속 세션이 유지됨 -->
+	<session-config>
+		<session-timeout>-1</session-timeout>
+	</session-config>
 
 </web-app>

@@ -1,5 +1,7 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,8 +71,6 @@ a {
 	width: 100%;
 	height: 100vh;
 	background-color: #fffff;
-	display: flex;
-	flex-direction: column;
 }
 
 .span {
@@ -183,8 +183,8 @@ a {
 
 /*=================== login ===================*/
 .signup-container {
-	max-width: 400px;
-	margin: 80px auto; /* 화면 중앙 배치 */
+	width: 400px;
+	margin: auto; /* 화면 중앙 배치 */
 	padding: 30px;
 	background-color: #fff;
 	border-radius: 10px;
@@ -212,6 +212,7 @@ a {
 	border-radius: 6px;
 	font-size: 14px;
 	outline: none;
+	 box-sizing: border-box; 
 }
 
 .signup-container input:focus {
@@ -227,7 +228,13 @@ a {
 	color: #fff;
 	border: none;
 }
-
+/* 오류 메시지를 위한 CSS */
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
 /*=================== logo ===================*/
 .logo {
 	cursor: pointer;
@@ -273,8 +280,6 @@ a {
 					<li class="menu-title menu-span span"><a href="/faq">고객센터</a></li>
 				</ul>
 
-				<!-- ==================signBox 구간========================== -->
-
 				<form action="" method="post" class="signBox">
 					<div class="sign-container">
 						<button type="button" class="btn-sign btn"
@@ -288,24 +293,38 @@ a {
 		
 		<div class="signup-container">
 			<h1>회원가입</h1>
-			<form action="${pageContext.request.contextPath}/customer/signup" method="post">
-				아이디 
-				<a><input type="text" name="id" required></a> 
-				비밀번호 
-				<a><input type="password" name="pw" required></a> 
-				이름 
-				<a><input type="text" name="name" required></a> 
-				전화번호 
-				<a><input type="text" name="tel" required></a> 
-				이메일 
-				<a><input type="email" name="mail" required></a>
+			<form:form action="${pageContext.request.contextPath}/customer/signup" method="post" modelAttribute="customer">
+				<p>
+					아이디 <br>
+					<form:input path="id" type="text" />
+					<form:errors path="id" cssClass="error-message" />
+				</p>
+				<p>
+					비밀번호 <br>
+					<form:input path="pw" type="password" />
+					<form:errors path="pw" cssClass="error-message" />
+				</p>
+				<p>
+					이름 <br>
+					<form:input path="name" type="text" />
+					<form:errors path="name" cssClass="error-message" />
+				</p>
+				<p>
+					전화번호 <br>
+					<form:input path="tel" type="text" />
+					<form:errors path="tel" cssClass="error-message" />
+				</p>
+				<p>
+					이메일 <br>
+					<form:input path="mail" type="email" />
+					<form:errors path="mail" cssClass="error-message" />
+				</p>
 				
 				<button type="submit" class="btn body-btn-sign">가입하기</button>
-			</form>
+			</form:form>
 
 		</div>
 	</div>
-
 
 </body>
 </html>
