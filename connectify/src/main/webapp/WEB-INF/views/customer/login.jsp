@@ -290,6 +290,12 @@ a {
 		<hr class="hr">
 
 		<div class="login-container">
+			<c:if test="${not empty sessionScope.msg}">
+				<script>
+					alert('${sessionScope.msg}');
+				</script>
+				<c:remove var="msg" scope="session" />
+			</c:if>
 			<h1>로그인</h1>
 
 			<form action="" method="post">

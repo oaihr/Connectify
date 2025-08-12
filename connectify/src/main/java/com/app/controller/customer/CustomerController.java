@@ -34,6 +34,9 @@ public class CustomerController {
         if (loginCus == null) {
             return "redirect:/customer/login";
         } else {
+        	// 인터셉터가 체크하는 "loginId" 키로 세션에 사용자 ID를 직접 저장
+            session.setAttribute("loginId", loginCus.getId());
+            
         	LoginManager.setSessionLoginUserId(session, loginCus.getId());
         	session.setAttribute("customer", loginCus);
         	return "redirect:/";
@@ -53,7 +56,7 @@ public class CustomerController {
         int result = customerService.signup(customer);
         
 		if(result > 0){
-			return "redirect:customer/signup";
+			return "redirect:/customer/signup";
 		} else {
 			return "redirect:/";
 		}

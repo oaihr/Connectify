@@ -1,3 +1,62 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?> -->
+<!-- <beans xmlns="http://www.springframework.org/schema/beans" -->
+<!-- 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" -->
+<!-- 	xmlns:context="http://www.springframework.org/schema/context" -->
+<!-- 	xmlns:mvc="http://www.springframework.org/schema/mvc" -->
+<!-- 	xsi:schemaLocation=" -->
+<!-- 		http://www.springframework.org/schema/beans -->
+<!-- 		http://www.springframework.org/schema/beans/spring-beans.xsd -->
+<!-- 		http://www.springframework.org/schema/context -->
+<!-- 		http://www.springframework.org/schema/context/spring-context.xsd -->
+<!-- 		http://www.springframework.org/schema/mvc -->
+<!-- 		http://www.springframework.org/schema/mvc/spring-mvc.xsd"> -->
+
+<!-- 	<context:property-placeholder location="classpath:tour-api.properties" /> -->
+
+<!-- 	<bean class="com.app.config.WebConfig" /> --> 
+
+<!-- 	<mvc:interceptors> -->
+<!-- 		<mvc:interceptor> -->
+<!-- 			<mvc:mapping path="/qna" /> -->
+<!-- 			<bean class="com.app.interceptor.LoginInterceptor" /> -->
+<!-- 		</mvc:interceptor> -->
+<!-- 	</mvc:interceptors> -->
+
+<!-- 	<context:component-scan base-package="com.app" /> -->
+
+<!-- 	<mvc:annotation-driven> -->
+<!-- 		<mvc:message-converters> -->
+<!-- 			<bean -->
+<!-- 				class="org.springframework.http.converter.StringHttpMessageConverter"> -->
+<!-- 				<property name="supportedMediaTypes"> -->
+<!-- 					<list> -->
+<!-- 						<value>text/html;charset=UTF-8</value> -->
+<!-- 						<value>application/text;charset=UTF-8</value> -->
+<!-- 						<value>text/plain;charset=UTF-8</value> -->
+<!-- 						<value>application/json;charset=UTF-8</value> -->
+<!-- 					</list> -->
+<!-- 				</property> -->
+<!-- 			</bean> -->
+<!-- 		</mvc:message-converters> -->
+<!-- 	</mvc:annotation-driven> -->
+
+<!-- 	<bean -->
+<!-- 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+<!-- 		<property name="prefix" value="/WEB-INF/views/"></property> -->
+<!-- 		<property name="suffix" value=".jsp"></property> -->
+<!-- 	</bean> -->
+
+<!-- 	<mvc:resources location="/resources/" mapping="/**"></mvc:resources> -->
+
+<!-- 	<bean id="multipartResolver" -->
+<!-- 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> -->
+<!-- 		<property name="maxUploadSize" value="10485760" /> -->
+<!-- 		<property name="defaultEncoding" value="utf-8" /> -->
+<!-- 	</bean> -->
+<!-- </beans> -->
+<!--  Spring 3.x XML 네임스페이스 기반 -->
+
+
 <beans:beans
 	xmlns="http://www.springframework.org/schema/mvc"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -10,50 +69,66 @@
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<context:property-placeholder location="classpath:tour-api.properties" />
-	
-
 	<annotation-driven />
 
-	<context:component-scan base-package="com.app.controller"></context:component-scan>
-	<context:component-scan	base-package="com.app.service"></context:component-scan>
-	<context:component-scan	base-package="com.app.dao"></context:component-scan>
-	<context:component-scan	base-package="com.app.config"></context:component-scan>
-	<context:component-scan base-package="com.app.api.controller"></context:component-scan>
-	<context:component-scan base-package="com.app.api.client"></context:component-scan>
-	<context:component-scan base-package="com.app.api.service"></context:component-scan>
-	<context:component-scan base-package="com.app.api.dao"></context:component-scan>
-	<context:component-scan base-package="com.app.config"></context:component-scan>
-	
-	<!--뷰리졸버 설정 부분 -->
+
+	<context:component-scan	base-package="com.app.controller"></context:component-scan>
+	<context:component-scan base-package="com.app.service"></context:component-scan>
+	<context:component-scan base-package="com.app.dao"></context:component-scan>
+		
+
 	<beans:bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/"></beans:property>
 		<beans:property name="suffix" value=".jsp"></beans:property>
 	</beans:bean>
 	
+	<resources location="file:///D:/fileStorage/" mapping="/fileStorage/**"></resources>
 	<resources location="/resources/" mapping="/**"></resources>
-
-
-	<annotation-driven>								
-		<message-converters>							
-			<!-- @ResponseBody로 String 처리할때 한글처리 -->						
-			<beans:bean	class="org.springframework.http.converter.StringHttpMessageConverter">					
-				<beans:property name="supportedMediaTypes">					
-					<beans:list>				
-						<beans:value>text/html;charset=UTF-8</beans:value>			
-						<beans:value>application/text;charset=UTF-8</beans:value>			
-						<beans:value>text/plain;charset=UTF-8</beans:value>			
-						<beans:value>application/json;charset=UTF-8</beans:value>			
-					</beans:list>				
-				</beans:property>					
-			</beans:bean>						
-		</message-converters>							
-	</annotation-driven>
+									
 	
-	<beans:bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<beans:property name="maxUploadSize" value="10485760" />
-		<beans:property name="defaultEncoding" value="utf-8" />
-	</beans:bean>
+	<annotation-driven>						
+		<message-converters>					
+			<beans:bean	class="org.springframework.http.converter.StringHttpMessageConverter">			
+				<beans:property name="supportedMediaTypes">			
+					<beans:list>		
+						<beans:value>text/html;charset=UTF-8</beans:value>	
+						<beans:value>application/text;charset=UTF-8</beans:value>	
+						<beans:value>text/plain;charset=UTF-8</beans:value>	
+						<beans:value>application/json;charset=UTF-8</beans:value>	
+					</beans:list>		
+				</beans:property>			
+			</beans:bean>				
+		</message-converters>					
+	</annotation-driven>						
+
+
+	<beans:bean id="multipartResolver"		
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">	
+		<beans:property name="maxUploadSize" value="10485760" />	
+		<beans:property name="defaultEncoding" value="utf-8" />	
+	</beans:bean>		
+
+
+	<interceptors>
+		<interceptor>
+			<mapping path="/customer/**"/>
+			<exclude-mapping path="/customer/signin"/>
+			<exclude-mapping path="/customer/signup"/>
+			<exclude-mapping path="/customer/checkDupIdJson"/>
+			<exclude-mapping path="/customer/login"/>
+			<beans:bean class="com.app.interceptor.LoginInterceptor"></beans:bean>
+		</interceptor>
+<!-- 관리자용 인터셉터 필요하면 주석해제 -->
+<!-- 		<interceptor> -->
+<!-- 			<mapping path="/admin/**"/> -->
+<!-- 			<exclude-mapping path="/admin/signin"/> -->
+<!-- 			<beans:bean class="com.app.interceptor.AdminInterceptor"></beans:bean> -->
+<!-- 		</interceptor> -->
+		
+		<interceptor>
+			<mapping path="/qna" />
+			<beans:bean class="com.app.interceptor.LoginInterceptor" />
+		</interceptor>
+	</interceptors>
 </beans:beans>

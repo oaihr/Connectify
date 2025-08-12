@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>고객센터</title>
 <style>
-* {
+*{
 	padding : 0;
 	margin : 0;
 	box-sizing: border-box;
@@ -261,7 +261,7 @@ h2 {
 	margin: 20px 0px;
 }
 
-p{
+.tab-content p{
 	margin-bottom: 20px;
 }
 
