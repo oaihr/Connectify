@@ -20,5 +20,25 @@ public class AdminIssuesDAOImpl implements AdminIssuesDAO{
 		return adminIssuesList;
 	}
 	
+	@Override
+	public int updateAnswer(AdminIssues adminIssues) {
+		int result = sqlSessionTemplate.update("admin_mapper.updateAnswer", adminIssues);
+		return result;
+	}
+
+	@Override
+	public AdminIssues findAdminIssueId(int id) {
+		AdminIssues findId = sqlSessionTemplate.selectOne("admin_mapper.findAdminIssueId", id);
+		return findId;
+	}
+
+	@Override
+	public int removeIssue(int id) {
+		int result = sqlSessionTemplate.delete("admin_mapper.removeIssue", id);
+		return result;
+	}
+
+
+	
 	
 }

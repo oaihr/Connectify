@@ -21,4 +21,21 @@ public class AdminIssuesServiceImpl implements AdminIssuesService{
 		return adminIssuesList;
 	}
 
+	@Override
+	public int updateAnswer(AdminIssues adminIssues) {
+		int result = adminIssuesDAO.updateAnswer(adminIssues);
+		return result;
+	}
+
+	@Override
+	public AdminIssues findAdminIssueId(int id) {
+		AdminIssues findId = adminIssuesDAO.findAdminIssueId(id);
+		return findId;
+	}
+
+	@Override
+	public int removeIssue(int id) {
+		int result = adminIssuesDAO.removeIssue(id);
+		return result;
+	}
 }

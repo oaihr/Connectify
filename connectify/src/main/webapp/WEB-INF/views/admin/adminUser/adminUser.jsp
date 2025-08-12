@@ -264,8 +264,7 @@ ul.tabs li.current {
 }
 
 /* =================== Form Switching =================== */
-.travel-form-content, .user-form-content, .issues-form-content,
-	.reports-form-content {
+.travel-form-content, .user-form-content, .issues-form-content {
 	display: none;
 }
 
@@ -278,6 +277,13 @@ ul.tabs li.current {
 	font-family: "Jua", sans-serif;
 	font-weight: 400;
 }
+
+/* img */
+img {
+	margin: 20px 0;
+	width: 200px;
+	cursor: pointer;
+}
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -288,7 +294,7 @@ ul.tabs li.current {
 
 		<div class="header">
 
-			<img src="/image/connectify_logo.png" class="logo" width="150"
+			<img src="/image/connectify_logo1.png" class="logo" width="150"
 				onClick="location.href='/admin/main'" />
 			<div class="header-right">
 				<p class="header-name">${sessionScope.admin.name}</p>
@@ -309,8 +315,6 @@ ul.tabs li.current {
 						onClick="location.href='/admin/user'"><p>사용자 검색</p></li>
 					<li class="tab-link jua-regular"
 						onClick="location.href='/admin/issue'"><p>질문내역</p></li>
-					<li class="tab-link jua-regular"
-						onClick="location.href='/admin/report'"><p>신고내역</p></li>
 				</ul>
 
 
@@ -333,13 +337,12 @@ ul.tabs li.current {
 								<div class="list-container">
 									<c:forEach var="user" items="${userList}">
 										<div class="list">
-											<a href="/admin/user/${user.id}">NAME: ${user.name} ||
-												ID: ${user.id} || TEL): ${user.tel}</a>
+											<a href="/admin/user/${user.id}">👤 ${user.name} ID:
+												${user.id} || 📞 ${user.tel}</a>
 											<div>
 												<button type="button"
-													class="btn btn-md-list btn-list jua-regular">수정</button>
-												<button type="button"
-													class="btn btn-md-list btn-list jua-regular">삭제</button>
+													class="btn btn-md-list btn-list jua-regular"
+													onClick="removeUser('${user.id}')">삭제</button>
 											</div>
 										</div>
 									</c:forEach>
@@ -385,6 +388,13 @@ ul.tabs li.current {
 	        }
 	 		showTravelForm('user-form1');
 
+	 		//계정 삭제
+			function removeUser(id) {
+				console.log("삭제 함수 호출됨. id:", id);
+				if(confirm("정말 삭제하시겠습니까?")) {
+					location.href='/admin/removeUser?id=' + id;
+				}
+			}
 
 	</script>
 

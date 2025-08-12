@@ -260,8 +260,7 @@ ul.tabs li.current {
 }
 
 /* =================== Form Switching =================== */
-.travel-form-content, .user-form-content, .issues-form-content,
-	.reports-form-content {
+.travel-form-content, .user-form-content, .issues-form-content {
 	display: none;
 }
 
@@ -274,6 +273,14 @@ ul.tabs li.current {
 	font-family: "Jua", sans-serif;
 	font-weight: 400;
 }
+
+/* img */
+img {
+	margin: 20px 0;
+	width: 200px;
+	cursor: pointer;
+}
+
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -283,7 +290,7 @@ ul.tabs li.current {
 	<div class="body">
 
 		<div class="header">
-			<img src="/image/connectify_logo.png" class="logo" width="150"
+			<img src="/image/connectify_logo1.png" class="logo" width="150"
 				onClick="location.href='/admin/main'" />
 			<div class="header-right">
 				<p class="header-name">${sessionScope.admin.name}</p>
@@ -305,8 +312,6 @@ ul.tabs li.current {
 						onClick="location.href='/admin/user'"><p>사용자 검색</p></li>
 					<li class="tab-link jua-regular"
 						onClick="location.href='/admin/issue'"><p>질문내역</p></li>
-					<li class="tab-link jua-regular"
-						onClick="location.href='/admin/report'"><p>신고내역</p></li>
 				</ul>
 
 				<!-- menu 0 -->

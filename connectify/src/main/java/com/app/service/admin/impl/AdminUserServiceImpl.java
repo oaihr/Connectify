@@ -34,4 +34,10 @@ public class AdminUserServiceImpl implements AdminUserService{
 		return userId;
 	}
 
+	@Override
+	public int removeUser(String id) {
+		int result = adminUserDAO.removeUser(id);
+		return result;
+	}
+
 }
