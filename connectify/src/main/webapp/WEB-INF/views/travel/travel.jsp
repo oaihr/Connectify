@@ -1,18 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<script type="module"
+	src="https://ajax.googleapis.com/ajax/libs/@googlemaps/extended-component-library/0.6.11/index.min.js">
+    </script>
 <style>
 * {
+	padding: 0;
+	margin: 0;
 	box-sizing: border-box;
 }
 
 body {
 	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.place-picker-container {
+	padding: 20px;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
 }
 
 .mainscreen-container {
@@ -23,6 +37,7 @@ body {
 	flex-direction: column;
 }
 
+/* header 스타일 */
 .menu-title {
 	
 }
@@ -55,7 +70,7 @@ body {
 
 .header {
 	width: 100%;
-	padding: 10px 50px;
+	padding: 0px 50px;
 	background-color: #ffffff;
 	border-bottom: 1px solid #eee;
 }
@@ -126,11 +141,6 @@ body {
 	background-color: #f0f0f0;
 }
 
-.submenu a {
-	text-decoration: none;
-	color: black;
-}
-
 .btn-sign {
 	width: 120px;
 	height: 40px;
@@ -140,92 +150,132 @@ body {
 	border: none;
 }
 
-/* travel-list 컨테이너 스타일 */
-.travel-list {
+/* 바디 스타일 ===========================================================================================*/
+.travel {
+	padding: 0 20px;
+}
+
+.travelInfo {
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	gap: 20px;
-	padding: 20px;
-	width: 90%;
-	margin: 20px auto;
+	margin-bottom: 20px;
 }
 
-/* 각 여행지 아이템 스타일 */
-.travel-list>div {
-	flex-basis: calc(33.333% - 20px);
-	max-width: calc(33.333% - 20px);
-	border: 1px solid #ddd;
-	border-radius: 8px;
-	overflow: hidden; /* 이미지 모서리 둥글게 처리 */
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	transition: transform 0.2s ease-in-out;
-	background-color: #fff;
-	cursor: pointer;
-	text-align: center;
+.travelInfoTxt {
+	list-style-type: none;
 }
 
-.travel-list>div:hover {
-	transform: translateY(-5px); /* 호버 시 약간 위로 올라가는 효과 */
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.travelInfoTxt li h2 {
+	margin-bottom: 40px;
 }
 
-.travel-list img {
+.travelInfoTxt li {
+	margin: 40px;
+}
+
+.iconInfoBox {
+	display: flex;
+}
+
+.iconInfoBox img {
+	margin-right: 15px;
+}
+/* 지도 스타일 */
+.travelMap {
 	width: 100%;
-	height: 200px;
-	object-fit: cover;
-	border-bottom: 1px solid #ddd;
-}
-
-.travel-list h3 {
-	font-size: 1.2em;
-	color: #333;
-	margin: 10px 5px 0;
-}
-
-.travel-list p {
-	font-size: 0.9em;
-	color: #666;
-	margin: 5px;
-	padding-bottom: 10px;
-}
-
-/* 페이지네이션 스타일 */
-.pagination {
+	height: 70vh;
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 20px 0;
-	gap: 10px;
 }
 
-.pagination a, .pagination span {
+.mapDetailInfo {
+	width: 30%;
+	margin-left: 20px;
+}
+
+.mapDetailInfo h3{
+	padding: 10px 10px;
+}
+.mapDetailInfo p {
+	margin-top: 15px;
+	padding: 10px 10px;
+}
+
+.mapDetailInfoImgs {
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 8px 12px;
-	min-width: 40px;
-	border: 1px solid #ccc;
+	width: 80%;
+}
+
+.mapDetailInfoImgs img {
+	max-width: 100%;
+	width: 30%;
+	background-color: white;
+}
+
+.middleHr{
+	margin: 20px;
+	color: #ccc;
+}
+/*=================== slide 스타일 ===================*/
+.slide-container {
+	width: 100%;
+	height: 450px;
+	position: relative;
+	margin-top: 45px;
+}
+
+.slide-container img {
+	width: 100%;
+	height: 800px;
+	border-radius: 20px;
+}
+
+.slide {
+	-webkit-animation: fade 1.2s;
+	animation: fade 1.2s;
+}
+
+@
+-webkit-keyframes fade {from { opacity:0.4;
+	
+}
+
+to {
+	opacity: 1;
+}
+
+}
+@
+keyframes fade {from { opacity:0.4;
+	
+}
+
+to {
+	opacity: 1;
+}
+
+}
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 80%;
+	width: auto;
+	margin-top: -22px;
+	padding: 16px;
+	color: white;
+	font-size: 25px;
+	transition: 0.6s ease;
+	user-select: none;
+}
+
+.next {
+	right: 0;
+}
+
+.prev:hover, .next:hover {
+	background-color: rgba(0, 0, 0, 0.5);
 	border-radius: 5px;
-	text-decoration: none;
-	color: #555;
-	transition: all 0.2s;
 }
 
-.pagination a:hover {
-	background-color: #f0f0f0;
-}
-
-.pagination span {
-	color: #fff;
-	background-color: #7d6eaa;
-	border: 1px solid #7d6eaa;
-	padding: 8px 12px;
-	font-weight: bold;
-	cursor: default;
-}
-
-/*footer 스타일*/
+/*footer 스타일=========================================================================================*/
 .footer {
 	display: flex;
 	justify-content: space-between;
@@ -279,6 +329,11 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+
+/*=================== logo ===================*/
+.logo {
+	cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -287,7 +342,8 @@ body {
 		<div class="header">
 			<div class="main-menu-container">
 
-				<img src="image/connectify_logo.png" class="logo" width="200" onClick="location.href='/'" />
+				<img src="/image/connectify_logo1.png" class="logo" width="200"
+					style="margin: 20px 0;" onClick="location.href='/'" />
 
 				<ul class="menu">
 					<li class="menu-title menu-span span">여행정보
@@ -303,25 +359,20 @@ body {
 
 					<li class="menu-title menu-span span">숙소
 						<ul class="submenu">
-							<li><a href="/lodging?category=AC010100">호텔</a></li>
-							<li><a href="/lodging?category=AC020100">콘도</a></li>
-							<li><a href="/lodging?category=AC020200">레지던스</a></li>
-							<li><a href="/lodging?category=AC030100">팬션</a></li>
-							<li><a href="/lodging?category=AC030200">한옥스테이</a></li>
-							<li><a href="/lodging?category=AC030300">농어촌민박</a></li>
-							<li><a href="/lodging?category=AC030400">홈스테이</a></li>
-							<li><a href="/lodging?category=AC040100">모텔</a></li>
-							<li><a href="/lodging?category=AC050100">일반야영장</a></li>
-							<li><a href="/lodging?category=AC050200">오토캠핑장</a></li>
+							<li><a href="/lodgings?category=AC010100">호텔</a></li>
+							<li><a href="/lodgings?category=AC020100">콘도</a></li>
+							<li><a href="/lodgings?category=AC020200">레지던스</a></li>
+							<li><a href="/lodgings?category=AC030100">팬션</a></li>
+							<li><a href="/lodgings?category=AC030200">한옥스테이</a></li>
+							<li><a href="/lodgings?category=AC030300">농어촌민박</a></li>
+							<li><a href="/lodgings?category=AC030400">홈스테이</a></li>
+							<li><a href="/lodgings?category=AC040100">모텔</a></li>
+							<li><a href="/lodgings?category=AC050100">일반야영장</a></li>
+							<li><a href="/lodgings?category=AC050200">오토캠핑장</a></li>
 						</ul>
 					</li>
 
-					<li class="menu-title menu-span span">기타
-						<ul class="submenu">
-							<li><a href="">응급상황 대처요령</a></li>
-							<li><a href="">고객센터</a></li>
-						</ul>
-					</li>
+					<li class="menu-title menu-span span"><a href="/qna">고객센터</a></li>
 				</ul>
 
 				<!-- ==================signBox 구간========================== -->
@@ -332,89 +383,331 @@ body {
 				</form>
 			</div>
 		</div>
-
 		<hr class="hr">
-	
-	<div class="travel-list">
-		<c:forEach var="dest" items="${destinations}">
-			<div>
-				<img src="${dest.firstimage}">
-				<h3>${dest.title}</h3>
-				<p>${dest.addr1} ${dest.addr2} ${dest.zipcode}</p>
+		<div class="travel">
+			<div class="travelInfo">
+				<div class="slide-container">
+						<div class="slide">
+							<img
+								src="/image/detailImg/1.png">
+						</div>
+						<div class="slide">
+							<img
+								src="/image/detailImg/2.png">
+						</div>
+						<div class="slide">
+							<img
+								src="/image/detailImg/3.png">
+						</div>
+						<div class="slide">
+							<img
+								src="/image/detailImg/4.png">
+						</div>
+						<div class="slide">
+							<img
+								src="/image/detailImg/5.png">
+						</div>
+						<div class="slide">
+							<img
+								src="/image/detailImg/6.png">
+						</div>
+						<div class="slide">
+							<img
+								src="/image/detailImg/7.png">
+						</div>
+						<a class="prev">&#10094;</a> <a class="next">&#10095;</a>
+						<div class="dots">
+							<span class="dot" data-val="0"></span> <span class="dot"
+								data-val="1"></span> <span class="dot" data-val="2"></span> <span
+								class="dot" data-val="3"></span>
+						</div>
+				</div>
+				<ul class="travelInfoTxt">
+					<li>
+						<h2>${destination.title}</h2>
+					</li>
+					<li>
+						<div class="iconInfoBox">
+							<div>
+								<img src="/image/infoIcons/icon_address.png">
+							</div>
+							<div>
+								<h4>주소</h4>
+								${destination.addr1}
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="iconInfoBox">
+							<div>
+								<img src="/image/infoIcons/icon_inquiries.png">
+							</div>
+							<div>
+								<h4>문의 및 안내</h4>
+								${destination.infoCenter}
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="iconInfoBox">
+							<div>
+								<img src="/image/infoIcons/icon_operating.png">
+							</div>
+							<div>
+								<h4>이용시간</h4>
+								${destination.useTime}
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="iconInfoBox">
+							<div>
+								<img src="/image/infoIcons/icon_accom.png">
+							</div>
+							<div>
+								<h4>수용인원</h4>
+								${destination.accomCount}
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="iconInfoBox">
+							<div>
+								<img src="/image/infoIcons/icon_holiday.png">
+							</div>
+							<div>
+								<h4>쉬는날</h4>
+								${destination.restDate}
+							</div>
+						</div>
+					</li>
+
+					<li>
+						<div class="iconInfoBox">
+							<div>
+								<img src="/image/infoIcons/icon_parking.png">
+							</div>
+							<div>
+								<h4>주차</h4>
+								${destination.parking}
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="iconInfoBox">
+							<div>
+								<img src="/image/infoIcons/icon_exp.png">
+							</div>
+							<div>
+								<h4>체험 안내</h4>
+								${destination.expGuide}
+							</div>
+						</div>
+					</li>
+
+				</ul>
 			</div>
-		</c:forEach>
+			<hr class="middleHr">
+			<div class="travelMap">
+				<gmpx-api-loader key="AIzaSyCZMJOBHnVifgwBxPlqA8X6EKK4I5eZcBs"
+					solution-channel="GMP_GE_mapsandplacesautocomplete_v2">
+				</gmpx-api-loader>
+				<gmp-map center="${destination.mapy}, ${destination.mapx}" zoom="13"
+					map-id="connectify_MAP">
+				<div slot="control-block-start-inline-start"
+					class="place-picker-container">
+					<gmpx-place-picker placeholder="${destination.addr1}"></gmpx-place-picker>
+				</div>
+				<gmp-advanced-marker
+					position="${destination.mapy}, ${destination.mapx}"></gmp-advanced-marker>
+				</gmp-map>
+				<div class="mapDetailInfo">
+					<h3>장애정보</h3>
+					<div class="mapDetailInfoImgs">
+						<img src="/image/wheelchair.png"> <img
+							src="/image/toilet.png"> <img src="/image/braileblock.png">
+					</div>
+					<hr class="hr">
+					<p>${destination.publicTransport}</p>
+					<hr class="hr">
+					<p>휠체어 ${destination.wheelchair}</p>
+					<hr class="hr">
+					<p>${destination.restroom}</p>
+					<hr class="hr">
+					<p>${destination.braileBlock}</p>
+					<hr class="hr">
+					<p>${destination.room}</p>
+					<hr class="hr">
+				</div>
+			</div>
+		</div>
+		<footer class="footer">
+			<div class="footer-container">
+				<div class="footer-info">
+					<div class="info-group">
+						<span>(주)커넥티파이</span> <span>대표이사 우정영</span> <span>사업자등록번호
+							202-81-45295</span> <span>통신판매업신고번호 중구 제03500호</span> <span>호스팅
+							업체 (주)카오스네트워크</span>
+					</div>
+					<div class="info-group">
+						<span>관광사업자 등록번호 2025-08</span> <span>영업보증보험 15억 1천만원</span> <span>기획여행영업보증
+							7억원</span>
+					</div>
+					<div class="info-group">
+						<span>상담문의 1566-9564</span> <span>팩스 041-561-1122</span> <span>충남
+							천안시 동남구 대흥로 215 7층</span>
+					</div>
+				</div>
+				<div class="footer-notes">
+					<ul>
+						<li>※ 부득이한 사정에 의해 확정된 여행일정이 변경되는 경우 여행자의 사전 동의를 받습니다.</li>
+						<li>※ (주)커넥티파이는 항공사가 제공하는 항공권 및 여행사가 제공하는 일부 여행상품에 대하여
+							통신판매중개자의 지위를 가지며, 해당 상품, 상거래 정보에 대한 의무와 거래에 관한 책임은 판매자에게 있습니다.</li>
+						<li><b>※ 커넥티파이의 법인계좌가 아닌 다른 계좌로 입금하여 발생한 피해에 관하여, 당사는
+								책임지지 않습니다. 타 계좌의 입금을 유도하는 행위가 발생하는 경우 반드시 커넥티파이 고객센터로 문의하거나 신고하여
+								주시기 바랍니다.</b></li>
+					</ul>
+				</div>
+				<div class="footer-copyright">COPYRIGHT CONNECTIFY, ALL RIGHTS
+					RESERVED.</div>
+			</div>
+			<div class="social-icons">
+				<a href="#" class="icon"><img src="/image/SNS_kakaotalk.svg"
+					alt="카카오톡"></a> <a href="#" class="icon"><img
+					src="/image/SNS_insta.svg" alt="인스타그램"></a> <a href="#"
+					class="icon"><img src="/image/SNS_naverblog.svg" alt="네이버블로그"></a>
+				<a href="#" class="icon"><img src="/image/SNS_youtube.svg"
+					alt="유튜브"></a>
+			</div>
+		</footer>
 	</div>
 
-	<div class="pagination">
-		<%-- 시작 페이지와 끝 페이지 계산 --%>
-		<c:set var="startPage"
-			value="${currentPage - 2 > 1 ? currentPage - 2 : 1}" />
-		<c:set var="endPage"
-			value="${currentPage + 2 < totalPages ? currentPage + 2 : totalPages}" />
-
-		<%-- 이전 페이지 버튼 --%>
-		<c:if test="${currentPage > 1}">
-			<a
-				href="/travels?page=${currentPage - 1}&category=${currentCategory}">이전</a>
-		</c:if>
-
-		<%-- 페이지 번호 링크 --%>
-		<c:forEach var="i" begin="${startPage}" end="${endPage}">
-			<c:choose>
-				<c:when test="${i == currentPage}">
-					<span>${i}</span>
-				</c:when>
-				<c:otherwise>
-					<a href="/travels?page=${i}&category=${currentCategory}">${i}</a>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
-
-		<%-- 다음 페이지 버튼 --%>
-		<c:if test="${currentPage < totalPages}">
-			<a href="/travels?page=${currentPage + 1}&category=${currentCategory}">다음</a>
-		</c:if>
-	</div>
+	<script>
+	//슬라이드 쇼
+	const $prev = document.querySelector('.prev');
+	const $next = document.querySelector('.next');
+	const $slide = document.querySelectorAll('.slide');
+	const $dots = document.querySelectorAll('.dot');
+	const $dot = document.querySelector('.dots');
 	
-	<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-info">
-            <div class="info-group">
-                <span>(주)커넥티파이</span>
-                <span>대표이사 우정영</span>
-                <span>사업자등록번호 202-81-45295</span>
-                <span>통신판매업신고번호 중구 제03500호</span>
-                <span>호스팅 업체 (주)카오스네트워크</span>
-            </div>
-            <div class="info-group">
-                <span>관광사업자 등록번호 2025-08</span>
-                <span>영업보증보험 15억 1천만원</span>
-                <span>기획여행영업보증 7억원</span>
-            </div>
-            <div class="info-group">
-                <span>상담문의 1566-9564</span>
-                <span>팩스 041-561-1122</span>
-                <span>충남 천안시 동남구 대흥로 215 7층</span>
-            </div>
-        </div>
-        <div class="footer-notes">
-            <ul>
-                <li>※ 부득이한 사정에 의해 확정된 여행일정이 변경되는 경우 여행자의 사전 동의를 받습니다.</li>
-                <li>※ (주)커넥티파이는 항공사가 제공하는 항공권 및 여행사가 제공하는 일부 여행상품에 대하여 통신판매중개자의 지위를 가지며, 해당 상품, 상거래 정보에 대한 의무와 거래에 관한 책임은 판매자에게 있습니다.</li>
-                <li><b>※ 커넥티파이의 법인계좌가 아닌 다른 계좌로 입금하여 발생한 피해에 관하여, 당사는 책임지지 않습니다. 타 계좌의 입금을 유도하는 행위가 발생하는 경우 반드시 커넥티파이 고객센터로 문의하거나 신고하여 주시기 바랍니다.</b></li>
-            </ul>
-        </div>
-        <div class="footer-copyright">
-            COPYRIGHT CONNECTIFY, ALL RIGHTS RESERVED.
-        </div>
-    </div>
-    <div class="social-icons">
-        <a href="#" class="icon"><img src="image/SNS_kakaotalk.svg" alt="카카오톡"></a>
-        <a href="#" class="icon"><img src="image/SNS_insta.svg" alt="인스타그램"></a>
-        <a href="#" class="icon"><img src="image/SNS_naverblog.svg" alt="네이버블로그"></a>
-        <a href="#" class="icon"><img src="image/SNS_youtube.svg" alt="유튜브"></a>
-    </div>
-</footer>
+	let slideIndex = 0;
+	
+	//실행
+	window.onload = function(){
+	    showSlides(slideIndex);
+	
+	    let sec = 6000;
+	    setInterval(function(){
+	        slideIndex++;
+	        showSlides(slideIndex);
+	    }, sec);
+	}
+	
+	//이전 버튼을 누르면 이전으로, 다음버튼을 누르면 다음으로 이동
+	function moveSlides(n){
+	    slideIndex = slideIndex + n
+	    showSlides(slideIndex);
+	}
+	
+	$prev.addEventListener('click', () => moveSlides(-1))
+	$next.addEventListener('click', () => moveSlides(1))
+	
+	
+	//하단 동그라미를 누르면 해당하는 이미지로 이동
+	function currentSlide(e){
+	    const val = e.target.dataset.val
+	    if(val !== undefined) {
+	        slideIndex = +val;
+	        showSlides(slideIndex);
+	    }
+	}
+	
+	$dot.addEventListener('click', currentSlide)
+	
+	
+	//슬라이드쇼 실행
+	function showSlides(n){
+	    let size = $slide.length;
+	
+	    //슬라이드쇼의 길이보다 slideIndex가 커지면 다시 처음으로 돌아가도록
+	    if((n+1) > size){
+	        slideIndex = 0;
+	        n = 0;
+	    } else if(n < 0) {  //slideIndex가 0보다 작아지면 마지막으로 가도록
+	        slideIndex = (size - 1);
+	        n = (size - 1);
+	    }
+	    
+	    //슬라이드쇼를 전부 안보이게
+	    for(let i=0; i<size; i++){
+	        $slide[i].style.display = 'none';
+	    }
+	
+	    //하단 동그라미 부분을 모두 진하게 표시되지 않도록 한다.
+	    for(let i=0; i<$dots.length; i++){
+	        $dots[i].className = $dots[i].className.replace("active", "");
+	    }
+	
+	    //해당하는 슬라이드만 보이도록 한다.
+	    $slide[n].style.display = "block";
+	
+	    //해당하는 동그라미만 진하게 표시되도록 한다.
+	    $dots[n].classList.toggle("active");
+	}
+</script>
+	<script>
+		const destination = {
+		  mapy: "<c:out value='${destination.mapy}'/>",
+		  mapx: "<c:out value='${destination.mapx}'/>"
+		};
+      	
+		console.log('mapy:', destination.mapy);
+		console.log('mapx:', destination.mapx);
+			
+      document.addEventListener('DOMContentLoaded', async function() {
+    	  
+    	  await customElements.whenDefined('gmp-map');
 
+          const map = document.querySelector('gmp-map');
+          const marker = document.querySelector('gmp-advanced-marker');
+          const placePicker = document.querySelector('gmpx-place-picker');
+          const infowindow = new google.maps.InfoWindow();
+  		
+          map.innerMap.setOptions({
+            mapTypeControl: false
+          });
+  		
+          map.center = `${destination.mapy}, ${destination.mapx}`;
+          marker.position = `${destination.mapy}, ${destination.mapx}`;
+          
+          placePicker.addEventListener('gmpx-placechange', () => {
+            const place = placePicker.value;
+
+            if (!place.location) {
+              window.alert(
+                "No details available for input: '" + place.name + "'"
+              );
+              infowindow.close();
+              marker.position = `${destination.mapy}, ${destination.mapx}`;
+              return;
+            }
+
+            if (place.viewport) {
+              map.innerMap.fitBounds(place.viewport);
+            } else {
+              map.center = place.location;
+              map.zoom = 17;
+            }
+
+            marker.position = place.location;
+            infowindow.setContent(
+              `<strong>${place.displayName}</strong><br>
+               <span>${place.formattedAddress}</span>
+            `);
+            infowindow.open(map.innerMap, marker);
+          });
+          
+        });
+    </script>
 </body>
 </html>

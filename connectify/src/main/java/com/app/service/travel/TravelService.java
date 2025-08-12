@@ -10,4 +10,11 @@ public interface TravelService {
 	public int getDestinationsListCountByContentTypeId(int contentTypeId);
 	public int getLodgingListCountByLclsSystm3(String category);
 	public List<AreaBasedListItem> getLodgingListByLcslSystm3(Map<String, Object> params);
+	public AreaBasedListItem getDestinationByContentID(String id);
+	public AreaBasedListItem getDetailIntroByContentId12(String id);
+	public AreaBasedListItem getDetailIntroByContentId14(String id);
+	public AreaBasedListItem getDetailIntroByContentId15(String id);
+	public AreaBasedListItem getDetailIntroByContentId28(String id);
+	public AreaBasedListItem getDetailIntroByContentId38(String id);
+	public AreaBasedListItem getDetailIntroByContentId39(String id);
 }

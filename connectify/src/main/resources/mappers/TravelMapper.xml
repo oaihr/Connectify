@@ -4,42 +4,116 @@
 
 <mapper namespace="TravelMapper">
 		
-		
     <select id="getDestinationsListByContentTypeId" resultType="AreaBasedListItem">
-	SELECT *
-	FROM (
-			SELECT ROWNUM rnum, a.*
-			FROM (
-				SELECT *
-				FROM TOUR_DESTINATION
-				WHERE CONTENT_TYPE_ID = #{contentTypeId}
-				ORDER BY CONTENT_ID ) a
-			)
-	WHERE rnum BETWEEN #{startRow} AND #{endRow}
+		SELECT *
+		FROM (
+				SELECT ROWNUM rnum, a.*
+				FROM (
+					SELECT *
+					FROM TOUR_DESTINATION
+					WHERE CONTENT_TYPE_ID = #{contentTypeId} AND FIRST_IMAGE IS NOT NULL
+					ORDER BY CONTENT_ID ) a
+				)
+		WHERE rnum BETWEEN #{startRow} AND #{endRow} 
     </select>
     
     
     <select id="getDestinationsListCountByContentTypeId" parameterType="int" resultType="int">
     	SELECT count(*) FROM TOUR_DESTINATION
-    	WHERE CONTENT_TYPE_ID = #{contentId}    
+    	WHERE CONTENT_TYPE_ID = #{contentId} AND FIRST_IMAGE IS NOT NULL    
     </select>
     
     <select id="getLodgingListCountByLclsSystm3" parameterType="String" resultType="int">
     	SELECT count(*) FROM TOUR_DESTINATION
-    	WHERE LCLS_SYSTM3 = #{category, jdbcType=VARCHAR}
+    	WHERE LCLS_SYSTM3 = #{category, jdbcType=VARCHAR} AND FIRST_IMAGE IS NOT NULL
     </select>
     
     
     <select id="getLodgingListByLcslSystm3" resultType="AreaBasedListItem">
-    SELECT *
-	FROM (
-			SELECT ROWNUM rnum, a.*
-			FROM (
-				SELECT *
-				FROM TOUR_DESTINATION
-				WHERE LCLS_SYSTM3 = #{category}
-				ORDER BY LCLS_SYSTM3 ) a
-			)
-	WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	    SELECT *
+		FROM (
+				SELECT ROWNUM rnum, a.*
+				FROM (
+					SELECT *
+					FROM TOUR_DESTINATION
+					WHERE LCLS_SYSTM3 = #{category} AND FIRST_IMAGE IS NOT NULL
+					ORDER BY LCLS_SYSTM3 ) a
+				)
+		WHERE rnum BETWEEN #{startRow} AND #{endRow} 
     </select>
+    
+    <select id="getDestinationByContentID" parameterType="String" resultType="AreaBasedListItem">
+    	SELECT * FROM TOUR_DESTINATION 
+    	WHERE CONTENT_ID = #{id}
+    </select>
+    
+    <select id="getDetailIntroByContentId12" parameterType="String" resultType="AreaBasedListItem">
+    	SELECT 
+		d.CONTENT_ID,
+        d.CONTENT_TYPE_ID,
+        d.TITLE,
+        d.ADDR1,
+        d.ZIPCODE,
+        d.AREA_CODE,
+        d.SIGUNGU_CODE,
+        d.MAPX,
+        d.MAPY,
+        d.MLEVEL,
+        d.FIRST_IMAGE,
+        d.FIRST_IMAGE2,
+        d.CPYRHT_DIV_CD,
+        d.LDONG_REGN_CD,
+        d.LDONG_SIGNGU_CD,
+        d.LCLS_SYSTM1,
+        d.LCLS_SYSTM2,
+        d.LCLS_SYSTM3,
+        d.CREATED_TIME,
+        d.MODIFIED_TIME,
+        
+        a.ACCOM_COUNT,
+        a.CHK_BABY_CARRIAGE,
+        a.CHK_CREDIT_CARD,
+        a.EXP_GUIDE,
+        a.INFO_CENTER,
+        a.OPEN_DATE,
+        a.PARKING,
+        a.REST_DATE,
+        a.USE_TIME,
+
+        w.PUBLIC_TRANSPORT,
+        w.WHEELCHAIR,
+        w.RESTROOM,
+        w.ROOM,
+        w.BRAILE_BLOCK
+			
+		FROM TOUR_DESTINATION d
+		LEFT JOIN TOUR_DETAIL_INTRO_ATTRACTION a ON d.CONTENT_ID = a.CONTENT_ID
+		LEFT JOIN DETAIL_WITH_TOUR w ON d.CONTENT_ID = w.CONTENT_ID
+		WHERE d.CONTENT_ID = #{id}
+    </select>
+<!--     <select id="getDetailIntroByContentId14" parameterType="String" resultType="AreaBasedListItem"> -->
+<!--     	SELECT * -->
+<!--     	FROM TOUR_DESTINATION d, TOUR_DETAIL_INTRO_CULTURAL_FACILITY a -->
+<!--     	WHERE d.CONTENT_ID = a.CONTENT_ID AND d.CONTENT_ID = #{id} -->
+<!--     </select> -->
+<!--     <select id="getDetailIntroByContentId15" parameterType="String" resultType="AreaBasedListItem"> -->
+<!--     	SELECT * -->
+<!--     	FROM TOUR_DESTINATION d, TOUR_DETAIL_INTRO_FESTIVAL a -->
+<!--     	WHERE d.CONTENT_ID = a.CONTENT_ID AND d.CONTENT_ID = #{id} -->
+<!--     </select> -->
+<!--     <select id="getDetailIntroByContentId28" parameterType="String" resultType="AreaBasedListItem"> -->
+<!--     	SELECT * -->
+<!--     	FROM TOUR_DESTINATION d, TOUR_DETAIL_INTRO_LEPORTS a -->
+<!--     	WHERE d.CONTENT_ID = a.CONTENT_ID AND d.CONTENT_ID = #{id} -->
+<!--     </select> -->
+<!--     <select id="getDetailIntroByContentId38" parameterType="String" resultType="AreaBasedListItem"> -->
+<!--     	SELECT * -->
+<!--     	FROM TOUR_DESTINATION d, TOUR_DETAIL_INTRO_SHOPPING a -->
+<!--     	WHERE d.CONTENT_ID = a.CONTENT_ID AND d.CONTENT_ID = #{id} -->
+<!--     </select> -->
+<!--     <select id="getDetailIntroByContentId39" parameterType="String" resultType="AreaBasedListItem"> -->
+<!--     	SELECT * -->
+<!--     	FROM TOUR_DESTINATION d, TOUR_DETAIL_INTRO_FOOD a -->
+<!--     	WHERE d.CONTENT_ID = a.CONTENT_ID AND d.CONTENT_ID = #{id} -->
+<!--     </select> -->
 </mapper>
