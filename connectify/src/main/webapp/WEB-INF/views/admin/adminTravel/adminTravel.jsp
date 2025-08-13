@@ -10,8 +10,11 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
+	rel="stylesheet">
 
 <style>
 html, body {
@@ -36,7 +39,6 @@ body {
 	flex-direction: column;
 }
 
-
 .header {
 	display: flex;
 	justify-content: space-between;
@@ -51,6 +53,7 @@ body {
 	align-items: center;
 	gap: 20px;
 }
+
 .h1 {
 	color: #4b365f;
 	margin: 0;
@@ -60,12 +63,11 @@ body {
 }
 
 .header-name {
-    font-size: 16px;
-    font-weight: 700;
-    color: #4b365f;
-    margin: 0;
+	font-size: 16px;
+	font-weight: 700;
+	color: #4b365f;
+	margin: 0;
 }
-
 
 .btn-logout {
 	width: 120px;
@@ -127,7 +129,7 @@ ul.tabs li.current {
 	flex-grow: 1;
 	padding: 30px 40px;
 	overflow-y: auto;
-	box-shadow: inset 5px 0 8px -5px rgba(0,0,0,0.05);
+	box-shadow: inset 5px 0 8px -5px rgba(0, 0, 0, 0.05);
 }
 
 .tab-content.current {
@@ -146,11 +148,10 @@ ul.tabs li.current {
 }
 
 .menu-header p {
-    margin: 0;
-    color: #4b365f;
-    font-family: "Jua", sans-serif;
+	margin: 0;
+	color: #4b365f;
+	font-family: "Jua", sans-serif;
 }
-
 
 /* =================== Buttons & Inputs =================== */
 .btn {
@@ -200,31 +201,38 @@ ul.tabs li.current {
 }
 
 .search-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 20px;
 }
+
 .search-container .input {
-    margin: 0;
+	margin: 0;
 }
+
 .search-container .btn {
-    padding: 12px 25px;
+	padding: 12px 25px;
 }
 
 .select {
-    padding: 12px 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    background-color: #fff;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    cursor: pointer;
+	padding: 12px 15px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	font-size: 16px;
+	background-color: #fff;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	cursor: pointer;
 }
 
 /* =================== Lists =================== */
+.list-container {
+	max-height: 500px;
+	overflow-y: auto;
+}
+
 .list {
 	display: flex;
 	justify-content: space-between;
@@ -247,26 +255,34 @@ ul.tabs li.current {
 }
 
 .list a:hover {
-    color: #4b365f;
+	color: #4b365f;
 }
 
 .name-text {
-    color: #888;
-    font-size: 14px;
+	color: #888;
+	font-size: 14px;
 }
 
 /* =================== Form Switching =================== */
-.travel-form-content, .user-form-content, .issues-form-content, .reports-form-content {
-    display: none;
+.travel-form-content, .user-form-content, .issues-form-content {
+	display: none;
 }
+
 .active {
-    display: block;
+	display: block;
 }
 
 /* Fonts */
 .jua-regular {
 	font-family: "Jua", sans-serif;
 	font-weight: 400;
+}
+
+/* img */
+img {
+	margin: 20px 0;
+	width: 200px;
+	cursor: pointer;
 }
 </style>
 
@@ -277,9 +293,9 @@ ul.tabs li.current {
 	<div class="body">
 
 		<div class="header">
-			
-			<img src="/image/connectify_logo.png" class="logo" width="150"
-					onClick="location.href='/admin/main'" />
+
+			<img src="/image/connectify_logo1.png" class="logo" width="150"
+				onClick="location.href='/admin/main'" />
 			<div class="header-right">
 				<p class="header-name">${sessionScope.admin.name}</p>
 				<button onClick="location.href='/admin/logout'"
@@ -291,11 +307,14 @@ ul.tabs li.current {
 			<div class="tab-container">
 
 				<ul class="tabs">
-					<li class="tab-link jua-regular" onClick="location.href='/admin/main'"><p>Home</p></li>
-					<li class="tab-link current jua-regular" onClick="location.href='/admin/travel'"><p>여행지</p></li>
-					<li class="tab-link jua-regular" onClick="location.href='/admin/user'"><p>사용자 검색 </p></li>
-					<li class="tab-link jua-regular" onClick="location.href='/admin/issue'"><p>질문내역</p></li>
-					<li class="tab-link jua-regular" onClick="location.href='/admin/report'"><p>신고내역</p></li>
+					<li class="tab-link jua-regular"
+						onClick="location.href='/admin/main'"><p>Home</p></li>
+					<li class="tab-link current jua-regular"
+						onClick="location.href='/admin/travel'"><p>여행지</p></li>
+					<li class="tab-link jua-regular"
+						onClick="location.href='/admin/user'"><p>사용자 검색</p></li>
+					<li class="tab-link jua-regular"
+						onClick="location.href='/admin/issue'"><p>질문내역</p></li>
 				</ul>
 
 				<!-- menu 1 -->
@@ -320,14 +339,21 @@ ul.tabs li.current {
 									</select> <input type="text" class="input" placeholder="여행지 정보 검색">
 									<button type="button" class="btn">검색</button>
 								</div>
-
-								<div class="list">
-									<a href="">여행 패키지 이름/가격(DB 불러올 예정)</a>
-									<div>
-										<button type="button"
-											class="btn btn-md-list btn-list jua-regular">수정</button>
-										<button type="button"
-											class="btn btn-md-list btn-list jua-regular">삭제</button>
+								<div class="list-container">
+									<div class="list">
+										<div>
+											<c:forEach var="travel" items="${travelList}">
+												<div>
+													<a href="/travel/${travel.contentid}">${travel.title}</a>
+												</div>
+											</c:forEach>
+										</div>
+										<div>
+											<button type="button"
+												class="btn btn-md-list btn-list jua-regular">수정</button>
+											<button type="button"
+												class="btn btn-md-list btn-list jua-regular">삭제</button>
+										</div>
 									</div>
 								</div>
 							</form>
@@ -361,6 +387,7 @@ ul.tabs li.current {
 						</div>
 
 					</div>
+
 
 				</div>
 

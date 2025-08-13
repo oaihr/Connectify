@@ -183,7 +183,7 @@ a {
 
 /*=================== login ===================*/
 .login-container {
-	max-width: 400px;
+	width: 400px;
 	margin: 80px auto; /* 화면 중앙 배치 */
 	padding: 30px;
 	background-color: #fff;
@@ -290,6 +290,12 @@ a {
 		<hr class="hr">
 
 		<div class="login-container">
+			<c:if test="${not empty sessionScope.msg}">
+				<script>
+					alert('${sessionScope.msg}');
+				</script>
+				<c:remove var="msg" scope="session" />
+			</c:if>
 			<h1>로그인</h1>
 
 			<form action="" method="post">
@@ -300,7 +306,7 @@ a {
 					비밀번호 <input type="password" name="pw" required>
 				</p>
 				<div>
-					<a href="/customer/signup">아이디가 왜 없어요?</a>
+					<a href="/customer/signup">아직 회원이 아니신가요?</a>
 				</div>
 				<button type="submit" class="btn body-btn-sign">로그인</button>
 			</form>

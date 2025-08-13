@@ -264,8 +264,7 @@ ul.tabs li.current {
 }
 
 /* =================== Form Switching =================== */
-.travel-form-content, .user-form-content, .issues-form-content,
-	.reports-form-content {
+.travel-form-content, .user-form-content, .issues-form-content {
 	display: none;
 }
 
@@ -278,6 +277,14 @@ ul.tabs li.current {
 	font-family: "Jua", sans-serif;
 	font-weight: 400;
 }
+
+/* img */
+img {
+	margin: 20px 0;
+	width: 200px;
+	cursor: pointer;
+}
+
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -288,7 +295,7 @@ ul.tabs li.current {
 
 		<div class="header">
 
-			<img src="/image/connectify_logo.png" class="logo" width="150"
+			<img src="/image/connectify_logo1.png" class="logo" width="150"
 				onClick="location.href='/admin/main'" />
 			<div class="header-right">
 				<p class="header-name">${sessionScope.admin.name}</p>
@@ -309,8 +316,6 @@ ul.tabs li.current {
 						onClick="location.href='/admin/user'"><p>사용자 검색</p></li>
 					<li class="tab-link current jua-regular"
 						onClick="location.href='/admin/issue'"><p>질문내역</p></li>
-					<li class="tab-link jua-regular"
-						onClick="location.href='/admin/report'"><p>신고내역</p></li>
 				</ul>
 
 
@@ -320,28 +325,32 @@ ul.tabs li.current {
 
 						<!-- user-form1 -->
 						<div id="issue-form1" class="issue-form-content">
-							<form action="/admin/user" method="post">
+							<form action="" method="">
 								<div class="menu-header">
 									<p class="jua-regular">질문내역</p>
 								</div>
+								
 								<div class="search-container search">
 									<input type="text" class="input" name="searchKeywordUser"
 										value="${adminUserSearch.searchKeywordUser}"
 										placeholder="사용자 이름 검색">
 									<button type="submit" class="btn">검색</button>
 								</div>
+								
 								<div class="list-container">
 									<c:forEach var="issue" items="${issueList}">
 										<div class="list">
-											<a href="">
-											${issue.question} || 사용자: ${issue.userId}
-											<p>사용자: ${issue.userId} ${issue.status}</p>
+											<a href="/admin/issue/${issue.id}">
+											${issue.question} 👤 ${issue.userId}
+											<p>답변 : ${issue.status}</p>
 											</a>
 											<div>
 												<button type="button"
-													class="btn btn-md-list btn-list jua-regular">답변</button>
+													class="btn btn-md-list btn-list jua-regular"
+													onClick="location.href='/admin/issue/${issue.id}'">답변</button>
 												<button type="button"
-													class="btn btn-md-list btn-list jua-regular">삭제</button>
+													class="btn btn-md-list btn-list jua-regular"
+													onClick="removeIssue('${issue.id}')">삭제</button>
 											</div>
 										</div>
 									</c:forEach>
@@ -388,6 +397,13 @@ ul.tabs li.current {
 	 		showTravelForm('issue-form1');
 
 
+	 		//질문 삭제
+			function removeIssue(id) {
+				console.log("삭제 함수 호출됨. id:", id);
+				if(confirm("정말 삭제하시겠습니까?")) {
+					location.href = '/admin/removeIssue?id=' + id;
+				}
+			}
 	</script>
 
 </body>

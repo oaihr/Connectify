@@ -12,4 +12,5 @@ public interface AdminUserDAO {
 	public List<AdminUser> findAdminUserListBySearch(AdminUserSearch adminUserSearch);
 	public AdminUser findAdminUserById(String id);
 	public List<AdminIssues> findAdminIssuesList();
+	public int removeUser(String id);
 }

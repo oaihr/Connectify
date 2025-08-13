@@ -36,4 +36,45 @@ public class TravelServiceImpl implements TravelService{
 		return travelDAO.getLodgingListByLcslSystm3(params);
 	}
 
+	@Override
+	public AreaBasedListItem getDestinationByContentID(String id) {
+		return travelDAO.getDestinationByContentID(id);
+	}
+
+	@Override
+	public AreaBasedListItem getDetailIntroByContentId12(String id) {
+		return travelDAO.getDetailIntroByContentId12(id);
+	}
+
+	@Override
+	public AreaBasedListItem getDetailIntroByContentId14(String id) {
+		return travelDAO.getDetailIntroByContentId14(id);
+	}
+
+	@Override
+	public AreaBasedListItem getDetailIntroByContentId15(String id) {
+		return travelDAO.getDetailIntroByContentId15(id);
+	}
+
+	@Override
+	public AreaBasedListItem getDetailIntroByContentId28(String id) {
+		return travelDAO.getDetailIntroByContentId28(id);
+	}
+
+	@Override
+	public AreaBasedListItem getDetailIntroByContentId38(String id) {
+		return travelDAO.getDetailIntroByContentId38(id);
+	}
+
+	@Override
+	public AreaBasedListItem getDetailIntroByContentId39(String id) {
+		return travelDAO.getDetailIntroByContentId39(id);
+	}
+
+	@Override
+	public List<AreaBasedListItem> getDestinationList() {
+		return travelDAO.getDestinationList();
+	}
+
+	
 }

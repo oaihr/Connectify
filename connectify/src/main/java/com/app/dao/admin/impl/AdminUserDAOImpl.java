@@ -41,6 +41,12 @@ public class AdminUserDAOImpl implements AdminUserDAO{
 		return adminIssuesList;
 	}
 
+	@Override
+	public int removeUser(String id) {
+		int result = sqlSessionTemplate.delete("admin_mapper.removeUser", id);
+		return result;
+	}
+
 
 	
 	

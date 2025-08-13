@@ -229,6 +229,11 @@ ul.tabs li.current {
 }
 
 /* =================== Lists =================== */
+.list-container {
+	max-height: 500px;
+	overflow-y: auto;
+}
+
 .list {
 	display: flex;
 	justify-content: space-between;
@@ -260,8 +265,7 @@ ul.tabs li.current {
 }
 
 /* =================== Form Switching =================== */
-.travel-form-content, .user-form-content, .issues-form-content,
-	.reports-form-content {
+.travel-form-content, .user-form-content, .issues-form-content {
 	display: none;
 }
 
@@ -274,6 +278,13 @@ ul.tabs li.current {
 	font-family: "Jua", sans-serif;
 	font-weight: 400;
 }
+
+/* img */
+img {
+	margin: 20px 0;
+	width: 200px;
+	cursor: pointer;
+}
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -283,7 +294,7 @@ ul.tabs li.current {
 	<div class="body">
 
 		<div class="header">
-			<img src="/image/connectify_logo.png" class="logo" width="150"
+			<img src="/image/connectify_logo1.png" class="logo" width="150"
 				onClick="location.href='/admin/main'" />
 			<div class="header-right">
 				<p class="header-name">${sessionScope.admin.name}</p>
@@ -305,8 +316,6 @@ ul.tabs li.current {
 						onClick="location.href='/admin/user'"><p>사용자 검색</p></li>
 					<li class="tab-link jua-regular"
 						onClick="location.href='/admin/issue'"><p>질문내역</p></li>
-					<li class="tab-link jua-regular"
-						onClick="location.href='/admin/report'"><p>신고내역</p></li>
 				</ul>
 
 				<!-- menu 0 -->
@@ -314,6 +323,30 @@ ul.tabs li.current {
 
 					<div class="menu-header">
 						<p class="jua-regular">관리자Home</p>
+					</div>
+
+					<div class="list-container">
+						<p>질문 답변 대기리스트</p>
+						<c:forEach var="issue" items="${issueList}">
+
+							<c:if test="${ issue.status == '대기' }">
+								<div class="list">
+									<a href="/admin/issue/${issue.id}"> ${issue.question} 👤
+										${issue.userId}
+										<p>답변 : ${issue.status}</p>
+									</a>
+									<div>
+										<button type="button"
+											class="btn btn-md-list btn-list jua-regular"
+											onClick="location.href='/admin/issue/${issue.id}'">답변</button>
+										<button type="button"
+											class="btn btn-md-list btn-list jua-regular"
+											onClick="removeIssue('${issue.id}')">삭제</button>
+									</div>
+								</div>
+							</c:if>
+
+						</c:forEach>
 					</div>
 
 				</div>

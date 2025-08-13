@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -34,6 +34,7 @@ body {
 }
 
 .body-container {
+	height: calc(100vh - 80px); /* Adjust based on header height */
 	display: flex;
 	flex-direction: column;
 }
@@ -87,8 +88,6 @@ body {
 }
 /* =============tab=================== */
 .tab-container {
-	max-height: 100%;
-	overflow-y: auto;
 	flex-grow: 1;
 	display: flex;
 }
@@ -98,7 +97,7 @@ ul.tabs {
 	padding: 0;
 	width: 20%;
 	min-width: 220px;
-	background-color: #e9ecef;
+	background-color: #e9ecef; /* Light gray for sidebar */
 	list-style: none;
 	height: 100%;
 }
@@ -129,7 +128,7 @@ ul.tabs li.current {
 	width: 80%;
 	flex-grow: 1;
 	padding: 30px 40px;
-	
+	overflow-y: auto;
 	box-shadow: inset 5px 0 8px -5px rgba(0, 0, 0, 0.05);
 }
 
@@ -230,8 +229,8 @@ ul.tabs li.current {
 
 /* =================== Lists =================== */
 .list-container {
-    max-height: 500px;
-    overflow-y: auto;
+	max-height: 500px;
+	overflow-y: auto;
 }
 
 .list {
@@ -265,8 +264,7 @@ ul.tabs li.current {
 }
 
 /* =================== Form Switching =================== */
-.travel-form-content, .user-form-content, .issues-form-content,
-	.reports-form-content {
+.travel-form-content, .user-form-content, .issues-form-content {
 	display: none;
 }
 
@@ -279,6 +277,13 @@ ul.tabs li.current {
 	font-family: "Jua", sans-serif;
 	font-weight: 400;
 }
+
+/* img */
+img {
+	margin: 20px 0;
+	width: 200px;
+	cursor: pointer;
+}
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -289,7 +294,7 @@ ul.tabs li.current {
 
 		<div class="header">
 
-			<img src="/image/connectify_logo.png" class="logo" width="150"
+			<img src="/image/connectify_logo1.png" class="logo" width="150"
 				onClick="location.href='/admin/main'" />
 			<div class="header-right">
 				<p class="header-name">${sessionScope.admin.name}</p>
@@ -310,8 +315,6 @@ ul.tabs li.current {
 						onClick="location.href='/admin/user'"><p>사용자 검색</p></li>
 					<li class="tab-link jua-regular"
 						onClick="location.href='/admin/issue'"><p>질문내역</p></li>
-					<li class="tab-link jua-regular"
-						onClick="location.href='/admin/report'"><p>신고내역</p></li>
 				</ul>
 
 
@@ -375,9 +378,8 @@ ul.tabs li.current {
 								</div>
 								<div>
 									<button type="button"
-										class="btn btn-md-list btn-list jua-regular">수정</button>
-									<button type="button"
-										class="btn btn-md-list btn-list jua-regular">삭제</button>
+										class="btn btn-md-list btn-list jua-regular"
+										onClick="removeUser('${user.id}')">삭제</button>
 								</div>
 
 							</form>
@@ -421,6 +423,16 @@ ul.tabs li.current {
 	        }
 	 		showTravelForm('user-form2');
 
+	 		
+	 		//계정 삭제
+			function removeUser(id) {
+				console.log("삭제 함수 호출됨. id:", id);
+				if(confirm("정말 삭제하시겠습니까?")) {
+					location.href = '/admin/removeUser?id=' + id;
+				}
+			}
+
+	 		
 
 	</script>
 
