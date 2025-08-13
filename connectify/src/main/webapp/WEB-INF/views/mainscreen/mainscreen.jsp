@@ -210,20 +210,17 @@ a {
 	flex-direction: column;
 	align-items: center;
 	width: 350px;
-	height: 550px;
-	border-radius: 20px;
+	height: 450px;
 	background-color: #f0e9fa;
 	padding: 30px;
 	box-sizing: border-box;
 	gap: 20px;
-	margin-bottom: 20px;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .search {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	width: 100%;
 	gap: 15px;
 }
@@ -240,11 +237,7 @@ a {
 	width: 270px;
 	padding: 8px;
 	margin-top: 15px;
-	border-radius: 10px;
 	border: 1px solid #ccc;
-	box-sizing: border-box;
-	border: 1px solid #ccc;
-	border-radius: 10px;
 }
 
 /* select box */
@@ -254,13 +247,10 @@ a {
 	appearance: none;
 	font-size: 1rem;
 	font-weight: 400;
-	/* line-height: 1.5; */
 	color: #444;
 	background-color: #fff;
 	padding: 10px;
 	border: 1px solid #aaa;
-	border-radius: 10px;
-	/* box-shadow: 0 1px 0 1px rgba(0, 0, 0, .04); */
 }
 
 .select:hover {
@@ -274,26 +264,21 @@ a {
 }
 
 .lang {
-	width: 100%;
+	width: 270px;
 }
 
 /* calendar */
 .date-cal {
-	width: 100%;
-	padding: 15px;
+	width: 270px;
+	padding: 10px;
 	margin-top: 20px;
-	border-radius: 10px;
 	border: 1px solid #ccc;
-	box-sizing: border-box;
-	border: 1px solid #ccc;
-	border-radius: 10px;
 }
 
 .btn-search {
 	width: 100%;
 	font-size: 20px;
 	padding: 15px;
-	border-radius: 15px;
 	background-color: #4b365f;
 	color: #fff;
 	border: none;
