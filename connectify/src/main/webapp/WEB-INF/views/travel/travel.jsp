@@ -217,7 +217,7 @@ a {
 }
 /*=================== slide 스타일 ===================*/
 .slide-container {
-	width: 100%;
+	width: 90%;
 	height: 450px;
 	position: relative;
 	margin-top: 45px;
@@ -225,7 +225,7 @@ a {
 
 .slide-container img {
 	width: 100%;
-	height: 800px;
+	height: 700px;
 	border-radius: 20px;
 }
 
@@ -470,7 +470,7 @@ to {
 							</div>
 							<div>
 								<h4>이용시간</h4>
-								${destination.useTime}
+								<p>${destination.useTime}</p>
 							</div>
 						</div>
 					</li>
@@ -492,7 +492,7 @@ to {
 							</div>
 							<div>
 								<h4>쉬는날</h4>
-								${destination.restDate}
+								<p>${destination.restDate}</p>
 							</div>
 						</div>
 					</li>
