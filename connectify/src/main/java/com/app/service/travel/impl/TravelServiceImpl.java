@@ -17,7 +17,7 @@ public class TravelServiceImpl implements TravelService{
 	TravelDAO travelDAO;
 	
 	@Override
-	public List<AreaBasedListItem> getDestinationsListByContentTypeId(Map<String, Integer> params) {
+	public List<AreaBasedListItem> getDestinationsListByContentTypeId(Map<String, Object> params) {
 		List<AreaBasedListItem> destinationsList = travelDAO.getDestinationsListByContentTypeId(params);
     	return destinationsList;
 	}

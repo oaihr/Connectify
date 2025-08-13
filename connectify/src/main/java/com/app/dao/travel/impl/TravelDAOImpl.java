@@ -19,13 +19,16 @@ public class TravelDAOImpl implements TravelDAO{
 	
 	
 	@Override
-	public List<AreaBasedListItem> getDestinationsListByContentTypeId(Map<String, Integer> params) {
+	public List<AreaBasedListItem> getDestinationsListByContentTypeId(Map<String, Object> params) {
 		List<AreaBasedListItem> destinationsList = sqlSessionTemplate.selectList("TravelMapper.getDestinationsListByContentTypeId", params);
 		return destinationsList;
 	}
 
 	@Override
-	public int getDestinationsListCountByContentTypeId(int contentTypeId) {		
+	public int getDestinationsListCountByContentTypeId(int contentTypeId) {
+//		Map<String, Object> params = new HashMap<>();
+//		params.put("contentTypeId", contentTypeId);
+//		params.put("keyword", keyword);
 		return sqlSessionTemplate.selectOne("TravelMapper.getDestinationsListCountByContentTypeId", contentTypeId);
 	}
 

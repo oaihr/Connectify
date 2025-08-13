@@ -338,7 +338,7 @@ a {
 	
 		<div class="lodging-list">
 			<c:forEach var="lodging" items="${lodgings}">
-				<div onClick="location.href='/lodgings/${lodging.contentid}'">
+				<div onClick="location.href='/lodging/${lodging.contentid}'">
 					<img src="${lodging.firstimage}">
 					<h3>${lodging.title}</h3>
 					<p>${lodging.addr1} ${lodging.addr2} ${lodging.zipcode}</p>

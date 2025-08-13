@@ -18,10 +18,10 @@
     </select>
     
     
-    <select id="getDestinationsListCountByContentTypeId" parameterType="int" resultType="int">
+  <select id="getDestinationsListCountByContentTypeId" parameterType="int" resultType="int">
     	SELECT count(*) FROM TOUR_DESTINATION
     	WHERE CONTENT_TYPE_ID = #{contentId} AND FIRST_IMAGE IS NOT NULL    
-    </select>
+    </select>    
     
     <select id="getLodgingListCountByLclsSystm3" parameterType="String" resultType="int">
     	SELECT count(*) FROM TOUR_DESTINATION

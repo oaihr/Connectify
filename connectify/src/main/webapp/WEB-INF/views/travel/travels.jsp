@@ -198,6 +198,7 @@ a {
 	align-items: center;
 	margin: 20px 0;
 	gap: 10px;
+	min-height: 50px;
 }
 
 .pagination a, .pagination span {

@@ -224,16 +224,16 @@ a {
 
 					<li class="menu-title menu-span span">숙소
 						<ul class="submenu">
-							<li><a href="/lodging?category=AC010100">호텔</a></li>
-							<li><a href="/lodging?category=AC020100">콘도</a></li>
-							<li><a href="/lodging?category=AC020200">레지던스</a></li>
-							<li><a href="/lodging?category=AC030100">팬션</a></li>
-							<li><a href="/lodging?category=AC030200">한옥스테이</a></li>
-							<li><a href="/lodging?category=AC030300">농어촌민박</a></li>
-							<li><a href="/lodging?category=AC030400">홈스테이</a></li>
-							<li><a href="/lodging?category=AC040100">모텔</a></li>
-							<li><a href="/lodging?category=AC050100">일반야영장</a></li>
-							<li><a href="/lodging?category=AC050200">오토캠핑장</a></li>
+							<li><a href="/lodgings?category=AC010100">호텔</a></li>
+							<li><a href="/lodgings?category=AC020100">콘도</a></li>
+							<li><a href="/lodgings?category=AC020200">레지던스</a></li>
+							<li><a href="/lodgings?category=AC030100">팬션</a></li>
+							<li><a href="/lodgings?category=AC030200">한옥스테이</a></li>
+							<li><a href="/lodgings?category=AC030300">농어촌민박</a></li>
+							<li><a href="/lodgings?category=AC030400">홈스테이</a></li>
+							<li><a href="/lodgings?category=AC040100">모텔</a></li>
+							<li><a href="/lodgings?category=AC050100">일반야영장</a></li>
+							<li><a href="/lodgings?category=AC050200">오토캠핑장</a></li>
 						</ul>
 					</li>
 

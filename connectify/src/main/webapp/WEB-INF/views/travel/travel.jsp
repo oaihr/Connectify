@@ -220,6 +220,7 @@ a {
 	height: 450px;
 	position: relative;
 	margin-top: 45px;
+	animaition-name: fade;
 }
 
 .slide-container img {
@@ -233,26 +234,27 @@ a {
 	animation: fade 1.2s;
 }
 
-@
--webkit-keyframes fade {from { opacity:0.4;
+@-webkit-keyframes fade {
+
+	from { 
+		opacity:0.4;	
+	}
 	
+	to {
+		opacity: 1;
+	}
+}
+@keyframes fade {
+
+	from { 
+		opacity:0.4;	
+	}
+
+	to {
+		opacity: 1;
+	}
 }
 
-to {
-	opacity: 1;
-}
-
-}
-@
-keyframes fade {from { opacity:0.4;
-	
-}
-
-to {
-	opacity: 1;
-}
-
-}
 .prev, .next {
 	cursor: pointer;
 	position: absolute;

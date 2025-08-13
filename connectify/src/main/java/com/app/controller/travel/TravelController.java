@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.app.api.dto.areaBasedList.AreaBasedListItem;
+import com.app.dto.travel.SearchKeyword;
 import com.app.service.travel.TravelService;
 
 @Controller
@@ -28,6 +29,7 @@ public class TravelController {
 	@RequestMapping("/travels")
 	public String travels(@RequestParam int category, 
 						 @RequestParam(defaultValue="1") int page,
+//						 SearchKeyword searchKeyword,
 						Model model) {
 		
 		final int pageSize = 9; // 한 페이지에 9개씩
@@ -41,8 +43,9 @@ public class TravelController {
 		int totalPages = (int)Math.ceil((double)count/pageSize);
 		logger.info("Total pages: " + totalPages);
 
-		Map<String, Integer> params = new HashMap<>();
+		Map<String, Object> params = new HashMap<>();
 		params.put("contentTypeId", category);
+//		params.put("keyword", searchKeyword.getKeyword());
 		params.put("startRow", startRow);
 		params.put("endRow", endRow);
 		
