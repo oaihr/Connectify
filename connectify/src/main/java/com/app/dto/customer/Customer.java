@@ -13,7 +13,7 @@ public class Customer {
     private String id;
     
     @NotBlank(message = "비밀번호는 필수 입력 항목입니다.")
-    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$",
+    @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@$!%*?&#.~_-])[A-Za-z\\d@$!%*?&#.~_-]{8,20}$",    		
              message = "비밀번호는 최소 8자, 영문, 숫자, 특수문자를 포함해야 합니다.")
     private String pw;
     
@@ -25,6 +25,6 @@ public class Customer {
     private String mail;
     
     @NotBlank(message = "전화번호는 필수 입력 항목입니다.")
-    @Pattern(regexp = "^\\d{2,3}-\\d{3,4}-\\d{4}$", message = "올바른 전화번호 형식이 아닙니다.")
+    @Pattern(regexp = "^\\d{2,3}\\d{3,4}\\d{4}$", message = "올바른 전화번호 형식이 아닙니다.")
     private String tel;
 }
