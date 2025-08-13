@@ -71,5 +71,10 @@ public class TravelServiceImpl implements TravelService{
 		return travelDAO.getDetailIntroByContentId39(id);
 	}
 
+	@Override
+	public List<AreaBasedListItem> getDestinationList() {
+		return travelDAO.getDestinationList();
+	}
+
 	
 }

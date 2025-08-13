@@ -76,6 +76,11 @@ public class TravelDAOImpl implements TravelDAO{
 		return sqlSessionTemplate.selectOne("TravelMapper.getDetailIntroByContentId39", id);
 	}
 
+	@Override
+	public List<AreaBasedListItem> getDestinationList() {
+		return sqlSessionTemplate.selectList("TravelMapper.getDestinationList");
+	}
+
 	
 
 	

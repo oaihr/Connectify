@@ -17,6 +17,10 @@
 		WHERE rnum BETWEEN #{startRow} AND #{endRow} 
     </select>
     
+    <select id="getDestinationList" resultType="AreaBasedListItem">
+    	SELECT * FROM TOUR_DESTINATION WHERE CONTENT_TYPE_ID = 12
+    	ORDER BY TITLE
+    </select>
     
     <select id="getDestinationsListCountByContentTypeId" parameterType="int" resultType="int">
     	SELECT count(*) FROM TOUR_DESTINATION

@@ -17,4 +17,5 @@ public interface TravelDAO {
 	public AreaBasedListItem getDetailIntroByContentId28(String id);
 	public AreaBasedListItem getDetailIntroByContentId38(String id);
 	public AreaBasedListItem getDetailIntroByContentId39(String id);
+	public List<AreaBasedListItem> getDestinationList();
 }
