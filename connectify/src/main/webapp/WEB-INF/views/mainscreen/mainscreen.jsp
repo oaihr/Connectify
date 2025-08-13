@@ -216,6 +216,7 @@ a {
 	padding: 30px;
 	box-sizing: border-box;
 	gap: 20px;
+	margin-bottom: 20px;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 

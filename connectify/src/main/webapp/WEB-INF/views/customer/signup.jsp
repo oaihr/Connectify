@@ -293,30 +293,30 @@ a {
 		
 		<div class="signup-container">
 			<h1>회원가입</h1>
-			<form:form action="${pageContext.request.contextPath}/customer/signup" method="post" modelAttribute="customer">
+			<form:form action="/customer/signup" method="post" modelAttribute="customer">
 				<p>
 					아이디 <br>
-					<form:input path="id" type="text" />
+					<form:input path="id" type="text" placeholder="아이디를 입력하세요"/>
 					<form:errors path="id" cssClass="error-message" />
 				</p>
 				<p>
 					비밀번호 <br>
-					<form:input path="pw" type="password" />
+					<form:input path="pw" type="password" placeholder="비밀번호를 입력하세요"/>
 					<form:errors path="pw" cssClass="error-message" />
 				</p>
 				<p>
 					이름 <br>
-					<form:input path="name" type="text" />
+					<form:input path="name" type="text" placeholder="이름을 입력하세요"/>
 					<form:errors path="name" cssClass="error-message" />
 				</p>
 				<p>
 					전화번호 <br>
-					<form:input path="tel" type="text" />
+					<form:input path="tel" type="text" placeholder="010-0000-0000"/>
 					<form:errors path="tel" cssClass="error-message" />
 				</p>
 				<p>
 					이메일 <br>
-					<form:input path="mail" type="email" />
+					<form:input path="mail" type="email" placeholder="abcd@vaver.com"/>
 					<form:errors path="mail" cssClass="error-message" />
 				</p>
 				

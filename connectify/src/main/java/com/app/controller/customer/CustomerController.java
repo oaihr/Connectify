@@ -70,11 +70,11 @@ public class CustomerController {
         
         if (result > 0) {
             // DB 저장 성공 시 로그인 페이지로 리다이렉트
-            return "redirect:/customer/login";
+            return "customer/signup";
         } else {
             // DB 저장 실패 시 에러 메시지를 모델에 담아 회원가입 페이지로 이동
-            model.addAttribute("error", "회원가입에 실패했습니다. 다시 시도해주세요.");
-            return "customer/signup";
+            model.addAttribute("error");
+            return "redirect:/";
         }
     }
 
